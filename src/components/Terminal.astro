@@ -71,7 +71,14 @@ import { config } from '../data/config.ts';
     } else if (trimmed === 'clear' || trimmed === 'cls') {
       output.innerHTML = '';
       return;
-    } else if (commands[trimmed]) {
+    } 
+ else if (trimmed === 'blog') {
+      printOutput(`<div class="text-sm leading-5 text-kanagawa-fgDim">launching blog reader...</div>`);
+      setTimeout(() => { window.location.href = '/blog'; }, 300);
+      return;
+
+}   else if (commands[trimmed]) {
+
       printOutput(`<div class="text-sm leading-5">${commands[trimmed]}</div>`);
     } else {
       printOutput(`<div class="text-kanagawa-red text-sm leading-5">command not found: ${trimmed}. Type <span class="text-kanagawa-yellow">help</span> to see available commands.</div>`);

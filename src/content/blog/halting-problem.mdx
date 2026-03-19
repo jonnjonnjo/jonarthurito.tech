@@ -1,0 +1,27 @@
+---
+title: "On the Halting Problem"
+date: "2026-03-01"
+tags: ["cs", "math"]
+description: "Turing's proof that some problems are fundamentally undecidable."
+---
+
+The halting problem is one of the most profound results in theoretical computer science.
+Turing proved in 1936 that no algorithm can decide, for all program-input pairs, whether the program halts.
+
+## The Proof
+
+Assume for contradiction that a program $\text{HALT}(P, I)$ exists that returns `true` iff program $P$ halts on input $I$. Then consider the following program:
+
+$$
+\forall P: \text{HALT}(P, P) \Rightarrow \text{loop forever}, \quad \neg\text{HALT}(P, P) \Rightarrow \text{halt}
+$$
+
+This leads to a contradiction — a diagonal argument similar to Cantor's proof that the reals are uncountable.
+
+## Implications
+
+This result implies that there are problems that are **undecidable** — no matter how clever your algorithm,
+some questions about computation simply cannot be answered mechanically.
+
+The halting problem is also the canonical example of a **reduction** — many other undecidable problems
+are proven undecidable by reducing them to the halting problem.

@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { id: post.id } }));
+}
+
+const { id } = Astro.params;
+const posts = await getCollection('blog');
+const post = posts.find(p => p.id === id)!;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <div class="min-h-screen bg-kanagawa-bgDim text-kanagawa-fg font-mono px-6 py-4 text-sm leading-7">
+    <a href="/blog" class="text-kanagawa-blue hover:text-kanagawa-cyan text-xs mb-4 inline-block">← back to blog</a>
+    <h1 class="text-kanagawa-yellow text-lg mb-1">{post.data.title}</h1>
+    <div class="text-kanagawa-fgDim text-xs mb-6">
+      {post.data.date} · {post.data.tags.join(' · ')}
+    </div>
+    <div class="prose-kanagawa">
+      <Content />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .prose-kanagawa h1, .prose-kanagawa h2 { color: #C0A36E; margin: 1rem 0 0.5rem; }
+  .prose-kanagawa h3 { color: #7FB4CA; margin: 0.75rem 0 0.25rem; }
+  .prose-kanagawa p { color: #DCD7BA; margin-bottom: 0.75rem; }
+  .prose-kanagawa strong { color: #FFA066; }
+  .prose-kanagawa em { color: #957FB8; }
+  .prose-kanagawa code { background: #1F1F28; color: #FFA066; padding: 1px 5px; border-radius: 3px; }
+  .prose-kanagawa pre { background: #1F1F28; padding: 1rem; border-radius: 4px; overflow-x: auto; margin-bottom: 1rem; }
+  .prose-kanagawa a { color: #7E9CD8; text-decoration: underline; }
+  .prose-kanagawa ul, .prose-kanagawa ol { padding-left: 1.5rem; margin-bottom: 0.75rem; color: #DCD7BA; }
+  .prose-kanagawa blockquote { border-left: 2px solid #7E9CD8; padding-left: 1rem; color: #727169; margin: 1rem 0; font-style: italic; }
+  .katex-display { background: #1F1F28; border-left: 2px solid #7E9CD8; padding: 0.75rem 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; overflow-x: auto; }
+</style>

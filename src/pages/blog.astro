@@ -1,0 +1,230 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const rendered = await Promise.all(posts.map(async (post) => {
+  const { Content } = await render(post);
+  return { post, Content };
+}));
+---
+
+<Layout title="blog — jonathan">
+  <div id="blog-app" class="h-screen w-screen flex flex-col bg-kanagawa-bgDim text-kanagawa-fg font-mono relative">
+
+    <!-- Main -->
+    <div class="flex flex-1 overflow-hidden">
+
+      <!-- Sidebar -->
+      <div id="sidebar" class="w-72 border-r border-kanagawa-bgLight flex flex-col shrink-0">
+        <div class="flex-1 overflow-y-auto" id="post-list">
+          {rendered.map(({ post }, i) => (
+            <div class="post-item px-3 py-2 border-b border-kanagawa-bgDark cursor-pointer" data-index={i} data-id={post.id}>
+              <div class="post-title text-sm text-kanagawa-fg">{post.data.title}</div>
+              <div class="flex gap-2 mt-1 items-center flex-wrap">
+                <span class="text-xs text-kanagawa-fgDim">{post.data.date}</span>
+                {post.data.tags.map(tag => (
+                  <span class="text-xs text-kanagawa-green bg-kanagawa-bgDark px-1">{tag}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="px-6 pt-4 pb-2 shrink-0">
+          <div id="post-title" class="text-kanagawa-yellow text-lg"></div>
+          <div id="post-meta" class="text-xs text-kanagawa-fgDim mt-1"></div>
+        </div>
+        <div id="post-content" tabindex="0" class="flex-1 overflow-y-auto px-6 py-2 prose-kanagawa leading-7 text-sm">
+          {rendered.map(({ post, Content }, i) => (
+            <div class="post-body" data-index={i} data-id={post.id} style="display:none">
+              <Content />
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Search bar -->
+    <div id="search-bar" class="hidden px-4 py-1 bg-kanagawa-bgDark border-t border-kanagawa-bgLight text-sm flex items-center gap-2">
+      <span class="text-kanagawa-yellow">search:</span>
+      <input id="search-input" type="text" class="bg-transparent outline-none text-kanagawa-fg flex-1" placeholder="type to filter posts..." />
+      <span class="text-kanagawa-fgDim text-xs">Esc to close</span>
+    </div>
+
+    <!-- Status bar -->
+    <div class="bg-kanagawa-bgLight px-4 py-1 flex justify-between text-xs border-t border-kanagawa-bgDark">
+      <span id="mode-indicator" class="text-kanagawa-green">NORMAL</span>
+    </div>
+
+<div id="help-overlay" class="hidden absolute bottom-8 right-0 z-50 bg-kanagawa-bgLight border border-kanagawa-comment text-xs leading-7" style="min-width: 320px">
+      <div class="px-4 py-3">
+        <div><span class="text-kanagawa-blue w-36 inline-block">j / k</span><span class="text-kanagawa-fgDim">scroll down / up</span></div>
+        <div><span class="text-kanagawa-blue w-36 inline-block"> CTRL + [ / ]</span><span class="text-kanagawa-fgDim">prev / next post</span></div>
+        <div><span class="text-kanagawa-blue w-36 inline-block">g / G</span><span class="text-kanagawa-fgDim">top / bottom</span></div>
+      </div>
+      <div class="border-t border-kanagawa-comment px-4 py-3">
+        <div class="text-kanagawa-fgDim mb-1">── Space ───────────────</div>
+        <div><span class="text-kanagawa-cyan w-36 inline-block">s</span><span class="text-kanagawa-fgDim">search</span></div>
+        <div><span class="text-kanagawa-cyan w-36 inline-block">e</span><span class="text-kanagawa-fgDim">toggle sidebar</span></div>
+        <div><span class="text-kanagawa-cyan w-36 inline-block">q</span><span class="text-kanagawa-fgDim">quit to terminal</span></div>
+        <div><span class="text-kanagawa-cyan w-36 inline-block">Esc</span><span class="text-kanagawa-fgDim">close</span></div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<script define:vars={{ postsData: posts.map(p => ({ id: p.id, title: p.data.title, date: p.data.date, tags: p.data.tags })) }}>
+document.addEventListener('DOMContentLoaded', () => {
+  let current = 0;
+  let searchMode = false;
+  let spaceBuffer = false;
+  let sidebarVisible = true;
+  let helpVisible = false;
+
+  const items = document.querySelectorAll('.post-item');
+  const bodies = document.querySelectorAll('.post-body');
+  const contentEl = document.getElementById('post-content');
+  const titleEl = document.getElementById('post-title');
+  const metaEl = document.getElementById('post-meta');
+  const searchBar = document.getElementById('search-bar');
+  const searchInput = document.getElementById('search-input');
+  const modeEl = document.getElementById('mode-indicator');
+  const sidebar = document.getElementById('sidebar');
+  const helpOverlay = document.getElementById('help-overlay');
+
+  function selectPost(i) {
+    current = i;
+    items.forEach((el, idx) => {
+      el.classList.toggle('bg-kanagawa-bgHighlight', idx === i);
+      el.classList.toggle('border-l-2', idx === i);
+      el.classList.toggle('border-kanagawa-cyan', idx === i);
+      el.querySelector('.post-title').classList.toggle('text-kanagawa-cyan', idx === i);
+    });
+    bodies.forEach((el, idx) => {
+      el.style.display = idx === i ? 'block' : 'none';
+    });
+    const post = postsData[i];
+    titleEl.textContent = post.title;
+    metaEl.textContent = `${post.date}  ·  ${post.tags.join(' · ')}`;
+    contentEl.scrollTop = 0;
+    contentEl.focus();
+  }
+
+  function toggleSidebar() {
+    sidebarVisible = !sidebarVisible;
+    sidebar.style.display = sidebarVisible ? 'flex' : 'none';
+  }
+
+  function toggleHelp(force) {
+    helpVisible = force !== undefined ? force : !helpVisible;
+    helpOverlay.classList.toggle('hidden', !helpVisible);
+    modeEl.textContent = helpVisible ? 'HELP' : 'NORMAL';
+  }
+
+  const urlId = window.location.pathname.split('/blog/')[1];
+  const initialIndex = urlId ? postsData.findIndex(p => p.id === urlId) : 0;
+  items.forEach((el, i) => el.addEventListener('click', () => selectPost(i)));
+  selectPost(initialIndex >= 0 ? initialIndex : 0);
+
+  document.addEventListener('keydown', (e) => {
+    if (searchMode) {
+      if (e.key === 'Escape') {
+        searchMode = false;
+        searchBar.classList.add('hidden');
+        modeEl.textContent = 'NORMAL';
+        contentEl.focus();
+      }
+      return;
+    }
+
+    if (helpVisible) {
+      if (e.key === 'Escape' || e.key === ' ') { e.preventDefault(); toggleHelp(false); }
+      return;
+    }
+
+if (e.key === ' ') {
+      e.preventDefault();
+      spaceBuffer = true;
+      modeEl.textContent = 'LEADER';
+      helpOverlay.classList.remove('hidden');
+      return;
+    }
+
+    if (spaceBuffer) {
+      e.preventDefault();
+      spaceBuffer = false;
+      helpOverlay.classList.add('hidden');
+      modeEl.textContent = 'NORMAL';
+      if (e.key === 's' || e.key === 'S') {
+        searchMode = true;
+        searchBar.classList.remove('hidden');
+        searchInput.focus();
+        modeEl.textContent = 'SEARCH — Esc to close';
+      } else if (e.key === 'q' || e.key === 'Q') {
+        window.location.href = '/';
+      } else if (e.key === 'e' || e.key === 'E') {
+        toggleSidebar();
+      } else if (e.key === 'Escape') {
+        // just close
+      }
+      return;
+    }
+
+    if (e.key === 'j') { e.preventDefault(); contentEl.scrollBy(0, 60); }
+    if (e.key === 'k') { e.preventDefault(); contentEl.scrollBy(0, -60); }
+    if (e.key === 'g') { e.preventDefault(); contentEl.scrollTop = 0; }
+    if (e.key === 'G') { e.preventDefault(); contentEl.scrollTop = contentEl.scrollHeight; }
+    if (e.key === ']') { e.preventDefault(); selectPost(Math.min(current + 1, postsData.length - 1)); }
+    if (e.key === '[') { e.preventDefault(); selectPost(Math.max(current - 1, 0)); }
+  });
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase();
+    items.forEach((el, i) => {
+      const match = postsData[i].title.toLowerCase().includes(q) || postsData[i].tags.some(t => t.includes(q));
+      el.classList.toggle('hidden', !match);
+    });
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const visible = [...items].findIndex(el => !el.classList.contains('hidden'));
+      if (visible !== -1) selectPost(visible);
+      searchMode = false;
+      searchBar.classList.add('hidden');
+      modeEl.textContent = 'NORMAL';
+      contentEl.focus();
+    }
+    if (e.key === 'Escape') {
+      searchMode = false;
+      searchBar.classList.add('hidden');
+      modeEl.textContent = 'NORMAL';
+      contentEl.focus();
+    }
+  });
+});
+</script>
+
+<style>
+  body { overflow: hidden; }
+  #post-content:focus { outline: none; }
+  .prose-kanagawa h1, .prose-kanagawa h2 { color: #C0A36E; margin: 1rem 0 0.5rem; }
+  .prose-kanagawa h3 { color: #7FB4CA; margin: 0.75rem 0 0.25rem; }
+  .prose-kanagawa p { color: #DCD7BA; margin-bottom: 0.75rem; }
+  .prose-kanagawa strong { color: #FFA066; }
+  .prose-kanagawa em { color: #957FB8; }
+  .prose-kanagawa code { background: #1F1F28; color: #FFA066; padding: 1px 5px; border-radius: 3px; }
+  .prose-kanagawa pre { background: #1F1F28; padding: 1rem; border-radius: 4px; overflow-x: auto; margin-bottom: 1rem; }
+  .prose-kanagawa a { color: #7E9CD8; text-decoration: underline; }
+  .prose-kanagawa ul, .prose-kanagawa ol { padding-left: 1.5rem; margin-bottom: 0.75rem; color: #DCD7BA; }
+  .prose-kanagawa blockquote { border-left: 2px solid #7E9CD8; padding-left: 1rem; color: #727169; margin: 1rem 0; font-style: italic; }
+  .katex-display { background: #1F1F28; border-left: 2px solid #7E9CD8; padding: 0.75rem 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; overflow-x: auto; }
+</style>

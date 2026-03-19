@@ -1,0 +1,47 @@
+---
+title: "Graph Theory & Competitive Programming"
+date: "2026-01-20"
+tags: ["cs", "math"]
+description: "How graph theory forms the backbone of competitive programming problems."
+---
+
+Graph theory is arguably the most important topic in competitive programming. A huge fraction of problems reduce to a graph problem once you see the right abstraction.
+
+## What is a Graph?
+
+A graph $G = (V, E)$ consists of a set of vertices $V$ and edges $E \subseteq V \times V$. Edges can be directed or undirected, weighted or unweighted.
+
+## Shortest Path
+
+The most classic graph problem. Given a weighted graph, find the minimum cost path between two vertices. Dijkstra's algorithm solves this in $O((V + E) \log V)$:
+
+$$
+d[v] = \min_{u \in N(v)} \left( d[u] + w(u, v) \right)
+$$
+
+For negative weights, use Bellman-Ford in $O(VE)$.
+
+## Trees & Spanning Trees
+
+A tree is a connected acyclic graph. Given a weighted graph, the **minimum spanning tree** (MST) connects all vertices with minimum total edge weight.
+
+Kruskal's algorithm sorts edges by weight and uses a Union-Find data structure:
+```cpp
+sort(edges.begin(), edges.end());
+for (auto [w, u, v] : edges) {
+    if (find(u) != find(v)) {
+        unite(u, v);
+        mst_cost += w;
+    }
+}
+```
+
+## My Favorite Problem Type
+
+Flow problems. Max-flow min-cut is one of the most elegant results in all of combinatorics:
+
+$$
+\text{max flow} = \text{min cut}
+$$
+
+Once you internalize this duality, a whole class of matching and assignment problems become tractable.

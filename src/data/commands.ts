@@ -24,4 +24,5 @@ export const commands: Record<string, string> = {
       <p class="text-kanagawa-fgDim">|-----------------------------------------------------------------|</p>
     </div>
   `,
+  blog: `<div class="text-sm leading-5 text-kanagawa-fg">opening blog...</div>`,
 };
