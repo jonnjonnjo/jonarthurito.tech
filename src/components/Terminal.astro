@@ -57,9 +57,11 @@ const allCmds = [...Object.keys(commands), 'clear', 'cls', 'blog', 'theme'];
     </div>`;
   }
 
-  function printOutput(html: string) {
+function printOutput(html: string) {
     output.innerHTML += html;
-    body.scrollTop = body.scrollHeight;
+    setTimeout(() => {
+      body.scrollTop = body.scrollHeight;
+    }, 50);
   }
 
   function runCommand(cmd: string) {
