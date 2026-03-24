@@ -8,9 +8,6 @@ export const commands: Record<string, string> = {
       <p><span class="text-kanagawa-cyan w-28 inline-block">clear</span>     — clear the terminal</p>
     </div>
   `,
-  theme: `<div class="text-sm leading-5 text-kanagawa-fg">usage: theme [wave|dragon|lotus]</div>`,
-
-  blog: `<div class="text-sm leading-5 text-kanagawa-fg">opening blog...</div>`,
   fastfetch: `
     <div class="leading-6">
       <p class="text-kanagawa-fgDim">|-----------------------------------------------------------------|</p>
