@@ -9,20 +9,16 @@ const { title = "jonathan@portfolio:~" } = Astro.props;
 <div class="h-screen w-screen flex items-center justify-center p-4 md:p-8">
   <div class="w-full max-w-4xl h-full max-h-[90vh] flex flex-col rounded-lg overflow-hidden shadow-2xl border border-kanagawa-bgLight">
     
-    <!-- Title Bar -->
     <div class="flex items-center gap-2 px-4 py-3 bg-kanagawa-bgLight shrink-0">
-      <!-- Traffic lights -->
       <span class="w-3 h-3 rounded-full bg-kanagawa-red"></span>
       <span class="w-3 h-3 rounded-full bg-kanagawa-yellow"></span>
       <span class="w-3 h-3 rounded-full bg-kanagawa-green"></span>
 
-      <!-- Title -->
       <span class="mx-auto text-kanagawa-fgDim text-sm">
         {title}
       </span>
     </div>
 
-    <!-- Terminal Body -->
     <div class="flex-1 overflow-y-auto bg-kanagawa-bgDark p-4 md:p-6" id="terminal-body">
       <slot />
     </div>
