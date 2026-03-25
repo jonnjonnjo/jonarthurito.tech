@@ -1,0 +1,103 @@
+---
+title: "The Unreasonable Kinship of Formal Systems"
+date: "2026-03-25"
+modified: "2026-03-25"
+tags: ["math", "philosophy", "cs", "linguistics"]
+description: "On the shared skeleton beneath Gödel's incompleteness theorems, Chomsky's hierarchy, type theory, and the philosophy of language."
+---
+There is something uncanny about sitting at the intersection of four disciplines and watching the same ghost walk through all of them. Formal logic, theoretical computer science, linguistic theory, and analytic philosophy have each, at various points in the twentieth century, hit the same wall — a fundamental limit on what any sufficiently expressive system can say about itself. This post is about that wall, about why it keeps appearing, and about what it might mean for how we think about meaning itself.
+
+## Background
+
+The story begins, as many things do, with Leibniz. He dreamed of a *calculus ratiocinator* — a universal symbolic language in which all disputes could be settled by calculation. Two centuries later, Frege tried to build it. He almost succeeded. Then Russell sent him a letter containing a single paradox.
+
+Russell's paradox is disarmingly simple. Let $R$ be the set of all sets that do not contain themselves:
+
+$$
+R = \{ x \mid x \notin x \}
+$$
+
+Ask whether $R \in R$. If it is, then by definition it isn't. If it isn't, then by definition it is. Frege's system was inconsistent, and the dream of a complete, consistent foundation for mathematics suddenly looked naive.
+
+The community's response was to build more carefully. Whitehead and Russell spent ten years writing *Principia Mathematica*, a stratified type theory designed specifically to prevent self-referential loops. It was enormous, technical, and — as Gödel would show — ultimately insufficient.
+
+Meanwhile, in linguistics, the dominant view well into the mid-twentieth century was behaviorist: language was a learned behavior, describable by stimulus-response mappings. There was no need for deep structure, no need for recursion, no need for anything that looked like a formal grammar. That too was about to change.
+
+## Main Idea
+
+The thread connecting these developments is the concept of **expressiveness versus decidability**. Every formal system faces a tradeoff: the more things it can express, the harder it becomes to decide whether any given statement is true within it. This tradeoff is not contingent — it is structural.
+
+Gödel's first incompleteness theorem (1931) makes this precise for arithmetic. Any consistent formal system $F$ that is strong enough to express basic arithmetic contains a sentence $G_F$ that is true but unprovable within $F$. The sentence essentially says *"I am not provable in F"* — a formally constructed analog of the Liar paradox, but this time rigorous and devastating.
+
+Chomsky's hierarchy (1956) makes a parallel point for languages. He arranged formal grammars into four classes by generative power:
+
+| Grammar Class | Automaton | Example Language |
+|---|---|---|
+| Type 3 — Regular | Finite automaton | `(ab)*` |
+| Type 2 — Context-free | Pushdown automaton | $\{a^n b^n\}$ |
+| Type 1 — Context-sensitive | Linear bounded automaton | $\{a^n b^n c^n\}$ |
+| Type 0 — Unrestricted | Turing machine | All recursively enumerable sets |
+
+The expressive power increases as you go down the table. But so does the undecidability. For a Type 3 grammar, membership is decidable in linear time. For Type 0, membership is not decidable in general — it reduces to the halting problem.
+
+The halting problem itself (Turing, 1936) is essentially Gödel's theorem in computational clothing. Suppose a machine $H$ could decide, for any program $P$ and input $I$, whether $P(I)$ halts. We can construct a program $D$ that, given its own source code as input, does the opposite of what $H$ predicts:
+
+$$
+D(D) \text{ halts} \iff H(D, D) \text{ says it doesn't}
+$$
+
+Contradiction. $H$ cannot exist. Self-reference, again, is the wrench in the machine.
+
+In philosophy of language, the analog is Tarski's undefinability theorem (1933). A sufficiently expressive formal language cannot contain its own truth predicate. Any attempt to define $\text{True}(x)$ within the language itself leads to the Liar: *"This sentence is false."* Tarski's solution was the same as the type theorists': ban self-reference by stratifying the language into object language and metalanguage, an infinite hierarchy of semantic levels.
+
+## Proof / Derivation
+
+It is worth seeing the core of Gödel's argument carefully, because it is more constructive than mysterious.
+
+**Step 1 — Gödel numbering.** Assign every symbol, formula, and proof sequence in $F$ a unique natural number. This is a straightforward encoding — think of it as a sophisticated base-$n$ representation. For a formula $\varphi$, write $\ulcorner \varphi \urcorner$ for its Gödel number.
+
+**Step 2 — Representability.** Because $F$ can express arithmetic, it can reason about Gödel numbers. In particular, the predicate $\text{Proof}_F(p, n)$ — meaning "the sequence with Gödel number $p$ is a proof of the formula with Gödel number $n$" — is expressible in $F$.
+
+**Step 3 — The diagonal lemma.** For any formula $\psi(x)$ with one free variable, there exists a sentence $\varphi$ such that:
+
+$$
+F \vdash \varphi \leftrightarrow \psi(\ulcorner \varphi \urcorner)
+$$
+
+The sentence $\varphi$ says "$\psi$ holds of my own Gödel number." This is the formal machinery behind all self-reference.
+
+**Step 4 — The Gödel sentence.** Apply the diagonal lemma to $\psi(x) = \neg \exists p\, \text{Proof}_F(p, x)$. We get a sentence $G_F$ such that:
+
+$$
+F \vdash G_F \leftrightarrow \neg \exists p\, \text{Proof}_F(p, \ulcorner G_F \urcorner)
+$$
+
+$G_F$ says: *"There is no proof of me in $F$."*
+
+**Step 5 — Unprovability.** If $F \vdash G_F$, then $G_F$ is provable, which means $\neg G_F$ is true (by what $G_F$ says), so $F$ proves a falsehood — contradicting consistency. Therefore $F \nvdash G_F$.
+
+**Step 6 — Truth.** Since $F \nvdash G_F$, the statement "there is no proof of $G_F$" is actually true. So $G_F$ is true but unprovable. $\square$
+
+The same diagonal structure appears in Cantor's theorem (no surjection from a set to its power set), in Russell's paradox, in the halting problem, and in the construction of undefinable real numbers. The diagonal is not a trick — it is the native topology of self-reference.
+
+## Discussion
+
+One natural reaction is deflationary: these are all just pathological edge cases. Real languages, real programs, real mathematical practice never actually encounter Gödelian sentences. The theorems are true but irrelevant to anything we care about.
+
+This reaction is partly right and largely wrong. It is true that Gödel sentences are not the kind of thing a working number theorist stumbles on. But the incompleteness theorems have genuine bite in at least three places:
+
+**Hilbert's program.** The theorems don't just say "there exist unprovable truths." The second incompleteness theorem says that $F$ cannot prove its own consistency — which directly kills Hilbert's project of giving mathematics a finitary consistency proof. That was not a pathological edge case; it was the central goal of foundational mathematics for thirty years.
+
+**The Church-Turing thesis and AI.** If no formal system can capture all mathematical truth, and if human mathematicians can (arguably) recognize Gödelian truths as true, then human mathematical cognition is either inconsistent, or not fully formalizable, or the Church-Turing thesis is wrong. Lucas and Penrose made this argument; most logicians find it unpersuasive, but it is not trivially dismissable.
+
+**Natural language and the hierarchy.** Chomsky's original argument that natural language requires at least context-free power (and arguably context-sensitive power) is still contested. The classic argument involves cross-serial dependencies in Swiss German:
+
+> *Hans sieht wie Märi em Hans das Buch lesen hilft* ("Hans sees Mary help Hans read the book")
+
+where the dependency pattern is $a_1 a_2 \ldots a_n b_1 b_2 \ldots b_n$ — not the nested $a_1 b_1 a_2 b_2$ pattern a context-free grammar handles naturally. Whether this forces context-sensitivity depends on contested empirical and theoretical choices. But the deeper point stands: the hierarchy is not just a mathematical curiosity. It makes empirical predictions about what human grammars can look like.
+
+There is also a quieter philosophical point, less often made. Wittgenstein, in the *Tractatus*, argued that language cannot say what it can only show — that the logical form of a proposition cannot itself be stated in the language. Tarski's theorem is the mathematical formalization of this intuition. The metalanguage/object language distinction that Tarski introduces is structurally identical to the *Tractatus*'s saying/showing distinction, though Wittgenstein would likely have resisted this assimilation. The limits of my language are the limits of my world — but those limits cannot be expressed from inside the language. They can only be approached asymptotically, from outside.
+
+## Conclusion
+
+The incompleteness phenomena — Gödel's, Turing's, Tarski's, Chomsky's — are not four separate discoveries. They are four views of the same underlying structure: sufficiently expressive systems contain sentences about themselves that the system cannot adjudicate from within. This is not a bug in our formalisms. It is a feature of expressiveness itself. Any system powerful enough to model its own syntax is powerful enough to construct its own blind spot. The dream of a complete and self-certifying foundation — for mathematics, for computation, for language, for meaning — is not just unachieved but provably unachievable. What remains is something arguably more interesting: an infinite hierarchy of languages, each capable of speaking about the one below, none capable of speaking fully about itself. Turtles, as they say, all the way down — but turtles with structure.

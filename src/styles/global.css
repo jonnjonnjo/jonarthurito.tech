@@ -17,11 +17,11 @@
   --color-kanagawa-blue:        #7E9CD8;
   --color-kanagawa-violet:      #957FB8;
   --color-kanagawa-pink:        #D27E99;
-  --font-mono: "Computer Modern Typewriter", monospace;
-  --font-sans: "Computer Modern Serif", serif;
+  --font-mono: "Computer Modern Typewriter", monospace; 
+  --font-sans: "Computer Modern", serif;               
 }
 
-html { font-size: 22px; font-family: "Computer Modern Serif", serif; }
+html { font-size: 22px; font-family: "Computer Modern", serif; } 
 body { margin: 0; padding: 0; }
 
 html.theme-wave {
@@ -81,9 +81,6 @@ html.theme-lotus {
   --color-kanagawa-teal:        #4E8CA2;
 }
 
-/* =========================================
-   CUSTOM TEXT SELECTION (HIGHLIGHTING)
-   ========================================= */
 ::selection {
   background: var(--color-kanagawa-comment);
   color: var(--color-kanagawa-bgDim);
@@ -107,9 +104,6 @@ html.theme-lotus {
   color: var(--color-kanagawa-fg) !important;
 }
 
-/* =========================================
-   CORE TYPOGRAPHY & TEXT FLOW 
-   ========================================= */
 .prose-kanagawa { 
   font-size: 17px; 
   line-height: 1.65; 
@@ -188,15 +182,11 @@ html.theme-lotus {
 }
 .prose-kanagawa blockquote p { text-indent: 0; }
 
-/* =========================================
-   CODE BLOCKS & SYNTAX HIGHLIGHTING 
-   ========================================= */
-/* 1. Hard-lock all code blocks to the Kanagawa Dragon dark background */
 .prose-kanagawa pre,
 .astro-code, 
 pre {
-  background-color: #181616 !important; /* Dragon BgDark */
-  border: 1px solid #2D4F67 !important; /* Dragon BgHighlight */
+  background-color: #181616 !important;
+  border: 1px solid #2D4F67 !important;
   padding: 1.25rem !important;
   border-radius: 0.5rem !important;
   font-size: 14px;
@@ -205,7 +195,6 @@ pre {
   font-family: var(--font-mono);
 }
 
-/* 2. Ensure code tags inside <pre> are transparent so the dark background shows */
 .prose-kanagawa pre code,
 .astro-code code,
 pre code { 
@@ -213,7 +202,6 @@ pre code {
   color: inherit !important; 
 }
 
-/* 3. Style inline code (outside of pre blocks) to dynamically match the current theme */
 .prose-kanagawa :not(pre) > code {
   font-family: var(--font-mono);
   font-size: 0.9em;
@@ -223,9 +211,26 @@ pre code {
   border-radius: 0.25rem;
 }
 
-/* =========================================
-   TABLE OF CONTENTS NUMBERING 
-   ========================================= */
+.prose-kanagawa table {
+  border-collapse: collapse;
+  margin: 2rem auto;
+  font-size: 0.9em;
+  width: auto;
+}
+.prose-kanagawa thead tr {
+  border-top: 2px solid var(--color-kanagawa-fg);
+  border-bottom: 1px solid var(--color-kanagawa-fg);
+}
+.prose-kanagawa tbody tr:last-child {
+  border-bottom: 2px solid var(--color-kanagawa-fg);
+}
+.prose-kanagawa th,
+.prose-kanagawa td {
+  padding: 0.3rem 1.4rem;
+  border: none;
+  text-align: left;
+}
+
 .toc-list { counter-reset: h2-counter; }
 .toc-list li.depth-2 { counter-reset: h3-counter; counter-increment: h2-counter; }
 .toc-list li.depth-3 { counter-increment: h3-counter; padding-left: 1rem; }
