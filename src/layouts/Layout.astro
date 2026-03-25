@@ -9,17 +9,14 @@ const { title = "Jonathan Arthurito" } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-lotus">
   <head>
 <script is:inline>
   const saved = localStorage.getItem('theme');
   if (saved) {
-    document.documentElement.classList.add(`theme-${saved}`);
+    document.documentElement.classList.replace('theme-lotus', `theme-${saved}`);
   } else {
-    const themes = ['wave', 'dragon', 'lotus'];
-    const random = themes[Math.floor(Math.random() * themes.length)];
-    localStorage.setItem('theme', random);
-    document.documentElement.classList.add(`theme-${random}`);
+    localStorage.setItem('theme', 'lotus');
   }
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
@@ -31,8 +28,10 @@ const { title = "Jonathan Arthurito" } = Astro.props;
     <title>{title}</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" />
   </head>
-  <body class="bg-kanagawa-bgDim text-kanagawa-fg font-mono h-screen w-screen ">
+  
+  <body class="bg-kanagawa-bgDim text-kanagawa-fg font-sans h-screen w-screen overflow-hidden">
     <slot />
+    
 <script>
   let leaderActive = false;
   let leaderTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -51,12 +50,10 @@ const { title = "Jonathan Arthurito" } = Astro.props;
     if (leaderActive) {
       const key = e.key.toLowerCase();
       if (key === 'q') {
-        // Navigation logic remains same...
         const path = window.location.pathname;
         if (path === '/blog' || path === '/blog/') window.location.href = '/';
         else if (path.startsWith('/blog/')) window.location.href = '/blog';
       } else if (key === 'e') {
-        // Custom event for ToC toggle
         document.dispatchEvent(new CustomEvent('toggle-toc'));
       }
       leaderActive = false;
