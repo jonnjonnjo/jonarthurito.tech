@@ -7,68 +7,69 @@ posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).get
 ---
 
 <Layout title="Archive / Blog">
-  <div class="min-h-screen bg-kanagawa-bgDim text-kanagawa-fg px-4 sm:px-8 py-12 overflow-y-auto">
+  {/* Apply font-sans globally here to ensure Computer Modern Serif is the default text flow */}
+  <div class="min-h-screen bg-kanagawa-bgDim text-kanagawa-fg px-4 sm:px-8 py-16 overflow-y-auto font-sans">
     
-    <div class="max-w-4xl mx-auto">
-<header class="mb-12 pb-4 border-b border-kanagawa-bgHighlight/30">
-  <h1 class="text-3xl font-normal text-kanagawa-fg tracking-tight">
-    <a 
-      href="https://en.wiktionary.org/wiki/सूत्र" 
-      target="_blank" 
-      class="text-kanagawa-orange hover:underline decoration-kanagawa-orange/30 underline-offset-8"
-    >सूत्र</a> · 
-    <a 
-      href="https://en.wiktionary.org/wiki/كتاب" 
-      target="_blank" 
-      class="text-kanagawa-yellow hover:underline decoration-kanagawa-yellow/30 underline-offset-8"
-    >كتاب</a> · 
-    <a 
-      href="https://en.wiktionary.org/wiki/文" 
-      target="_blank" 
-      class="text-kanagawa-blue hover:underline decoration-kanagawa-blue/30 underline-offset-8"
-    >文</a> · 
-    <a 
-      href="https://en.wiktionary.org/wiki/renungan" 
-      target="_blank" 
-      class="italic hover:underline decoration-kanagawa-fg/30 underline-offset-8"
-    >Renung</a>
-  </h1>
-  <p class="text-[13px] font-mono text-kanagawa-comment mt-3 uppercase tracking-widest">
-    n_entries: {posts.length} // last_modified: {posts[0]?.data.date}
-  </p>
-</header>
+    <div class="max-w-3xl mx-auto">
+      
+      {/* LaTeX-Style Title Block */}
+      <header class="mb-16 flex flex-col items-center text-center">
+        <h1 class="text-4xl lg:text-5xl font-normal text-kanagawa-fg mb-4 leading-tight tracking-wide">
+          <a href="https://en.wiktionary.org/wiki/सूत्र" target="_blank" class="hover:text-kanagawa-orange transition-colors">सूत्र</a> &middot; 
+          <a href="https://en.wiktionary.org/wiki/كتاب" target="_blank" class="hover:text-kanagawa-yellow transition-colors">كتاب</a> &middot; 
+          <a href="https://en.wiktionary.org/wiki/文" target="_blank" class="hover:text-kanagawa-blue transition-colors">文</a> &middot; 
+          <span class="italic">Renung</span>
+        </h1>
+        
+        {/* Terminal/Academic Meta Information */}
+        <div class="flex gap-4 text-[13px] font-mono text-kanagawa-fgDim mb-8 uppercase tracking-widest">
+          <span>Author: J. Sinaga</span>
+          <span>&bull;</span>
+          <span>N_Entries: {posts.length}</span>
+        </div>
 
-      <div class="space-y-0.5">
+        {/* Abstract Section */}
+        <div class="w-full text-justify text-[16px] leading-relaxed text-kanagawa-fgDim border-y border-kanagawa-bgHighlight/40 py-6 px-4">
+          <span class="font-bold text-kanagawa-fg">Abstract.</span> A curated index of technical, philosophical, and personal literature. Topics traverse computer science, graph theory, existentialism, and terminal systems. Documents are sorted in reverse chronological order for sequential reading.
+        </div>
+      </header>
+
+      {/* Bibliography / Index List */}
+      <div class="space-y-8">
         {posts.map(post => (
-          <div class="flex flex-col sm:flex-row sm:items-baseline gap-x-6 py-2 border-b border-kanagawa-bgLight/20 hover:bg-kanagawa-bgLight/30 transition-all px-2 -mx-2 group">
+          <article class="flex flex-col sm:flex-row gap-x-8 items-baseline group relative pl-4 border-l-2 border-transparent hover:border-kanagawa-blue transition-all duration-300">
             
-            <time class="text-[13px] font-mono text-kanagawa-fgDim shrink-0 w-24">
+            {/* Date Column (Fixed width, monospace) */}
+            <time class="text-[14px] font-mono text-kanagawa-comment shrink-0 sm:w-28 mb-1 sm:mb-0">
               {post.data.date}
             </time>
 
-            <a href={`/blog/${post.id}`} class="text-[18px] text-kanagawa-blue group-hover:text-kanagawa-cyan transition-colors leading-snug">
-              {post.data.title}
-            </a>
-
-            <div class="hidden sm:block flex-1 border-b border-dotted border-kanagawa-comment/20 mb-1 mx-2"></div>
-
-            <div class="flex gap-2 flex-wrap mt-1 sm:mt-0">
-              {post.data.tags.map(tag => (
-                <span class="text-[11px] font-mono font-bold bg-kanagawa-bgHighlight text-kanagawa-green px-2 py-0.5 rounded-sm uppercase tracking-tighter border border-kanagawa-green/40 shadow-sm">
-                  #{tag}
-                </span>
-              ))}
+            {/* Title & Tags */}
+            <div class="flex-1">
+              <a href={`/blog/${post.id}`} class="text-[20px] text-kanagawa-fg group-hover:text-kanagawa-blue transition-colors block mb-1">
+                {post.data.title}
+              </a>
+              
+              <div class="flex gap-4 flex-wrap mt-2">
+                {post.data.tags.map(tag => (
+                  <span class="text-[12px] font-mono text-kanagawa-comment group-hover:text-kanagawa-cyan transition-colors">
+                    [{tag}]
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      <footer class="mt-24 pt-6 border-t border-kanagawa-bgHighlight/50">
-        <a href="/" class="text-sm font-mono text-kanagawa-comment hover:text-kanagawa-fg transition-colors flex items-center gap-2 group">
-          <span class="text-kanagawa-orange group-hover:-translate-x-1 transition-transform">~</span>
+      {/* Footer */}
+      <footer class="mt-24 pt-8 border-t border-kanagawa-bgHighlight/40 flex justify-center">
+        <a href="/" class="text-[14px] font-mono text-kanagawa-comment hover:text-kanagawa-fg transition-colors flex items-center gap-2 group">
+          <span class="text-kanagawa-blue group-hover:-translate-x-1 transition-transform">~</span>
           <span>cd $HOME</span>
         </a>
       </footer>
+      
     </div>
   </div>
 </Layout>
