@@ -99,7 +99,7 @@ html.theme-lotus {
   color: var(--color-kanagawa-fg) !important;
 }
 .prose-kanagawa { 
-  font-size: 17px; 
+  font-size: 20px; 
   line-height: 1.65; 
   color: var(--color-kanagawa-fg);
   text-align: justify;          
@@ -110,6 +110,7 @@ html.theme-lotus {
   margin-bottom: 0;
   text-indent: 1.5rem;
 }
+
 .prose-kanagawa > p:first-of-type,
 .prose-kanagawa h2 + p,
 .prose-kanagawa h3 + p { 

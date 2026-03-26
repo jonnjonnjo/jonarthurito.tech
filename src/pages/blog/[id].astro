@@ -31,7 +31,7 @@ const displayDate = formattedDate !== 'Invalid Date' ? formattedDate : post.data
       
       <aside id="toc-sidebar" class="w-72 shrink-0 sticky top-12 h-fit hidden lg:block">
         <nav>
-          <div class="text-[13px] font-bold text-kanagawa-fg uppercase tracking-[0.15em] mb-4 border-b border-kanagawa-bgHighlight/20 pb-2">
+          <div class="text-[14px] font-bold text-kanagawa-fg uppercase tracking-[0.15em] mb-4 border-b border-kanagawa-bgHighlight/20 pb-2">
             Contents
           </div>
   
@@ -41,7 +41,7 @@ const displayDate = formattedDate !== 'Invalid Date' ? formattedDate : post.data
                 <a 
                   href={'#' + h.slug} 
                   data-slug={h.slug}
-                  class="toc-link block text-[15.5px] text-kanagawa-fgDim hover:text-kanagawa-fg transition-all leading-tight py-1"
+                  class="toc-link block text-[15.5px] text-kanagawa-fg hover:text-kanagawa-fg transition-all leading-tight py-1"
                 >
                   {h.text}
                 </a>
@@ -53,25 +53,25 @@ const displayDate = formattedDate !== 'Invalid Date' ? formattedDate : post.data
 
       <article id="main-article" class="w-full max-w-3xl lg:max-w-3xl flex-grow">
         
-        <header class="mb-8 flex flex-col items-center text-center border-b border-kanagawa-bgHighlight/40 pb-8">
+        <header class="mb-1 flex flex-col items-center text-center border-b border-kanagawa-bgHighlight/40 pb-8">
           <h1 class="text-3xl sm:text-4xl font-normal text-kanagawa-fg leading-snug mb-4 w-full">
             {post.data.title}
           </h1>
           
           <div class="flex gap-2.5 flex-wrap justify-center mb-6">
             {post.data.tags.map((tag: string) => (
-              <span class="font-mono text-[12.5px] bg-kanagawa-bgLight border border-kanagawa-bgHighlight/60 text-kanagawa-blue px-2 py-0.5 rounded shadow-sm">
-                #{tag}
-              </span>
+<span class="relative text-kanagawa-dragon-autumnGreen text-xs font-mono lowercase italic after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-kanagawa-dragon-autumnGreen after:opacity-20">
+  #{tag}
+</span>
             ))}
           </div>
           
-          <div class="flex flex-col items-center gap-1.5 text-[15.5px] text-kanagawa-fgDim">
+          <div class="flex flex-col items-center gap-1.5 text-[15.5px] text-kanagawa-fg">
             <span class="text-kanagawa-fg">Jonathan Arthurito Aldi Sinaga</span>
-            <span>{displayDate}</span>
+            <span class="text-kanagawa-fg/70">{displayDate}</span>
           </div>
 
-          <div class="mt-5 font-mono text-[12px] text-kanagawa-comment tracking-[0.2em] uppercase flex items-center gap-3">
+<div class="mt-5 font-mono text-[12px] text-kanagawa-fgDim tracking-[0.2em] uppercase flex items-center gap-3">
             <span>{wordCount} Words</span>
             <span class="text-kanagawa-bgHighlight">&bull;</span>
             <span>{readTime} Min Read</span>
