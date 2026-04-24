@@ -1,0 +1,201 @@
+---
+title: "Neovim Keymaps Cheatsheet"
+date: "2026-04-22"
+modified: "2026-04-22"
+tags: ["neovim", "vim", "tools"]
+description: "A personal reference for Neovim keymaps so I stop forgetting them"
+---
+
+A living reference for Neovim keymaps. Covers native vim motions, operators, and custom keymaps from my NixVim config.
+
+## Basic Movement
+
+The foundation. These should become muscle memory.
+
+| Key | Action |
+|-----|--------|
+| `h j k l` | Left, down, up, right |
+| `w` | Jump to start of next word |
+| `b` | Jump back to start of previous word |
+| `e` | Jump to end of current word |
+| `W B E` | Same as above but ignores punctuation (WORD) |
+
+## Line Movement
+
+| Key | Action |
+|-----|--------|
+| `0` | Start of line |
+| `$` | End of line |
+| `^` | First non-blank character of line |
+| `f{char}` | Jump to next occurrence of `{char}` on line |
+| `F{char}` | Jump to previous occurrence of `{char}` on line |
+| `t{char}` | Jump to just before `{char}` |
+| `T{char}` | Jump to just after `{char}` (backwards) |
+| `;` | Repeat last `f/F/t/T` forward |
+| `,` | Repeat last `f/F/t/T` backward |
+
+## Vertical Movement
+
+| Key | Action |
+|-----|--------|
+| `gg` | Go to top of file |
+| `G` | Go to bottom of file |
+| `{number}G` | Go to line number (e.g. `42G`) |
+| `Ctrl+d` | Scroll half page down |
+| `Ctrl+u` | Scroll half page up |
+| `Ctrl+f` | Scroll full page down |
+| `Ctrl+b` | Scroll full page up |
+| `zz` | Center screen on cursor |
+| `zt` | Scroll so cursor is at top |
+| `zb` | Scroll so cursor is at bottom |
+| `{` | Jump to previous empty line (paragraph) |
+| `}` | Jump to next empty line (paragraph) |
+
+## Operators (the real power of vim)
+
+Operators work on **motions**. The pattern is `{operator}{motion}`.
+
+| Operator | Action |
+|----------|--------|
+| `d` | Delete |
+| `c` | Change (delete + enter insert mode) |
+| `y` | Yank (copy) |
+| `v` | Visual select |
+| `>` | Indent right |
+| `<` | Indent left |
+| `=` | Auto-indent |
+
+**Examples:**
+
+- `dw` — delete to next word
+- `d$` — delete to end of line
+- `dd` — delete entire line
+- `ciw` — change inner word (delete word under cursor, enter insert)
+- `yy` — yank entire line
+- `gg=G` — auto-indent entire file
+
+## Text Objects
+
+Text objects let you operate on semantic units. Pattern: `{operator}{i or a}{object}`.
+
+`i` = inner (excludes surrounding chars), `a` = around (includes surrounding chars)
+
+| Object | What it selects |
+|--------|----------------|
+| `iw` / `aw` | inner/around word |
+| `i"` / `a"` | inner/around double quotes |
+| `i'` / `a'` | inner/around single quotes |
+| `i(` / `a(` | inner/around parentheses |
+| `i{` / `a{` | inner/around curly braces |
+| `i[` / `a[` | inner/around square brackets |
+| `ip` / `ap` | inner/around paragraph |
+
+**Examples:**
+
+- `ci"` — change everything inside `"quotes"`
+- `da(` — delete `(everything including parens)`
+- `yip` — yank the current paragraph
+
+## Insert Mode
+
+| Key | Action |
+|-----|--------|
+| `i` | Insert before cursor |
+| `a` | Insert after cursor |
+| `I` | Insert at start of line |
+| `A` | Insert at end of line |
+| `o` | Open new line below and insert |
+| `O` | Open new line above and insert |
+| `Esc` or `Ctrl+c` | Return to normal mode |
+
+## Editing
+
+| Key | Action |
+|-----|--------|
+| `u` | Undo |
+| `Ctrl+r` | Redo |
+| `x` | Delete character under cursor |
+| `r{char}` | Replace character under cursor with `{char}` |
+| `~` | Toggle case of character |
+| `.` | Repeat last change (very powerful) |
+| `J` | Join line below to current line |
+| `p` | Paste after cursor |
+| `P` | Paste before cursor |
+
+## Search
+
+| Key | Action |
+|-----|--------|
+| `/{pattern}` | Search forward |
+| `?{pattern}` | Search backward |
+| `n` | Next match |
+| `N` | Previous match |
+| `*` | Search for word under cursor (forward) |
+| `#` | Search for word under cursor (backward) |
+| `:noh` | Clear search highlight |
+
+## Visual Mode
+
+| Key | Action |
+|-----|--------|
+| `v` | Character-wise visual mode |
+| `V` | Line-wise visual mode |
+| `Ctrl+v` | Block visual mode |
+| `o` | Move to other end of selection |
+| `gv` | Reselect last visual selection |
+
+## Marks & Jumps
+
+| Key | Action |
+|-----|--------|
+| `m{a-z}` | Set mark (e.g. `ma`) |
+| `` `{a-z} `` | Jump to mark |
+| `Ctrl+o` | Jump to previous location |
+| `Ctrl+i` | Jump to next location |
+| `''` | Jump to last jump position |
+
+## Windows & Buffers
+
+| Key | Action |
+|-----|--------|
+| `:sp` | Horizontal split |
+| `:vsp` | Vertical split |
+| `Ctrl+h/j/k/l` | Move between windows (custom keymap) |
+| `:bd` | Delete (close) buffer |
+| `:bn` / `:bp` | Next / previous buffer |
+
+## My Custom Keymaps (NixVim config)
+
+| Key | Action |
+|-----|--------|
+| `<leader>ff` | Telescope: find files |
+| `<leader>fg` | Telescope: live grep |
+| `<leader>fb` | Telescope: find buffers |
+| `<leader>e` | Open Oil file explorer |
+| `<leader>j` | LSP: go to next diagnostic |
+| `<leader>k` | LSP: go to previous diagnostic |
+| `gd` | LSP: go to definition |
+| `gr` | LSP: find references |
+| `gi` | LSP: go to implementation |
+| `K` | LSP: hover documentation |
+| `<leader>rn` | LSP: rename symbol |
+| `<leader>ca` | LSP: code action |
+| `s` | Flash: jump to anywhere on screen |
+| `S` | Flash: treesitter node select |
+
+## nvim-surround
+
+| Key | Action |
+|-----|--------|
+| `ysiw"` | Surround word with `"` |
+| `ysiw(` | Surround word with `()` |
+| `cs"'` | Change surrounding `"` to `'` |
+| `ds"` | Delete surrounding `"` |
+| `S` (visual) | Surround selection |
+
+## Tips
+
+- The `.` (dot) command is one of the most powerful in vim — it repeats your last change. Build changes that are "dot-repeatable."
+- `ciw` is probably the most used text object combo. Learn it first.
+- `Ctrl+o` / `Ctrl+i` to jump back and forward through your jump history is underrated.
+- `*` to search for the word under cursor is faster than typing `/{word}`.

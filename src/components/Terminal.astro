@@ -33,7 +33,7 @@ import { config } from '../data/config.ts';
 
   const history: string[] = [];
   let historyIndex = -1;
-const allCmds = [...Object.keys(commands), 'clear', 'cls', 'blog', 'theme'];
+  const allCmds = [...Object.keys(commands), 'clear', 'cls', 'blog', 'theme','cv'];
 
   function getGhostSuggestion(typed: string): string {
     if (!typed) return '';
@@ -73,7 +73,7 @@ function printOutput(html: string) {
     } else if (trimmed === 'clear' || trimmed === 'cls') {
       output.innerHTML = '';
       return;
-} else if (trimmed === 'theme' || trimmed.startsWith('theme ')) {
+  } else if (trimmed === 'theme' || trimmed.startsWith('theme ')) {
       const arg = trimmed.split(' ')[1];
       const themes = ['wave', 'dragon', 'lotus'];
       if (!arg) {
@@ -97,10 +97,15 @@ function printOutput(html: string) {
       setTimeout(() => { window.location.href = '/blog'; }, 300);
       return;
 
-}   else if (commands[trimmed]) {
+  }   else if (commands[trimmed]) {
 
       printOutput(`<div class="text-sm leading-5">${commands[trimmed]}</div>`);
-    } else {
+  }else if (trimmed == 'cv'){
+    printOutput(`<div class="text-sm leading-5 text-kanagawa-fgDim">opening CV...</div>`);
+    window.open('https://storage.jonarthurito.tech/CV/cv.pdf', '_blank', 'noopener,noreferrer');
+    return;
+  }
+   else {
       printOutput(`<div class="text-kanagawa-red text-sm leading-5">command not found: ${trimmed}. Type <span class="text-kanagawa-yellow">help</span> to see available commands.</div>`);
     }
   }
