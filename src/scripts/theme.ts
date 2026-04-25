@@ -2,7 +2,7 @@ export const themes = ['wave', 'dragon', 'lotus'] as const;
 export type Theme = typeof themes[number];
 
 export function getTheme(): Theme {
-  return (localStorage.getItem('theme') as Theme) ?? 'wave';
+  return (localStorage.getItem('theme') as Theme) ?? 'lotus';
 }
 
 export function setTheme(theme: Theme) {

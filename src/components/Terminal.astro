@@ -57,12 +57,12 @@ import { config } from '../data/config.ts';
     </div>`;
   }
 
-function printOutput(html: string) {
-    output.innerHTML += html;
-    setTimeout(() => {
-      body.scrollTop = body.scrollHeight;
-    }, 50);
-  }
+  function printOutput(html: string) {
+      output.innerHTML += html;
+      setTimeout(() => {
+        body.scrollTop = body.scrollHeight;
+      }, 50);
+    }
 
   function runCommand(cmd: string) {
     const trimmed = cmd.trim().toLowerCase();
@@ -73,7 +73,7 @@ function printOutput(html: string) {
     } else if (trimmed === 'clear' || trimmed === 'cls') {
       output.innerHTML = '';
       return;
-  } else if (trimmed === 'theme' || trimmed.startsWith('theme ')) {
+    } else if (trimmed === 'theme' || trimmed.startsWith('theme ')) {
       const arg = trimmed.split(' ')[1];
       const themes = ['wave', 'dragon', 'lotus'];
       if (!arg) {
@@ -92,19 +92,17 @@ function printOutput(html: string) {
         printOutput(`<div class="text-sm leading-5 text-kanagawa-red">unknown theme: ${arg}. Available: wave, dragon, lotus</div>`);
       }
       return;
-  }else if (trimmed === 'blog') {
+    }else if (trimmed === 'blog') {
       printOutput("UNDER CONSTRUCTION")
-
-  }   else if (commands[trimmed]) {
-
+    }else if (commands[trimmed]) {
       printOutput(`<div class="text-sm leading-5">${commands[trimmed]}</div>`);
-  }else if (trimmed == 'cv'){
-    printOutput(`<div class="text-sm leading-5 text-kanagawa-fgDim">opening CV...</div>`);
-    window.open('https://storage.jonarthurito.tech/CV/cv.pdf', '_blank', 'noopener,noreferrer');
-    return;
-  }
-   else {
-      printOutput(`<div class="text-kanagawa-red text-sm leading-5">command not found: ${trimmed}. Type <span class="text-kanagawa-yellow">help</span> to see available commands.</div>`);
+    }else if (trimmed == 'cv'){
+      printOutput(`<div class="text-sm leading-5 text-kanagawa-fgDim">opening CV...</div>`);
+      window.open('https://storage.jonarthurito.tech/CV/cv.pdf', '_blank', 'noopener,noreferrer');
+      return;
+    }
+    else {
+       printOutput(`<div class="text-kanagawa-red text-sm leading-5">command not found: ${trimmed}. Type <span class="text-kanagawa-yellow">help</span> to see available commands.</div>`);
     }
   }
 
