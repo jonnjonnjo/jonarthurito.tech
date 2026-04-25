@@ -216,8 +216,3 @@ pre code {
   border: none;
   text-align: left;
 }
-.toc-list { counter-reset: h2-counter; }
-.toc-list li.depth-2 { counter-reset: h3-counter; counter-increment: h2-counter; }
-.toc-list li.depth-3 { counter-increment: h3-counter; padding-left: 1rem; }
-.toc-list li.depth-2 .toc-link::before { content: counter(h2-counter) ". "; color: var(--color-kanagawa-comment); margin-right: 0.5rem; }
-.toc-list li.depth-3 .toc-link::before { content: counter(h2-counter) "." counter(h3-counter) " "; color: var(--color-kanagawa-comment); margin-right: 0.5rem; }
