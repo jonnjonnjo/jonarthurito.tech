@@ -71,9 +71,15 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .fb[data-cat="med"].active{background:var(--med)}
 
 #main{display:flex;flex:1;overflow:hidden}
+#canvas-area{flex:1;position:relative;display:flex;overflow:hidden}
 #cw{flex:1;overflow:auto;position:relative;background:var(--bg);cursor:grab}
 #cw.panning{cursor:grabbing;user-select:none}
 #dag-svg{display:block}
+#zoom-ui{position:absolute;bottom:14px;right:14px;display:flex;background:var(--surf2);border:1px solid var(--b1);border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.1);z-index:50;user-select:none}
+.zb{font-family:var(--mono);font-size:12px;padding:6px 11px;border:none;background:transparent;color:var(--t2);cursor:pointer;border-right:1px solid var(--b1);line-height:1}
+.zb:last-child{border-right:none}
+.zb:hover{background:var(--surf);color:var(--t1)}
+#zlbl{min-width:48px;text-align:center;font-size:10px}
 
 #panel{width:0;flex-shrink:0;overflow:hidden;border-left:1px solid var(--b1);transition:width .2s ease;background:var(--surf)}
 #panel.open{width:380px;overflow-y:auto}
@@ -149,7 +155,14 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   <button class="fb" data-cat="med">Medicine</button>
 </div>
 <div id="main">
-  <div id="cw"><svg id="dag-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div id="canvas-area">
+    <div id="cw"><svg id="dag-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div id="zoom-ui">
+      <button class="zb" id="zout" title="Zoom out (or scroll down)">−</button>
+      <button class="zb" id="zlbl" title="Reset to 100%">100%</button>
+      <button class="zb" id="zin" title="Zoom in (or scroll up)">+</button>
+    </div>
+  </div>
   <div id="panel"><div id="pi">
     <span class="pcl" onclick="closePanel()">×</span>
     <div class="pcat" id="pcat"></div>
@@ -581,6 +594,33 @@ function openPanel(id){
 function closePanel(){panel.classList.remove('open');lockedId=null;clearHighlight();}
 window.handleClick=handleClick;
 window.closePanel=closePanel;
+
+// ═══════════════════════════════════════════════════════════════════
+// ZOOM — wheel zooms anchored on cursor; buttons step by 1.2x; label resets to 100%
+// ═══════════════════════════════════════════════════════════════════
+let zoom=1; const ZMIN=0.25, ZMAX=3, ZSTEP=1.2;
+const zlbl=document.getElementById('zlbl');
+function setZoom(newZoom,cx,cy){
+  newZoom=Math.max(ZMIN,Math.min(ZMAX,newZoom));
+  if(newZoom===zoom)return;
+  const rect=cw.getBoundingClientRect();
+  if(cx===undefined){cx=rect.left+rect.width/2;cy=rect.top+rect.height/2;}
+  const px=cx-rect.left+cw.scrollLeft, py=cy-rect.top+cw.scrollTop;
+  const ratio=newZoom/zoom;
+  zoom=newZoom;
+  svg.setAttribute('width',SVGW*zoom);
+  svg.setAttribute('height',SVGH*zoom);
+  cw.scrollLeft=px*ratio-(cx-rect.left);
+  cw.scrollTop=py*ratio-(cy-rect.top);
+  zlbl.textContent=Math.round(zoom*100)+'%';
+}
+cw.addEventListener('wheel',e=>{
+  e.preventDefault();
+  setZoom(zoom*Math.pow(0.999,e.deltaY),e.clientX,e.clientY);
+},{passive:false});
+document.getElementById('zin').onclick=()=>setZoom(zoom*ZSTEP);
+document.getElementById('zout').onclick=()=>setZoom(zoom/ZSTEP);
+zlbl.onclick=()=>setZoom(1);
 
 clearHighlight();
 </script>
