@@ -27,6 +27,11 @@ import nodes from '../data/learning-nodes.json';
   --hw:#0e7490;     /* cyan */
   --quant:#9f1239;  /* rose */
   --sec:#3730a3;    /* indigo */
+  --chem:#0f766e;   /* teal */
+  --bio:#4d7c0f;    /* lime */
+  --econ:#a21caf;   /* fuchsia */
+  --robo:#854d0e;   /* yellow */
+  --med:#be185d;    /* pink */
 
   --anc:#c2410c;     /* direct prerequisites */
   --desc:#0e7490;    /* direct unlocks */
@@ -59,6 +64,11 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .fb[data-cat="hw"].active{background:var(--hw)}
 .fb[data-cat="quant"].active{background:var(--quant)}
 .fb[data-cat="sec"].active{background:var(--sec)}
+.fb[data-cat="chem"].active{background:var(--chem)}
+.fb[data-cat="bio"].active{background:var(--bio)}
+.fb[data-cat="econ"].active{background:var(--econ)}
+.fb[data-cat="robo"].active{background:var(--robo)}
+.fb[data-cat="med"].active{background:var(--med)}
 
 #main{display:flex;flex:1;overflow:hidden}
 #cw{flex:1;overflow:auto;position:relative;background:var(--bg);cursor:grab}
@@ -113,6 +123,11 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div class="li"><div class="ld" style="background:var(--hw)"></div>Hardware</div>
     <div class="li"><div class="ld" style="background:var(--quant)"></div>Quant</div>
     <div class="li"><div class="ld" style="background:var(--sec)"></div>Security</div>
+    <div class="li"><div class="ld" style="background:var(--chem)"></div>Chemistry</div>
+    <div class="li"><div class="ld" style="background:var(--bio)"></div>Biology</div>
+    <div class="li"><div class="ld" style="background:var(--econ)"></div>Economics</div>
+    <div class="li"><div class="ld" style="background:var(--robo)"></div>Robotics</div>
+    <div class="li"><div class="ld" style="background:var(--med)"></div>Medicine</div>
   </div>
 </div>
 <div id="filters">
@@ -127,6 +142,11 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   <button class="fb" data-cat="hw">Hardware</button>
   <button class="fb" data-cat="quant">Quant</button>
   <button class="fb" data-cat="sec">Security</button>
+  <button class="fb" data-cat="chem">Chemistry</button>
+  <button class="fb" data-cat="bio">Biology</button>
+  <button class="fb" data-cat="econ">Economics</button>
+  <button class="fb" data-cat="robo">Robotics</button>
+  <button class="fb" data-cat="med">Medicine</button>
 </div>
 <div id="main">
   <div id="cw"><svg id="dag-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
@@ -149,8 +169,8 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 <div id="tip"></div>
 </div>
 <script define:vars={{ nodes }}>
-const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8'};
-const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity'};
+const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8',chem:'#2dd4bf',bio:'#a3e635',econ:'#e879f9',robo:'#fbbf24',med:'#f472b6'};
+const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity',chem:'Chemistry',bio:'Biology',econ:'Economics',robo:'Robotics',med:'Medicine'};
 const ANC='#f59e0b', DESC='#06b6d4', SELF='#a78bfa';
 
 // per-node device recommendation; first entry = primary (filled pill), rest = secondary (outlined).
@@ -198,7 +218,7 @@ const DEVICES={
   logic_prog:['laptop'], prob_reasoning:['tab','laptop'], bayesian_nets:['tab','laptop'],
   reinforcement:['tab','laptop'], planning_ai:['tab','laptop'], multi_agent:['tab','laptop'],
   cognitive_sci:['kindle'], agi:['kindle'], info_theory:['tab'], nlp:['tab','laptop'],
-  computer_vision:['tab','laptop'], robotics:['laptop','tab'], automated_reasoning:['tab','laptop'],
+  computer_vision:['tab','laptop'], automated_reasoning:['tab','laptop'],
   game_playing:['tab','laptop'], connectionism:['tab','laptop'], statistical_learning:['tab','laptop'],
   deep_learning:['tab','laptop'], decision_theory:['tab'], ai_safety:['kindle'],
   // physics
@@ -224,6 +244,44 @@ const DEVICES={
   formal_sec:['tab','laptop'], privacy:['tab','laptop'],
   ai_sec:['tab','laptop'], fuzzing:['laptop','tab'],
   blockchain_sec:['tab','laptop'],
+  // chemistry — diagram-heavy textbooks on the tab; computational methods on the laptop
+  gen_chem:['tab','laptop'], organic_chem:['tab','laptop'],
+  inorganic_chem:['tab','laptop'], phys_chem:['tab','laptop'],
+  analytical_chem:['tab','laptop'], quantum_chem:['tab','laptop'],
+  biochem:['tab','laptop'], electrochem:['tab','laptop'],
+  photochem:['tab'], organometallic:['tab'],
+  materials_chem:['tab','laptop'], chem_eng:['tab','laptop'],
+  // biology — heavy on figures (tab); prose-leaning topics on the kindle; computational on the laptop
+  cell_bio:['tab','kindle'], mol_bio:['tab','kindle'],
+  genetics:['tab','laptop'], evolution:['kindle','tab'],
+  ecology:['kindle','tab'], physiology:['tab'],
+  neuroscience:['tab','laptop'], developmental_bio:['tab'],
+  microbiology:['tab'], immunology:['tab'],
+  systems_bio:['tab','laptop'], biophysics:['tab','laptop'],
+  structural_bio:['tab','laptop'], bioinformatics:['laptop','tab'],
+  // economics — primary sources are mostly prose (kindle); math-heavy graduate texts on the tab; econometrics on the laptop
+  econ_intro:['kindle'], microeconomics:['tab','laptop'],
+  macroeconomics:['tab','laptop'], game_theory:['tab','laptop'],
+  econometrics:['laptop','tab'], behavioral_econ:['kindle','tab'],
+  monetary_econ:['kindle','tab'], growth_theory:['tab','laptop'],
+  dev_econ:['kindle','tab'], public_econ:['tab','kindle'],
+  industrial_org:['tab','laptop'], mechanism_design:['tab','laptop'],
+  financial_econ:['tab','laptop'], info_econ:['tab','laptop'],
+  // robotics — math-heavy textbooks on the tab; ROS/code/algorithms on the laptop
+  robotics:['laptop','tab'], kinematics:['tab','laptop'],
+  robot_dynamics:['tab','laptop'], state_estimation:['tab','laptop'],
+  motion_planning:['laptop','tab'], robot_control:['tab','laptop'],
+  slam:['laptop','tab'], manipulation:['tab','laptop'],
+  robot_perception:['laptop','tab'], mobile_robots:['laptop','tab'],
+  humanoid:['tab','laptop'], robot_learning:['laptop','tab'],
+  hri:['kindle','tab'],
+  // medicine — diagrams and atlases (tab); prose-leaning topics (kindle); ethics canon on the kindle
+  anatomy:['tab'], histology:['tab'], pathology:['tab'],
+  pharmacology:['tab','kindle'], epidemiology:['tab','laptop'],
+  public_health:['kindle','tab'], clinical_med:['tab'],
+  radiology:['tab'], psychiatry:['kindle','tab'],
+  infectious_disease:['tab','kindle'], oncology:['tab','kindle'],
+  evidence_med:['kindle','tab'], med_ethics:['kindle'],
 };
 
 const N = nodes;
@@ -253,7 +311,7 @@ for(const id in N)for(const p of(N[id].pre||[])){if(REV[p])REV[p].push(id);}
 // group by tier, then by category for stable ordering
 const byTier={};
 for(const id in N){const t=TIER[id];(byTier[t]=byTier[t]||[]).push(id);}
-const CAT_ORDER=['found','math','phil','ling','cs','ai','phys','hw','quant','sec'];
+const CAT_ORDER=['found','math','phil','ling','cs','ai','phys','hw','quant','sec','chem','bio','econ','robo','med'];
 const tiers=Object.keys(byTier).map(Number).sort((a,b)=>a-b);
 for(const t of tiers){byTier[t].sort((a,b)=>{
   const ca=CAT_ORDER.indexOf(N[a].cat),cb=CAT_ORDER.indexOf(N[b].cat);

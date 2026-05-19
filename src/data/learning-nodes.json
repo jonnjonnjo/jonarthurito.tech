@@ -836,10 +836,10 @@
     ]
   },
   "robotics": {
-    "cat": "ai",
-    "label": "Robotics",
+    "cat": "robo",
+    "label": "Robotics — Foundations",
     "desc": "Kinematics and dynamics, motion planning, SLAM, state estimation, manipulation. Where perception, planning and control meet a body.",
-    "pre": ["ai_aima", "probability", "linear_algebra", "control_systems"],
+    "pre": ["probability", "linear_algebra", "control_systems"],
     "books": [
       {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox", "n": "The Bayes-filter, SLAM, localisation reference.", "primary": true},
       {"t": "Modern Robotics: Mechanics, Planning, and Control", "a": "Kevin M. Lynch & Frank C. Park", "n": "Free PDF; geometric kinematics from screws and Lie groups."},
@@ -1418,6 +1418,719 @@
       {"t": "The Byzantine Generals Problem", "a": "L. Lamport, R. Shostak & M. Pease (1982)", "n": "The consensus problem that blockchains pretend to have solved.", "primary": true},
       {"t": "A Survey of Attacks on Ethereum Smart Contracts", "a": "N. Atzei, M. Bartoletti & T. Cimoli (2017)", "n": "The taxonomy of smart-contract bugs.", "primary": true},
       {"t": "Mastering Bitcoin", "a": "Andreas M. Antonopoulos (2e)", "n": "Free online. The protocol-level operator's guide."}
+    ]
+  },
+  "gen_chem": {
+    "cat": "chem",
+    "label": "General Chemistry",
+    "desc": "Atomic structure, periodicity, bonding, stoichiometry, equilibrium, acid–base, redox, gas laws, thermochemistry.",
+    "pre": ["calculus"],
+    "books": [
+      {"t": "General Chemistry", "a": "Linus Pauling (1947)", "n": "Two-time Nobel laureate writing the introductory book. Still the best.", "primary": true},
+      {"t": "The Nature of the Chemical Bond", "a": "Linus Pauling (3e, 1960)", "n": "The book that defined modern bonding theory.", "primary": true},
+      {"t": "Chemical Principles", "a": "Peter Atkins & Loretta Jones", "n": "The standard modern intro — rigorous, well-illustrated."},
+      {"t": "General Chemistry: Principles and Modern Applications", "a": "Petrucci, Herring, Madura & Bissonnette", "n": "Encyclopaedic. Use as reference."}
+    ]
+  },
+  "organic_chem": {
+    "cat": "chem",
+    "label": "Organic Chemistry",
+    "desc": "Functional groups, mechanism, stereochemistry, synthesis design, pericyclic reactions, retrosynthesis.",
+    "pre": ["gen_chem"],
+    "books": [
+      {"t": "Organic Chemistry", "a": "Clayden, Greeves & Warren (2e)", "n": "The modern teaching standard. Mechanism-first, not memorisation-first.", "primary": true},
+      {"t": "The Logic of Chemical Synthesis", "a": "E. J. Corey & Xue-Min Cheng (1989)", "n": "Retrosynthesis from its Nobel inventor.", "primary": true},
+      {"t": "March's Advanced Organic Chemistry", "a": "Michael B. Smith (8e)", "n": "The reference bible — reactions, mechanism, structure."},
+      {"t": "Strategic Applications of Named Reactions in Organic Synthesis", "a": "László Kürti & Barbara Czakó", "n": "Visual catalogue of the named reactions."}
+    ]
+  },
+  "inorganic_chem": {
+    "cat": "chem",
+    "label": "Inorganic Chemistry",
+    "desc": "Main-group, transition-metal, and f-block chemistry; coordination compounds, ligand field theory, organometallics, solid-state.",
+    "pre": ["gen_chem", "quantum_mech"],
+    "books": [
+      {"t": "Inorganic Chemistry", "a": "Shriver & Atkins (6e)", "n": "The teaching standard.", "primary": true},
+      {"t": "Advanced Inorganic Chemistry", "a": "F. Albert Cotton & Geoffrey Wilkinson (6e)", "n": "The graduate reference."},
+      {"t": "Chemical Applications of Group Theory", "a": "F. Albert Cotton (3e)", "n": "Symmetry for chemists — read alongside the inorganic text.", "primary": true}
+    ]
+  },
+  "phys_chem": {
+    "cat": "chem",
+    "label": "Physical Chemistry",
+    "desc": "Chemical thermodynamics, kinetics, statistical mechanics applied to molecules, transport, surface chemistry.",
+    "pre": ["gen_chem", "thermodynamics", "multivar_calc"],
+    "books": [
+      {"t": "Physical Chemistry", "a": "Peter Atkins & Julio de Paula (12e)", "n": "The standard. Most universities teach from it.", "primary": true},
+      {"t": "Molecular Thermodynamics", "a": "Donald A. McQuarrie & John D. Simon", "n": "Best stat-mech treatment for chemists."},
+      {"t": "Physical Chemistry", "a": "Robert A. Alberty, Robert J. Silbey & Moungi G. Bawendi", "n": "Tighter, more concise alternative."}
+    ]
+  },
+  "analytical_chem": {
+    "cat": "chem",
+    "label": "Analytical Chemistry",
+    "desc": "Quantitative analysis, sampling, spectroscopy (UV–Vis, IR, NMR, MS), chromatography, electroanalysis, statistics for the lab.",
+    "pre": ["phys_chem"],
+    "books": [
+      {"t": "Quantitative Chemical Analysis", "a": "Daniel C. Harris (10e)", "n": "The teaching standard. Strong on statistics.", "primary": true},
+      {"t": "Principles of Instrumental Analysis", "a": "Skoog, Holler & Crouch (7e)", "n": "The reference for spectroscopy and chromatography."}
+    ]
+  },
+  "quantum_chem": {
+    "cat": "chem",
+    "label": "Quantum & Computational Chemistry",
+    "desc": "Born–Oppenheimer, Hartree–Fock, post-HF methods, DFT, basis sets, ab initio and semi-empirical calculation.",
+    "pre": ["phys_chem", "quantum_mech", "linear_algebra"],
+    "books": [
+      {"t": "Quantum Chemistry", "a": "Donald A. McQuarrie", "n": "The cleanest introduction. Read first.", "primary": true},
+      {"t": "Modern Quantum Chemistry", "a": "Attila Szabo & Neil S. Ostlund", "n": "The Hartree–Fock and post-HF reference.", "primary": true},
+      {"t": "Molecular Electronic-Structure Theory", "a": "T. Helgaker, P. Jørgensen & J. Olsen", "n": "Encyclopaedic. For when McQuarrie isn't enough."}
+    ]
+  },
+  "biochem": {
+    "cat": "chem",
+    "label": "Biochemistry",
+    "desc": "Amino acids, proteins, enzymes & kinetics, lipids, carbohydrates, nucleic acids, central metabolism, signalling.",
+    "pre": ["organic_chem"],
+    "books": [
+      {"t": "Lehninger Principles of Biochemistry", "a": "David L. Nelson & Michael M. Cox (8e)", "n": "The standard. Cover to cover.", "primary": true},
+      {"t": "Biochemistry", "a": "Berg, Tymoczko, Gatto & Stryer (9e)", "n": "Equally canonical — better diagrams."},
+      {"t": "The Structure of Proteins: Two Hydrogen-Bonded Helical Configurations of the Polypeptide Chain", "a": "L. Pauling, R. B. Corey & H. R. Branson (1951)", "n": "The α-helix paper. Primary source.", "primary": true}
+    ]
+  },
+  "electrochem": {
+    "cat": "chem",
+    "label": "Electrochemistry",
+    "desc": "Redox thermodynamics, electrode kinetics (Butler–Volmer), mass transport, voltammetry, batteries, fuel cells, corrosion.",
+    "pre": ["phys_chem", "electromagnetism"],
+    "books": [
+      {"t": "Electrochemical Methods: Fundamentals and Applications", "a": "Allen J. Bard & Larry R. Faulkner (3e)", "n": "Bard & Faulkner. The bible.", "primary": true},
+      {"t": "Modern Electrochemistry", "a": "John O'M. Bockris & Amulya K. N. Reddy (2 vols)", "n": "The encyclopaedic alternative."}
+    ]
+  },
+  "photochem": {
+    "cat": "chem",
+    "label": "Photochemistry & Spectroscopy",
+    "desc": "Electronic transitions, Jablonski diagram, fluorescence/phosphorescence, excited-state reactions, ultrafast spectroscopy.",
+    "pre": ["quantum_chem"],
+    "books": [
+      {"t": "Modern Molecular Photochemistry of Organic Molecules", "a": "N. J. Turro, V. Ramamurthy & J. C. Scaiano", "n": "The Turro book. Comprehensive.", "primary": true},
+      {"t": "Principles of Fluorescence Spectroscopy", "a": "Joseph R. Lakowicz (3e)", "n": "The fluorescence reference."}
+    ]
+  },
+  "organometallic": {
+    "cat": "chem",
+    "label": "Organometallic Chemistry",
+    "desc": "Metal–carbon bonds, ligand classes, oxidative addition/reductive elimination, σ-bond metathesis, homogeneous catalysis.",
+    "pre": ["inorganic_chem", "organic_chem"],
+    "books": [
+      {"t": "The Organometallic Chemistry of the Transition Metals", "a": "Robert H. Crabtree (7e)", "n": "Crabtree. The teaching standard.", "primary": true},
+      {"t": "Principles and Applications of Organotransition Metal Chemistry", "a": "Collman, Hegedus, Norton & Finke", "n": "The grad-level reference."}
+    ]
+  },
+  "materials_chem": {
+    "cat": "chem",
+    "label": "Materials & Solid-State Chemistry",
+    "desc": "Crystal structures, defects, phase diagrams, ceramics, polymers, semiconductors, characterisation methods.",
+    "pre": ["phys_chem", "solid_state"],
+    "books": [
+      {"t": "Solid State Chemistry and its Applications", "a": "Anthony R. West (2e)", "n": "The teaching standard for materials chemists.", "primary": true},
+      {"t": "Materials Science and Engineering: An Introduction", "a": "William D. Callister & David G. Rethwisch (10e)", "n": "Engineering-side companion."},
+      {"t": "Introduction to Solid State Physics", "a": "Charles Kittel (8e)", "n": "The physicist's view — read in parallel."}
+    ]
+  },
+  "chem_eng": {
+    "cat": "chem",
+    "label": "Chemical Engineering",
+    "desc": "Mass, momentum, and heat transfer; reactor design; separation processes; thermodynamics for process design.",
+    "pre": ["phys_chem", "ode", "pde"],
+    "books": [
+      {"t": "Transport Phenomena", "a": "R. B. Bird, W. E. Stewart & E. N. Lightfoot (2e)", "n": "BSL. The single most important chemical-engineering text.", "primary": true},
+      {"t": "Elements of Chemical Reaction Engineering", "a": "H. Scott Fogler (6e)", "n": "The reactor-design standard."},
+      {"t": "Unit Operations of Chemical Engineering", "a": "McCabe, Smith & Harriott (7e)", "n": "Separations and equipment."}
+    ]
+  },
+  "cell_bio": {
+    "cat": "bio",
+    "label": "Cell Biology",
+    "desc": "Organelles, membranes, cytoskeleton, cell cycle, signalling, transport — the eukaryotic cell as a system.",
+    "pre": ["biochem"],
+    "books": [
+      {"t": "Molecular Biology of the Cell", "a": "Bruce Alberts, et al. (7e)", "n": "MBOC. The single canonical cell-biology text. Cover to cover.", "primary": true},
+      {"t": "The Cell: A Molecular Approach", "a": "Geoffrey M. Cooper (8e)", "n": "Tighter alternative to MBOC."},
+      {"t": "Essential Cell Biology", "a": "Bruce Alberts, et al. (5e)", "n": "Alberts' own undergraduate distillation."}
+    ]
+  },
+  "mol_bio": {
+    "cat": "bio",
+    "label": "Molecular Biology",
+    "desc": "DNA replication, transcription, translation, RNA biology, regulation of gene expression, epigenetics.",
+    "pre": ["biochem", "cell_bio"],
+    "books": [
+      {"t": "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid", "a": "J. D. Watson & F. H. C. Crick (1953)", "n": "The one-page paper. Primary source.", "primary": true},
+      {"t": "Molecular Biology of the Gene", "a": "James D. Watson, et al. (7e)", "n": "Watson's own textbook — by one of the discoverers.", "primary": true},
+      {"t": "Molecular Biology: Principles and Practice", "a": "Michael M. Cox, et al.", "n": "Modern teaching text — strong on technique."}
+    ]
+  },
+  "genetics": {
+    "cat": "bio",
+    "label": "Genetics",
+    "desc": "Mendelian inheritance, linkage, recombination, population genetics, quantitative genetics, modern molecular tools.",
+    "pre": ["mol_bio"],
+    "books": [
+      {"t": "Versuche über Pflanzenhybriden (Experiments on Plant Hybridization)", "a": "Gregor Mendel (1866)", "n": "The founding paper. Primary source.", "primary": true},
+      {"t": "Introduction to Genetic Analysis", "a": "A. J. F. Griffiths, et al. (12e)", "n": "The teaching standard.", "primary": true},
+      {"t": "The Genetical Theory of Natural Selection", "a": "R. A. Fisher (1930)", "n": "The mathematical foundation of population genetics. Primary.", "primary": true},
+      {"t": "Principles of Population Genetics", "a": "Daniel L. Hartl & Andrew G. Clark (4e)", "n": "Modern pop-gen — read after Fisher."}
+    ]
+  },
+  "evolution": {
+    "cat": "bio",
+    "label": "Evolutionary Biology",
+    "desc": "Natural selection, drift, speciation, molecular evolution, phylogenetics, evo-devo, macroevolution.",
+    "pre": ["genetics"],
+    "books": [
+      {"t": "On the Origin of Species", "a": "Charles Darwin (1859)", "n": "The 6th edition is the canonical text. Primary source.", "primary": true},
+      {"t": "The Selfish Gene", "a": "Richard Dawkins (40th anniv. ed.)", "n": "The gene-centred view of selection. Field-shaping.", "primary": true},
+      {"t": "Evolution", "a": "Douglas J. Futuyma & Mark Kirkpatrick (4e)", "n": "The textbook standard."},
+      {"t": "The Extended Phenotype", "a": "Richard Dawkins", "n": "The follow-up — read after The Selfish Gene."}
+    ]
+  },
+  "ecology": {
+    "cat": "bio",
+    "label": "Ecology",
+    "desc": "Populations, communities, ecosystems, biogeography, niche theory, ecological dynamics, conservation biology.",
+    "pre": ["evolution", "probability"],
+    "books": [
+      {"t": "Ecology: From Individuals to Ecosystems", "a": "Begon, Townsend & Harper (5e)", "n": "The teaching standard.", "primary": true},
+      {"t": "The Theory of Island Biogeography", "a": "Robert H. MacArthur & E. O. Wilson (1967)", "n": "Field-defining monograph. Primary.", "primary": true},
+      {"t": "Silent Spring", "a": "Rachel Carson (1962)", "n": "The birth of modern environmental thought.", "primary": true}
+    ]
+  },
+  "physiology": {
+    "cat": "bio",
+    "label": "Physiology",
+    "desc": "Organ systems and homeostasis: nerve, muscle, heart, kidney, gut, endocrine, respiratory, reproductive.",
+    "pre": ["cell_bio"],
+    "books": [
+      {"t": "Medical Physiology", "a": "Walter F. Boron & Emile L. Boulpaep (3e)", "n": "Boron & Boulpaep. The rigorous standard.", "primary": true},
+      {"t": "Guyton and Hall Textbook of Medical Physiology", "a": "John E. Hall (14e)", "n": "The reading standard in medical schools."}
+    ]
+  },
+  "neuroscience": {
+    "cat": "bio",
+    "label": "Neuroscience",
+    "desc": "Membrane biophysics, synaptic transmission, neural circuits, sensory and motor systems, learning and memory.",
+    "pre": ["physiology"],
+    "books": [
+      {"t": "Histologie du Système Nerveux de l'Homme et des Vertébrés", "a": "Santiago Ramón y Cajal (1899–1904)", "n": "The neuron doctrine, established by drawing. Primary source.", "primary": true},
+      {"t": "Principles of Neural Science", "a": "Eric R. Kandel, et al. (6e)", "n": "Kandel. The bible.", "primary": true},
+      {"t": "The Organization of Behavior", "a": "Donald O. Hebb (1949)", "n": "\"Cells that fire together, wire together.\" Primary.", "primary": true},
+      {"t": "Theoretical Neuroscience", "a": "Peter Dayan & L. F. Abbott", "n": "Computational view — pairs with the empirical text."}
+    ]
+  },
+  "developmental_bio": {
+    "cat": "bio",
+    "label": "Developmental Biology",
+    "desc": "Embryogenesis, pattern formation, morphogens, cell fate, stem cells, regeneration, evo-devo.",
+    "pre": ["cell_bio", "mol_bio"],
+    "books": [
+      {"t": "Developmental Biology", "a": "Scott F. Gilbert & Michael J. F. Barresi (12e)", "n": "Gilbert. The standard.", "primary": true},
+      {"t": "Principles of Development", "a": "Lewis Wolpert, et al. (6e)", "n": "Wolpert. Concept-first."}
+    ]
+  },
+  "microbiology": {
+    "cat": "bio",
+    "label": "Microbiology",
+    "desc": "Prokaryote diversity, metabolism, growth, genetics, virology, microbial ecology, host–microbe interaction.",
+    "pre": ["cell_bio", "biochem"],
+    "books": [
+      {"t": "Brock Biology of Microorganisms", "a": "Madigan, Bender, Buckley, Sattley & Stahl (16e)", "n": "Brock. The teaching standard.", "primary": true},
+      {"t": "Microbe", "a": "Moselio Schaechter, John L. Ingraham & Frederick C. Neidhardt", "n": "More cell-biological viewpoint."}
+    ]
+  },
+  "immunology": {
+    "cat": "bio",
+    "label": "Immunology",
+    "desc": "Innate and adaptive immunity, antigen recognition, T- and B-cell biology, MHC, tolerance, vaccines, autoimmunity.",
+    "pre": ["cell_bio", "mol_bio", "microbiology"],
+    "books": [
+      {"t": "Janeway's Immunobiology", "a": "Kenneth Murphy & Casey Weaver (10e)", "n": "Janeway. The standard.", "primary": true},
+      {"t": "Roitt's Essential Immunology", "a": "Delves, Martin, Burton & Roitt (13e)", "n": "Tighter alternative."}
+    ]
+  },
+  "systems_bio": {
+    "cat": "bio",
+    "label": "Systems Biology",
+    "desc": "Network motifs, gene regulatory networks, signalling dynamics, stochastic models of biology, robustness.",
+    "pre": ["mol_bio", "probability", "ode"],
+    "books": [
+      {"t": "An Introduction to Systems Biology", "a": "Uri Alon (2e)", "n": "Alon. The teaching standard — start here.", "primary": true},
+      {"t": "Systems Biology: Properties of Reconstructed Networks", "a": "Bernhard Ø. Palsson", "n": "Constraint-based modelling."}
+    ]
+  },
+  "biophysics": {
+    "cat": "bio",
+    "label": "Biophysics",
+    "desc": "Physical models of biology: polymer physics, membranes, motors, single-molecule, biomechanics, statistical thinking.",
+    "pre": ["biochem", "statistical_mech"],
+    "books": [
+      {"t": "Biological Physics: Energy, Information, Life", "a": "Philip Nelson (updated ed.)", "n": "Nelson. The rigorous standard.", "primary": true},
+      {"t": "Physical Biology of the Cell", "a": "Rob Phillips, Jané Kondev, Julie Theriot & Hernan Garcia (2e)", "n": "Quantitative cell biology. Pair with Alberts."},
+      {"t": "Random Walks in Biology", "a": "Howard C. Berg", "n": "Diffusion and motility — short and beautiful."}
+    ]
+  },
+  "structural_bio": {
+    "cat": "bio",
+    "label": "Structural Biology",
+    "desc": "Protein structure determination by X-ray crystallography, NMR, and cryo-EM; folding; structure–function reasoning.",
+    "pre": ["biochem", "biophysics"],
+    "books": [
+      {"t": "Introduction to Protein Structure", "a": "Carl Branden & John Tooze (2e)", "n": "The visual standard.", "primary": true},
+      {"t": "Biomolecular Crystallography", "a": "Bernhard Rupp", "n": "The X-ray crystallography reference."},
+      {"t": "Single-Particle Cryo-EM of Biological Macromolecules", "a": "Robert M. Glaeser, Eva Nogales & Wah Chiu", "n": "Modern cryo-EM."}
+    ]
+  },
+  "bioinformatics": {
+    "cat": "bio",
+    "label": "Bioinformatics & Computational Biology",
+    "desc": "Sequence alignment, phylogenetics, genome assembly, expression analysis, statistical genetics, HMMs for biology.",
+    "pre": ["mol_bio", "algorithms", "statistical_learning"],
+    "books": [
+      {"t": "Biological Sequence Analysis", "a": "R. Durbin, S. Eddy, A. Krogh & G. Mitchison (1998)", "n": "Durbin et al. The HMM-and-alignment bible.", "primary": true},
+      {"t": "Algorithms on Strings, Trees, and Sequences", "a": "Dan Gusfield (1997)", "n": "The algorithmic foundations.", "primary": true},
+      {"t": "Bioinformatics Data Skills", "a": "Vince Buffalo", "n": "The practical command-line view."}
+    ]
+  },
+  "econ_intro": {
+    "cat": "econ",
+    "label": "History of Economic Thought",
+    "desc": "Classical political economy from Smith through Marx, Marshall, Keynes — the lineage of ideas, read in primary sources.",
+    "pre": [],
+    "books": [
+      {"t": "An Inquiry into the Nature and Causes of the Wealth of Nations", "a": "Adam Smith (1776)", "n": "Books I and II. The founding text.", "primary": true},
+      {"t": "Principles of Political Economy and Taxation", "a": "David Ricardo (1817)", "n": "Comparative advantage and rent. Primary.", "primary": true},
+      {"t": "Capital, Vol. I", "a": "Karl Marx (1867)", "n": "Critique of political economy. Read at least the first three parts.", "primary": true},
+      {"t": "Principles of Economics", "a": "Alfred Marshall (8e, 1920)", "n": "The marginalist synthesis — primary source for the neoclassical school.", "primary": true},
+      {"t": "The General Theory of Employment, Interest and Money", "a": "John Maynard Keynes (1936)", "n": "The macroeconomic revolution. Primary.", "primary": true}
+    ]
+  },
+  "microeconomics": {
+    "cat": "econ",
+    "label": "Microeconomics",
+    "desc": "Consumer and producer theory, choice under uncertainty, partial and general equilibrium, welfare theorems.",
+    "pre": ["calculus", "linear_algebra", "optim"],
+    "books": [
+      {"t": "Microeconomic Theory", "a": "Andreu Mas-Colell, Michael D. Whinston & Jerry R. Green (1995)", "n": "MWG. The graduate standard. Cover to cover.", "primary": true},
+      {"t": "Intermediate Microeconomics: A Modern Approach", "a": "Hal R. Varian (9e)", "n": "The cleanest undergraduate text — read first."},
+      {"t": "Microeconomic Analysis", "a": "Hal R. Varian (3e)", "n": "Varian's own graduate text. Tighter than MWG.", "primary": true}
+    ]
+  },
+  "macroeconomics": {
+    "cat": "econ",
+    "label": "Macroeconomics",
+    "desc": "Business cycles, growth, consumption, investment, fiscal and monetary policy, RBC and New Keynesian models.",
+    "pre": ["microeconomics", "ode"],
+    "books": [
+      {"t": "Advanced Macroeconomics", "a": "David Romer (5e)", "n": "The graduate standard.", "primary": true},
+      {"t": "Recursive Macroeconomic Theory", "a": "Lars Ljungqvist & Thomas J. Sargent (4e)", "n": "Dynamic-programming-first.", "primary": true},
+      {"t": "Lectures on Macroeconomics", "a": "Olivier J. Blanchard & Stanley Fischer (1989)", "n": "Older but excellent on intuition."}
+    ]
+  },
+  "game_theory": {
+    "cat": "econ",
+    "label": "Game Theory",
+    "desc": "Strategic-form, extensive-form, repeated and Bayesian games, equilibrium refinements, cooperative theory.",
+    "pre": ["microeconomics", "probability"],
+    "books": [
+      {"t": "Theory of Games and Economic Behavior", "a": "John von Neumann & Oskar Morgenstern (1944)", "n": "The founding text. Primary source.", "primary": true},
+      {"t": "Non-Cooperative Games", "a": "John F. Nash (1951)", "n": "The Nash-equilibrium thesis. Primary.", "primary": true},
+      {"t": "A Course in Game Theory", "a": "Martin J. Osborne & Ariel Rubinstein (1994)", "n": "The rigorous teaching standard. Free PDF.", "primary": true},
+      {"t": "Game Theory", "a": "Drew Fudenberg & Jean Tirole (1991)", "n": "The graduate reference."}
+    ]
+  },
+  "econometrics": {
+    "cat": "econ",
+    "label": "Econometrics",
+    "desc": "Linear and nonlinear regression, identification, instrumental variables, panel data, GMM, time-series for economics.",
+    "pre": ["probability", "linear_algebra", "statistical_learning"],
+    "books": [
+      {"t": "Econometric Analysis", "a": "William H. Greene (8e)", "n": "The encyclopaedic reference.", "primary": true},
+      {"t": "Mostly Harmless Econometrics", "a": "Joshua D. Angrist & Jörn-Steffen Pischke (2009)", "n": "The causal-identification turn. Read twice.", "primary": true},
+      {"t": "Time Series Analysis", "a": "James D. Hamilton (1994)", "n": "The time-series bible."}
+    ]
+  },
+  "behavioral_econ": {
+    "cat": "econ",
+    "label": "Behavioral Economics",
+    "desc": "Bounded rationality, prospect theory, heuristics and biases, intertemporal choice, social preferences, nudge.",
+    "pre": ["microeconomics", "cognitive_sci"],
+    "books": [
+      {"t": "Prospect Theory: An Analysis of Decision Under Risk", "a": "Daniel Kahneman & Amos Tversky (1979)", "n": "The founding paper. Primary source.", "primary": true},
+      {"t": "Judgment Under Uncertainty: Heuristics and Biases", "a": "D. Kahneman, P. Slovic & A. Tversky, eds. (1982)", "n": "The collected programme.", "primary": true},
+      {"t": "Thinking, Fast and Slow", "a": "Daniel Kahneman (2011)", "n": "Kahneman's career retrospective — the general-reader entry."},
+      {"t": "Misbehaving", "a": "Richard H. Thaler (2015)", "n": "Behavioral econ from inside the discipline."}
+    ]
+  },
+  "monetary_econ": {
+    "cat": "econ",
+    "label": "Monetary Economics",
+    "desc": "Money demand, central banking, inflation, the Phillips curve, monetary transmission, modern policy frameworks.",
+    "pre": ["macroeconomics"],
+    "books": [
+      {"t": "A Monetary History of the United States, 1867–1960", "a": "Milton Friedman & Anna Jacobson Schwartz (1963)", "n": "Friedman & Schwartz. Primary source for the monetarist programme.", "primary": true},
+      {"t": "Interest and Prices", "a": "Michael Woodford (2003)", "n": "The New-Keynesian benchmark."},
+      {"t": "The Theory of Money and Credit", "a": "Ludwig von Mises (1912)", "n": "Austrian-school primary text.", "primary": true}
+    ]
+  },
+  "growth_theory": {
+    "cat": "econ",
+    "label": "Growth Theory",
+    "desc": "Solow, Ramsey–Cass–Koopmans, endogenous growth (Romer, Aghion–Howitt), unified growth theory, convergence.",
+    "pre": ["macroeconomics", "ode"],
+    "books": [
+      {"t": "A Contribution to the Theory of Economic Growth", "a": "Robert M. Solow (1956)", "n": "The 23-page founding paper. Primary.", "primary": true},
+      {"t": "Endogenous Technological Change", "a": "Paul M. Romer (1990)", "n": "Romer's primary endogenous-growth paper.", "primary": true},
+      {"t": "Introduction to Modern Economic Growth", "a": "Daron Acemoglu (2009)", "n": "The graduate standard.", "primary": true}
+    ]
+  },
+  "dev_econ": {
+    "cat": "econ",
+    "label": "Development Economics",
+    "desc": "Poverty traps, institutions, randomised evaluation, structural transformation, education and health interventions.",
+    "pre": ["econometrics", "growth_theory"],
+    "books": [
+      {"t": "Poor Economics", "a": "Abhijit V. Banerjee & Esther Duflo (2011)", "n": "RCT-era development. Primary.", "primary": true},
+      {"t": "Why Nations Fail", "a": "Daron Acemoglu & James A. Robinson (2012)", "n": "Institutions-first view of long-run development."},
+      {"t": "Development as Freedom", "a": "Amartya Sen (1999)", "n": "Capabilities approach. Primary.", "primary": true}
+    ]
+  },
+  "public_econ": {
+    "cat": "econ",
+    "label": "Public Economics",
+    "desc": "Externalities, public goods, optimal taxation, social insurance, redistribution, fiscal federalism.",
+    "pre": ["microeconomics"],
+    "books": [
+      {"t": "The Economics of Welfare", "a": "Arthur C. Pigou (1920)", "n": "The founding text for externalities. Primary.", "primary": true},
+      {"t": "Lectures on Public Economics", "a": "Anthony B. Atkinson & Joseph E. Stiglitz (1980)", "n": "The graduate standard.", "primary": true},
+      {"t": "Public Finance and Public Policy", "a": "Jonathan Gruber (6e)", "n": "Modern teaching text."}
+    ]
+  },
+  "industrial_org": {
+    "cat": "econ",
+    "label": "Industrial Organization",
+    "desc": "Market structure, oligopoly, entry and exit, price discrimination, vertical relations, empirical IO.",
+    "pre": ["microeconomics", "game_theory"],
+    "books": [
+      {"t": "The Theory of Industrial Organization", "a": "Jean Tirole (1988)", "n": "The graduate standard.", "primary": true},
+      {"t": "Industrial Organization: Markets and Strategies", "a": "Paul Belleflamme & Martin Peitz (2e)", "n": "Modern, well-illustrated."},
+      {"t": "Measuring Market Power in the Ready-to-Eat Cereal Industry", "a": "Aviv Nevo (2001)", "n": "The exemplar of the structural empirical turn.", "primary": true}
+    ]
+  },
+  "mechanism_design": {
+    "cat": "econ",
+    "label": "Mechanism & Market Design",
+    "desc": "Implementation, revelation principle, optimal auctions, matching, two-sided markets.",
+    "pre": ["game_theory", "microeconomics"],
+    "books": [
+      {"t": "Counterspeculation, Auctions, and Competitive Sealed Tenders", "a": "William Vickrey (1961)", "n": "The Vickrey auction. Primary.", "primary": true},
+      {"t": "College Admissions and the Stability of Marriage", "a": "D. Gale & L. S. Shapley (1962)", "n": "The deferred-acceptance algorithm. Primary.", "primary": true},
+      {"t": "Putting Auction Theory to Work", "a": "Paul Milgrom (2004)", "n": "Milgrom on auction design.", "primary": true},
+      {"t": "Two-Sided Matching", "a": "Alvin E. Roth & Marilda A. Oliveira Sotomayor (1990)", "n": "The matching reference."}
+    ]
+  },
+  "financial_econ": {
+    "cat": "econ",
+    "label": "Financial Economics",
+    "desc": "Asset pricing, mean–variance, CAPM, factor models, market efficiency, consumption-based intertemporal pricing.",
+    "pre": ["microeconomics", "probability"],
+    "books": [
+      {"t": "Portfolio Selection", "a": "Harry Markowitz (1952)", "n": "The founding paper of modern portfolio theory. Primary.", "primary": true},
+      {"t": "Capital Asset Prices: A Theory of Market Equilibrium under Conditions of Risk", "a": "William F. Sharpe (1964)", "n": "The CAPM paper. Primary.", "primary": true},
+      {"t": "Efficient Capital Markets: A Review of Theory and Empirical Work", "a": "Eugene F. Fama (1970)", "n": "The EMH survey. Primary.", "primary": true},
+      {"t": "Asset Pricing", "a": "John H. Cochrane (rev. ed.)", "n": "Cochrane. The graduate standard.", "primary": true}
+    ]
+  },
+  "info_econ": {
+    "cat": "econ",
+    "label": "Information Economics & Contracts",
+    "desc": "Adverse selection, moral hazard, signalling, screening, principal–agent, contract theory.",
+    "pre": ["microeconomics", "game_theory"],
+    "books": [
+      {"t": "The Market for \"Lemons\": Quality Uncertainty and the Market Mechanism", "a": "George A. Akerlof (1970)", "n": "Adverse selection. Primary.", "primary": true},
+      {"t": "Job Market Signaling", "a": "A. Michael Spence (1973)", "n": "Signalling. Primary.", "primary": true},
+      {"t": "Contract Theory", "a": "Patrick Bolton & Mathias Dewatripont (2005)", "n": "The graduate standard.", "primary": true}
+    ]
+  },
+  "kinematics": {
+    "cat": "robo",
+    "label": "Robot Kinematics",
+    "desc": "Rigid-body transforms (SE(3)), Denavit–Hartenberg, forward and inverse kinematics, Jacobians, screw theory, Lie groups.",
+    "pre": ["linear_algebra", "multivar_calc"],
+    "books": [
+      {"t": "A Mathematical Introduction to Robotic Manipulation", "a": "Richard M. Murray, Zexiang Li & S. Shankar Sastry (1994)", "n": "Free PDF. Screws, twists and exponential coordinates. Primary.", "primary": true},
+      {"t": "Modern Robotics: Mechanics, Planning, and Control", "a": "Kevin M. Lynch & Frank C. Park (2017)", "n": "Free PDF. Lie-group kinematics, the modern teaching standard.", "primary": true},
+      {"t": "Robotics: Modelling, Planning and Control", "a": "B. Siciliano, L. Sciavicco, L. Villani & G. Oriolo", "n": "The comprehensive European reference."}
+    ]
+  },
+  "robot_dynamics": {
+    "cat": "robo",
+    "label": "Robot Dynamics",
+    "desc": "Newton–Euler and Lagrangian formulations, manipulator equations of motion, recursive algorithms, articulated-body inertia.",
+    "pre": ["kinematics", "classical_mech"],
+    "books": [
+      {"t": "Rigid Body Dynamics Algorithms", "a": "Roy Featherstone (2008)", "n": "Recursive O(n) dynamics. The algorithms reference.", "primary": true},
+      {"t": "Robot Modeling and Control", "a": "Mark W. Spong, Seth Hutchinson & M. Vidyasagar (2e)", "n": "The standard teaching text."},
+      {"t": "Dynamics of Multibody Systems", "a": "Ahmed A. Shabana (5e)", "n": "Multibody view — generalises beyond serial manipulators."}
+    ]
+  },
+  "state_estimation": {
+    "cat": "robo",
+    "label": "State Estimation",
+    "desc": "Bayes filter, Kalman/EKF/UKF, particle filters, factor graphs, smoothing — making sense of noisy sensors.",
+    "pre": ["probability", "linear_algebra"],
+    "books": [
+      {"t": "A New Approach to Linear Filtering and Prediction Problems", "a": "R. E. Kalman (1960)", "n": "The Kalman filter paper. Primary.", "primary": true},
+      {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox (2005)", "n": "Bayes-filter and beyond. The bible.", "primary": true},
+      {"t": "State Estimation for Robotics", "a": "Timothy D. Barfoot (2017)", "n": "Lie-group state estimation. Modern."}
+    ]
+  },
+  "motion_planning": {
+    "cat": "robo",
+    "label": "Motion Planning",
+    "desc": "Configuration space, sampling-based planners (PRM, RRT, RRT*), grid search, optimisation-based planning, kinodynamic planning.",
+    "pre": ["algorithms", "kinematics"],
+    "books": [
+      {"t": "Planning Algorithms", "a": "Steven M. LaValle (2006)", "n": "Free online. The standard — encyclopaedic and rigorous.", "primary": true},
+      {"t": "Probabilistic Roadmaps for Path Planning in High-Dimensional Configuration Spaces", "a": "L. E. Kavraki, P. Švestka, J.-C. Latombe & M. H. Overmars (1996)", "n": "The PRM paper. Primary.", "primary": true},
+      {"t": "Rapidly-Exploring Random Trees: A New Tool for Path Planning", "a": "Steven M. LaValle (1998)", "n": "The RRT paper. Primary.", "primary": true},
+      {"t": "Principles of Robot Motion", "a": "Howie Choset, Kevin Lynch, Seth Hutchinson, et al.", "n": "Excellent teaching companion to LaValle."}
+    ]
+  },
+  "robot_control": {
+    "cat": "robo",
+    "label": "Robot Control",
+    "desc": "Computed-torque control, PD with gravity compensation, impedance and force control, adaptive and robust control of manipulators.",
+    "pre": ["control_systems", "robot_dynamics"],
+    "books": [
+      {"t": "Robot Modeling and Control", "a": "Mark W. Spong, Seth Hutchinson & M. Vidyasagar (2e)", "n": "Standard treatment — control built on the dynamics text.", "primary": true},
+      {"t": "Applied Nonlinear Control", "a": "Jean-Jacques E. Slotine & Weiping Li (1991)", "n": "The nonlinear-control bible used in robotics.", "primary": true},
+      {"t": "Adaptive Control", "a": "Karl J. Åström & Björn Wittenmark (2e)", "n": "Adaptive control reference."}
+    ]
+  },
+  "slam": {
+    "cat": "robo",
+    "label": "SLAM (Simultaneous Localisation & Mapping)",
+    "desc": "Filtering and graph-based SLAM, visual and LiDAR SLAM, loop closure, bundle adjustment, factor-graph back-ends.",
+    "pre": ["state_estimation", "computer_vision"],
+    "books": [
+      {"t": "Past, Present, and Future of Simultaneous Localization and Mapping: Towards the Robust-Perception Age", "a": "C. Cadena, L. Carlone, H. Carrillo, et al. (2016)", "n": "The reference survey. Primary.", "primary": true},
+      {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox (2005)", "n": "The SLAM chapters remain canonical.", "primary": true},
+      {"t": "Multiple View Geometry in Computer Vision", "a": "Richard Hartley & Andrew Zisserman (2e)", "n": "The geometric foundations of visual SLAM."}
+    ]
+  },
+  "manipulation": {
+    "cat": "robo",
+    "label": "Manipulation & Grasping",
+    "desc": "Contact mechanics, grasp analysis, form/force closure, planning under contact, dexterous in-hand manipulation.",
+    "pre": ["robot_dynamics", "kinematics"],
+    "books": [
+      {"t": "Mechanics of Robotic Manipulation", "a": "Matthew T. Mason (2001)", "n": "MIT Press. The rigorous standard.", "primary": true},
+      {"t": "Robot Hands and the Mechanics of Manipulation", "a": "Matthew T. Mason & J. Kenneth Salisbury Jr. (1985)", "n": "The grasp-analysis founding text. Primary.", "primary": true},
+      {"t": "Modern Robotics", "a": "Kevin M. Lynch & Frank C. Park", "n": "Manipulation chapters are excellent."}
+    ]
+  },
+  "robot_perception": {
+    "cat": "robo",
+    "label": "Robot Perception & Sensor Fusion",
+    "desc": "Cameras and LiDAR, depth and RGB-D, point-cloud processing, calibration, multimodal sensor fusion for embodied agents.",
+    "pre": ["computer_vision", "state_estimation"],
+    "books": [
+      {"t": "Multiple View Geometry in Computer Vision", "a": "Richard Hartley & Andrew Zisserman (2e)", "n": "The geometric foundations.", "primary": true},
+      {"t": "Computer Vision: Algorithms and Applications", "a": "Richard Szeliski (2e)", "n": "Free online. The modern reference."},
+      {"t": "Point Cloud Library (PCL)", "a": "R. B. Rusu & S. Cousins (2011)", "n": "The 3D-perception toolkit paper."}
+    ]
+  },
+  "mobile_robots": {
+    "cat": "robo",
+    "label": "Mobile Robots & Locomotion",
+    "desc": "Wheeled and tracked mobility, non-holonomic constraints, legged locomotion fundamentals, navigation stacks.",
+    "pre": ["robot_control", "motion_planning"],
+    "books": [
+      {"t": "Introduction to Autonomous Mobile Robots", "a": "Roland Siegwart, Illah R. Nourbakhsh & Davide Scaramuzza (2e)", "n": "Standard mobile-robot text.", "primary": true},
+      {"t": "Springer Handbook of Robotics", "a": "Bruno Siciliano & Oussama Khatib (eds., 2e)", "n": "The encyclopaedic reference."}
+    ]
+  },
+  "humanoid": {
+    "cat": "robo",
+    "label": "Humanoid & Legged Robotics",
+    "desc": "Bipedal/quadrupedal dynamics, ZMP and capture point, whole-body control, model-predictive control for legged systems.",
+    "pre": ["mobile_robots", "robot_dynamics"],
+    "books": [
+      {"t": "Introduction to Humanoid Robotics", "a": "Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada & Kazuhito Yokoi", "n": "The legged-robot reference.", "primary": true},
+      {"t": "Springer Handbook of Robotics", "a": "B. Siciliano & O. Khatib (eds., 2e)", "n": "Humanoid chapters are canonical."}
+    ]
+  },
+  "robot_learning": {
+    "cat": "robo",
+    "label": "Robot Learning",
+    "desc": "Imitation learning, sim-to-real, RL on physical robots, visuomotor policies, foundation-model robotics.",
+    "pre": ["reinforcement", "deep_learning", "manipulation"],
+    "books": [
+      {"t": "End-to-End Training of Deep Visuomotor Policies", "a": "S. Levine, C. Finn, T. Darrell & P. Abbeel (2016)", "n": "Modern visuomotor learning. Primary.", "primary": true},
+      {"t": "An Algorithmic Perspective on Imitation Learning", "a": "T. Osa, J. Pajarinen, G. Neumann, J. A. Bagnell, P. Abbeel & J. Peters (2018)", "n": "Survey. Primary.", "primary": true},
+      {"t": "Robot Learning from Demonstration", "a": "Brenna D. Argall, Sonia Chernova, Manuela Veloso & Brett Browning (2009)", "n": "The earlier survey — still useful."}
+    ]
+  },
+  "hri": {
+    "cat": "robo",
+    "label": "Human–Robot Interaction",
+    "desc": "Shared autonomy, teleoperation, social robots, trust and acceptance, intent and gaze, safety around humans.",
+    "pre": ["manipulation", "cognitive_sci"],
+    "books": [
+      {"t": "Human-Robot Interaction: A Survey", "a": "Michael A. Goodrich & Alan C. Schultz (2007)", "n": "The survey that named the field. Primary.", "primary": true},
+      {"t": "The Media Equation", "a": "Byron Reeves & Clifford Nass (1996)", "n": "Why humans treat machines socially. Primary.", "primary": true},
+      {"t": "Human-Robot Interaction: An Introduction", "a": "C. Bartneck, T. Belpaeme, F. Eyssel, T. Kanda, M. Keijsers & S. Šabanović (2024)", "n": "Modern teaching textbook."}
+    ]
+  },
+  "anatomy": {
+    "cat": "med",
+    "label": "Human Anatomy",
+    "desc": "Gross anatomy, regional and surface anatomy, neuroanatomy — structure as the substrate of every clinical specialty.",
+    "pre": ["cell_bio"],
+    "books": [
+      {"t": "Gray's Anatomy", "a": "Henry Gray (1858) — modern ed. Susan Standring (42e, 2020)", "n": "The reference — keep the modern edition; read excerpts of the 1858 original.", "primary": true},
+      {"t": "Atlas of Human Anatomy", "a": "Frank H. Netter (8e)", "n": "Netter. The visual standard.", "primary": true},
+      {"t": "Clinically Oriented Anatomy", "a": "Keith L. Moore, Arthur F. Dalley & A. M. R. Agur (9e)", "n": "Moore — the clinical-anatomy teaching standard."}
+    ]
+  },
+  "histology": {
+    "cat": "med",
+    "label": "Histology",
+    "desc": "Microscopic anatomy: epithelia, connective, muscle and nervous tissue; staining and microscopy as a discipline.",
+    "pre": ["cell_bio"],
+    "books": [
+      {"t": "Junqueira's Basic Histology", "a": "Anthony L. Mescher (16e)", "n": "The teaching standard.", "primary": true},
+      {"t": "Wheater's Functional Histology", "a": "Barbara Young, Geraldine O'Dowd & Phillip Woodford (6e)", "n": "Excellent atlas-style companion."}
+    ]
+  },
+  "pathology": {
+    "cat": "med",
+    "label": "Pathology",
+    "desc": "Cellular injury, inflammation, haemodynamics, immunopathology, neoplasia — disease mechanisms tied to tissue change.",
+    "pre": ["cell_bio", "mol_bio", "immunology"],
+    "books": [
+      {"t": "Robbins and Cotran Pathologic Basis of Disease", "a": "Vinay Kumar, Abul K. Abbas & Jon C. Aster (10e)", "n": "Robbins. The pathology bible.", "primary": true},
+      {"t": "Robbins Basic Pathology", "a": "Kumar, Abbas, Aster & Turner (10e)", "n": "Tighter undergraduate-level version."}
+    ]
+  },
+  "pharmacology": {
+    "cat": "med",
+    "label": "Pharmacology",
+    "desc": "Pharmacodynamics and pharmacokinetics, receptor theory, drug classes by system, toxicology, adverse drug reactions.",
+    "pre": ["biochem", "physiology"],
+    "books": [
+      {"t": "Goodman & Gilman's The Pharmacological Basis of Therapeutics", "a": "Laurence Brunton, Björn Knollmann & Randa Hilal-Dandan (14e)", "n": "Goodman & Gilman. The bible.", "primary": true},
+      {"t": "Rang & Dale's Pharmacology", "a": "James M. Ritter, et al. (9e)", "n": "The mechanism-first teaching standard."},
+      {"t": "Basic & Clinical Pharmacology", "a": "Bertram G. Katzung (15e)", "n": "Excellent for the clinical bridge."}
+    ]
+  },
+  "epidemiology": {
+    "cat": "med",
+    "label": "Epidemiology",
+    "desc": "Study design, measures of association, confounding, bias, causal inference (potential outcomes, DAGs), screening.",
+    "pre": ["probability", "statistical_learning"],
+    "books": [
+      {"t": "Modern Epidemiology", "a": "Kenneth J. Rothman, Sander Greenland & Timothy L. Lash (4e)", "n": "Rothman et al. The graduate standard.", "primary": true},
+      {"t": "Causal Inference: What If", "a": "Miguel A. Hernán & James M. Robins (free)", "n": "The modern causal text. Free PDF.", "primary": true},
+      {"t": "Epidemiology: An Introduction", "a": "Kenneth J. Rothman (2e)", "n": "Rothman's own short introduction."}
+    ]
+  },
+  "public_health": {
+    "cat": "med",
+    "label": "Public Health & Biostatistics",
+    "desc": "Health systems, prevention, screening programs, biostatistical methods, surveillance, global health, policy.",
+    "pre": ["epidemiology"],
+    "books": [
+      {"t": "Oxford Textbook of Global Public Health", "a": "R. Detels, et al. (eds., 7e)", "n": "The comprehensive reference.", "primary": true},
+      {"t": "CDC Field Epidemiology Manual", "a": "Centers for Disease Control & Prevention", "n": "Free online. Outbreak investigation as a discipline."}
+    ]
+  },
+  "clinical_med": {
+    "cat": "med",
+    "label": "Clinical Medicine (Internal)",
+    "desc": "History and examination, differential diagnosis, organ-system internal medicine — the integrative clinical core.",
+    "pre": ["pathology", "physiology", "pharmacology"],
+    "books": [
+      {"t": "Harrison's Principles of Internal Medicine", "a": "Joseph Loscalzo, Anthony Fauci, Dennis Kasper, et al. (21e)", "n": "Harrison. The bible.", "primary": true},
+      {"t": "Cecil Textbook of Medicine", "a": "Lee Goldman & Andrew I. Schafer (eds., 26e)", "n": "Cecil. The other standard."},
+      {"t": "Oxford Handbook of Clinical Medicine", "a": "Wilkinson, Raine, Wiles, et al. (11e)", "n": "The portable companion — written for the ward."}
+    ]
+  },
+  "radiology": {
+    "cat": "med",
+    "label": "Radiology & Medical Imaging",
+    "desc": "X-ray, CT, MRI, ultrasound, PET — physics of acquisition, anatomy on imaging, modality choice, image interpretation.",
+    "pre": ["clinical_med", "electromagnetism"],
+    "books": [
+      {"t": "Fundamentals of Diagnostic Radiology", "a": "William E. Brant & Clyde A. Helms (5e)", "n": "Brant & Helms. The teaching standard.", "primary": true},
+      {"t": "Learning Radiology: Recognizing the Basics", "a": "William Herring (4e)", "n": "Best entry point — pattern recognition first."}
+    ]
+  },
+  "psychiatry": {
+    "cat": "med",
+    "label": "Psychiatry",
+    "desc": "Mental status, mood and anxiety, psychosis, personality, neurodevelopment, psychopharmacology, psychotherapy traditions.",
+    "pre": ["neuroscience", "clinical_med"],
+    "books": [
+      {"t": "Kaplan & Sadock's Synopsis of Psychiatry", "a": "Robert Boland, Marcia Verduin & Pedro Ruiz (12e)", "n": "Kaplan & Sadock. The standard.", "primary": true},
+      {"t": "Diagnostic and Statistical Manual of Mental Disorders (DSM-5-TR)", "a": "American Psychiatric Association (2022)", "n": "The classification reference. Primary.", "primary": true},
+      {"t": "Studies on Hysteria", "a": "Josef Breuer & Sigmund Freud (1895)", "n": "Founding text of psychodynamic psychiatry. Primary.", "primary": true}
+    ]
+  },
+  "infectious_disease": {
+    "cat": "med",
+    "label": "Infectious Disease",
+    "desc": "Bacterial, viral, fungal and parasitic infections; antimicrobials and resistance; clinical syndromes; outbreak control.",
+    "pre": ["microbiology", "immunology", "clinical_med"],
+    "books": [
+      {"t": "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases", "a": "John E. Bennett, Raphael Dolin & Martin J. Blaser (9e)", "n": "Mandell. The reference.", "primary": true},
+      {"t": "Microbe Hunters", "a": "Paul de Kruif (1926)", "n": "The narrative history — Pasteur, Koch, Ehrlich. Read first.", "primary": true}
+    ]
+  },
+  "oncology": {
+    "cat": "med",
+    "label": "Oncology",
+    "desc": "Hallmarks of cancer, tumour biology, staging, chemotherapy and targeted therapy, immunotherapy, radiation therapy.",
+    "pre": ["pathology", "mol_bio"],
+    "books": [
+      {"t": "The Hallmarks of Cancer", "a": "Douglas Hanahan & Robert A. Weinberg (2000)", "n": "The framing paper for modern oncology. Primary.", "primary": true},
+      {"t": "Hallmarks of Cancer: The Next Generation", "a": "Douglas Hanahan & Robert A. Weinberg (2011)", "n": "The follow-up. Primary.", "primary": true},
+      {"t": "The Biology of Cancer", "a": "Robert A. Weinberg (2e)", "n": "Weinberg's own textbook synthesis."},
+      {"t": "The Emperor of All Maladies", "a": "Siddhartha Mukherjee (2010)", "n": "Narrative history — read it alongside the textbook."}
+    ]
+  },
+  "evidence_med": {
+    "cat": "med",
+    "label": "Evidence-Based Medicine",
+    "desc": "Critical appraisal, hierarchies of evidence, systematic review, meta-analysis, applying trials to individual patients.",
+    "pre": ["epidemiology", "clinical_med"],
+    "books": [
+      {"t": "How to Read a Paper", "a": "Trisha Greenhalgh (6e)", "n": "The single best introduction to critical appraisal.", "primary": true},
+      {"t": "Evidence-Based Medicine: How to Practice and Teach EBM", "a": "Sharon E. Straus, Paul Glasziou, W. Scott Richardson & R. Brian Haynes (5e)", "n": "The Sackett-school standard.", "primary": true},
+      {"t": "Clinical Epidemiology: The Essentials", "a": "Robert H. Fletcher, Suzanne W. Fletcher & Grant S. Fletcher (5e)", "n": "Excellent companion."}
+    ]
+  },
+  "med_ethics": {
+    "cat": "med",
+    "label": "Medical Ethics",
+    "desc": "Autonomy, beneficence, non-maleficence, justice; consent; end-of-life; research ethics; allocation; the historical canon of abuses.",
+    "pre": ["ethics", "clinical_med"],
+    "books": [
+      {"t": "Principles of Biomedical Ethics", "a": "Tom L. Beauchamp & James F. Childress (8e)", "n": "Beauchamp & Childress. The four-principles framework.", "primary": true},
+      {"t": "The Nuremberg Code", "a": "Nuremberg Military Tribunal (1947)", "n": "Primary source — informed consent established in writing.", "primary": true},
+      {"t": "The Belmont Report", "a": "National Commission for the Protection of Human Subjects (1979)", "n": "Primary source — respect, beneficence, justice in research.", "primary": true},
+      {"t": "The Immortal Life of Henrietta Lacks", "a": "Rebecca Skloot (2010)", "n": "Case study in consent, race and biospecimen ethics."}
     ]
   }
 }
