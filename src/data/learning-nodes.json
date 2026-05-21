@@ -1115,6 +1115,159 @@
       {"t": "Making Embedded Systems", "a": "Elecia White", "n": "Engineering wisdom."}
     ]
   },
+  "engr_em": {
+    "cat": "hw",
+    "label": "Engineering Electromagnetics",
+    "desc": "Transmission lines, Smith chart, S-parameters, waveguides, microwave networks, impedance matching.",
+    "pre": ["electromagnetism", "circuit_theory"],
+    "books": [
+      {"t": "Microwave Engineering", "a": "David M. Pozar (4e)", "n": "Pozar. The single most-used RF/microwave text in industry and academia.", "primary": true},
+      {"t": "Field and Wave Electromagnetics", "a": "David K. Cheng (2e)", "n": "Cleanest pedagogy on transmission lines and the Smith chart."},
+      {"t": "Engineering Electromagnetics", "a": "William H. Hayt & John A. Buck (9e)", "n": "Workhorse undergraduate text — for a slower first pass."}
+    ]
+  },
+  "fpga_hdl": {
+    "cat": "hw",
+    "label": "HDL & FPGA Design",
+    "desc": "Verilog/SystemVerilog/VHDL, synthesis, timing closure, on-chip RAM, RTL idioms, simulation/verification.",
+    "pre": ["digital_logic"],
+    "books": [
+      {"t": "FPGA Prototyping by SystemVerilog Examples", "a": "Pong P. Chu (2e)", "n": "Cheapest path from RTL to a working board — pair with a Tang Nano, iCEBreaker, or ULX3S.", "primary": true},
+      {"t": "RTL Modeling with SystemVerilog for Simulation and Synthesis", "a": "Stuart Sutherland", "n": "Idioms that synthesise the way you mean."},
+      {"t": "Reconfigurable Computing", "a": "Scott Hauck & André DeHon", "n": "When you want to know why the substrate looks the way it does."}
+    ]
+  },
+  "power_electronics": {
+    "cat": "hw",
+    "label": "Power Electronics",
+    "desc": "Switching converters (buck/boost/flyback), inverters, PWM, magnetics, motor drives, control of converters.",
+    "pre": ["art_electronics", "control_systems"],
+    "books": [
+      {"t": "Power Electronics: Converters, Applications, and Design", "a": "Ned Mohan, Tore M. Undeland & William P. Robbins (3e)", "n": "Mohan. The standard.", "primary": true},
+      {"t": "Fundamentals of Power Electronics", "a": "Robert W. Erickson & Dragan Maksimović (3e)", "n": "Erickson — converter modelling done right.", "primary": true},
+      {"t": "Power Electronics Handbook", "a": "Muhammad H. Rashid (ed., 4e)", "n": "Reference compendium."}
+    ]
+  },
+  "electric_machines": {
+    "cat": "hw",
+    "label": "Electric Machines & Drives",
+    "desc": "DC machines, transformers, induction and synchronous motors, BLDC/PMSM, field-oriented control.",
+    "pre": ["electromagnetism", "circuit_theory"],
+    "books": [
+      {"t": "Electric Machinery", "a": "A. E. Fitzgerald, Charles Kingsley Jr. & Stephen D. Umans (7e)", "n": "Fitzgerald. The standard.", "primary": true},
+      {"t": "Electric Machinery Fundamentals", "a": "Stephen J. Chapman (5e)", "n": "Pedagogically the cleanest entry point."},
+      {"t": "Analysis of Electric Machinery and Drive Systems", "a": "P. C. Krause, O. Wasynczuk, S. D. Sudhoff & S. Pekarek (3e)", "n": "For drives and field-oriented control — the dq-frame book."}
+    ]
+  },
+  "pcb_design": {
+    "cat": "hw",
+    "label": "PCB & Signal Integrity",
+    "desc": "Stack-up, return paths, controlled impedance, decoupling, EMC, high-speed routing, BGA fanout.",
+    "pre": ["art_electronics", "engr_em"],
+    "books": [
+      {"t": "High-Speed Digital Design: A Handbook of Black Magic", "a": "Howard W. Johnson & Martin Graham (1993)", "n": "Johnson & Graham. Required reading the moment edges get sharp.", "primary": true},
+      {"t": "Electromagnetic Compatibility Engineering", "a": "Henry W. Ott", "n": "Ott — the EMC text. Why your board fails the chamber.", "primary": true},
+      {"t": "Signal and Power Integrity — Simplified", "a": "Eric Bogatin (3e)", "n": "Best modern teaching. Pair with KiCad and a cheap VNA on the bench."}
+    ]
+  },
+  "computer_internals": {
+    "cat": "hw",
+    "label": "Computer Internals (Bare Metal)",
+    "desc": "What a computer actually is, not the CS abstract machine. Transistor → gate → ALU → datapath → real CPU. Microarchitecture (pipelines, out-of-order, speculation, branch prediction, SMT). The memory hierarchy as physical hardware — DRAM banks and refresh, SRAM cells, TLBs, cache coherence (MESI/MOESI), NUMA. The board as a system: PCH/southbridge, PCIe lanes, DDR topology, NVMe, USB, SATA, power delivery, clocking. The boot path: power-on reset → BIOS/UEFI → bootloader → kernel handoff. Per-vendor reality: x86 (Intel/AMD), Arm (Cortex-A, Apple Silicon), RISC-V. DMA, MMIO, IOMMUs, virtualisation extensions. Modern silicon: chiplets, packaging, foundries.",
+    "pre": ["digital_logic", "comp_arch", "art_electronics"],
+    "books": [
+      {"t": "Code: The Hidden Language of Computer Hardware and Software", "a": "Charles Petzold (2e, 2022)", "n": "Builds a working computer from relays and lightbulbs. The single best entry point into the actual machine.", "primary": true},
+      {"t": "The Elements of Computing Systems (Nand2Tetris)", "a": "Noam Nisan & Shimon Schocken (2e, 2021)", "n": "Build the whole stack — NAND → CPU → assembler → VM → OS — yourself. Free Coursera course pairs with it.", "primary": true},
+      {"t": "Inside the Machine", "a": "Jon Stokes (No Starch, 2007)", "n": "Clearest plain-English on modern microarchitecture: Pentium 4, Core 2, PowerPC 970, the OoO engine. Ars Technica's senior editor.", "primary": true},
+      {"t": "Computer Organization and Design (RISC-V Edition)", "a": "D. A. Patterson & J. L. Hennessy (2e)", "n": "Undergraduate Patterson. The datapath drawn out, with a real open ISA you can simulate."},
+      {"t": "Modern Processor Design: Fundamentals of Superscalar Processors", "a": "John Paul Shen & Mikko H. Lipasti (2013)", "n": "The superscalar / out-of-order bible. After Stokes, this is where you go.", "primary": true},
+      {"t": "What Every Programmer Should Know About Memory", "a": "Ulrich Drepper (Red Hat, 2007)", "n": "Free PDF. The DRAM/cache reality every systems person should have read. Drepper of glibc.", "primary": true},
+      {"t": "Memory Systems: Cache, DRAM, Disk", "a": "Bruce Jacob, Spencer W. Ng & David T. Wang (2007)", "n": "The encyclopedic reference on the memory subsystem. Heavy.", "primary": true},
+      {"t": "Intel 64 and IA-32 Architectures Software Developer's Manual", "a": "Intel Corp.", "n": "Primary source. Volume 3 (system programming) is the one you sit with.", "primary": true},
+      {"t": "AMD64 Architecture Programmer's Manual", "a": "AMD Corp.", "n": "The other primary source — often clearer than Intel's on the same ISA.", "primary": true},
+      {"t": "Arm Architecture Reference Manual (ARMv8-A / ARMv9-A)", "a": "Arm Ltd.", "n": "Primary source for the ISA that runs every phone and every Apple Silicon Mac.", "primary": true},
+      {"t": "The RISC-V Instruction Set Manual, Vols. I & II", "a": "Andrew Waterman & Krste Asanović (eds.)", "n": "Free, open ISA. Vol I = unprivileged, Vol II = privileged. Read both.", "primary": true},
+      {"t": "ARM System-on-Chip Architecture", "a": "Steve Furber (2e)", "n": "By the man who designed the original ARM at Acorn. SoC-level systems thinking."},
+      {"t": "See MIPS Run", "a": "Dominic Sweetman (2e)", "n": "The book that teaches you what a CPU actually looks like once you stop pretending it's a C abstract machine."},
+      {"t": "Computer Systems: A Programmer's Perspective", "a": "Randal E. Bryant & David R. O'Hallaron (3e)", "n": "CMU 15-213. The bridge: how the machine looks from C. Chapters on caches, linking, exceptions, virtual memory, I/O are the ones you want.", "primary": true},
+      {"t": "Hacker's Delight", "a": "Henry S. Warren Jr. (2e)", "n": "Bit-twiddling at the level the CPU rewards. IBM compiler engineer.", "primary": true},
+      {"t": "BIOS Disassembly Ninjutsu Uncovered", "a": "Darmawan Salihun (2007)", "n": "What happens between power-on and the bootloader. Pre-UEFI but the firmware mental model still applies.", "primary": true},
+      {"t": "Beyond BIOS: Developing with the UEFI Specification", "a": "Vincent Zimmer, Michael Rothman & Suresh Marisetty (3e)", "n": "Modern firmware. UEFI as it actually is on every PC and server today."},
+      {"t": "PCI Express Technology", "a": "Mike Jackson & Ravi Budruk (MindShare, 3.0)", "n": "MindShare's hardware textbooks are the de-facto standard. PCIe is the spine of every modern computer.", "primary": true},
+      {"t": "USB System Architecture (USB 2.0)", "a": "Don Anderson & Dave Dzatko (MindShare)", "n": "Companion volume — how USB actually moves bits on the wire."},
+      {"t": "Upgrading and Repairing PCs", "a": "Scott Mueller (22e)", "n": "Encyclopedic. The unofficial PC platform reference — chipsets, sockets, DIMM topologies, the lot."},
+      {"t": "Linux Device Drivers", "a": "Jonathan Corbet, Alessandro Rubini & Greg Kroah-Hartman (3e)", "n": "Free PDF. The software-side view of MMIO, DMA, interrupts — how the kernel actually talks to a device.", "primary": true},
+      {"t": "Asahi Linux project notes & talks", "a": "Hector Martin (marcan) et al.", "n": "Primary-source-equivalent for Apple Silicon: how a current SoC really works, reverse-engineered in public. Read alongside AnandTech's M1/M2 deep-dives."},
+      {"t": "Chip War", "a": "Chris Miller (2022)", "n": "Not engineering — the political/economic history of the semiconductor industry. Context for why the silicon you're reading about looks the way it does."}
+    ]
+  },
+  "comm_theory": {
+    "cat": "telecom",
+    "label": "Communication Theory",
+    "desc": "Modulation (PSK/QAM/OFDM), matched filtering, ML/MAP detection, link budgets, equalisation, synchronisation.",
+    "pre": ["signal_processing", "probability"],
+    "books": [
+      {"t": "Digital Communications", "a": "John G. Proakis & Masoud Salehi (5e)", "n": "Proakis. The reference.", "primary": true},
+      {"t": "Principles of Digital Communication", "a": "Robert G. Gallager (2008)", "n": "Gallager — MIT 6.450 lectures. Mathematical rigour with no fat.", "primary": true},
+      {"t": "Principles of Communication Engineering", "a": "J. M. Wozencraft & I. M. Jacobs (1965)", "n": "The primary source. Where detection theory got its modern form.", "primary": true},
+      {"t": "Communication Systems", "a": "Simon Haykin (5e)", "n": "The cleanest undergraduate path."}
+    ]
+  },
+  "coding_theory": {
+    "cat": "telecom",
+    "label": "Error-Control Coding",
+    "desc": "Linear block codes, BCH/Reed–Solomon, convolutional/Viterbi, turbo, LDPC, polar codes.",
+    "pre": ["info_theory", "abstract_algebra"],
+    "books": [
+      {"t": "Error Control Coding", "a": "Shu Lin & Daniel J. Costello (2e)", "n": "Lin & Costello. The standard.", "primary": true},
+      {"t": "The Theory of Error-Correcting Codes", "a": "F. J. MacWilliams & N. J. A. Sloane (1977)", "n": "The algebraic-coding bible. Heavy.", "primary": true},
+      {"t": "Information Theory, Inference, and Learning Algorithms", "a": "David J. C. MacKay", "n": "Chapters 8–10 and 47–50 are the coding parts; free PDF."}
+    ]
+  },
+  "antennas": {
+    "cat": "telecom",
+    "label": "Antenna Theory",
+    "desc": "Radiation integrals, dipoles, apertures, arrays, beam steering, impedance matching, near vs. far field.",
+    "pre": ["engr_em"],
+    "books": [
+      {"t": "Antenna Theory: Analysis and Design", "a": "Constantine A. Balanis (4e)", "n": "Balanis. The reference.", "primary": true},
+      {"t": "Antennas: From Theory to Practice", "a": "Yi Huang & Kevin Boyle (2e)", "n": "Pragmatic, with measurement chapters — homelab-friendly."},
+      {"t": "The ARRL Antenna Book", "a": "American Radio Relay League", "n": "Amateur-radio canon — practical builds, NEC simulation, real designs you can wind in an afternoon."}
+    ]
+  },
+  "sdr": {
+    "cat": "telecom",
+    "label": "Software-Defined Radio",
+    "desc": "I/Q sampling, DDC/DUC, GNU Radio flowgraphs, full-stack baseband-to-RF on commodity hardware (RTL-SDR, HackRF, PlutoSDR, LimeSDR).",
+    "pre": ["signal_processing", "comm_theory", "art_electronics"],
+    "books": [
+      {"t": "Software-Defined Radio for Engineers", "a": "Travis F. Collins, Robin Getz, Di Pu & Alexander M. Wyglinski (2018)", "n": "Free PDF from Analog Devices, built around the PlutoSDR. The cleanest practical entry point.", "primary": true},
+      {"t": "Software Receiver Design", "a": "C. R. Johnson, W. A. Sethares & A. G. Klein", "n": "Builds a full receiver step-by-step. The pedagogical companion to the textbook physics."},
+      {"t": "PySDR: A Guide to SDR and DSP Using Python", "a": "Marc Lichtman (pysdr.org)", "n": "Free online. Modern Python/NumPy — the path most homelab projects actually take."}
+    ]
+  },
+  "wireless_comms": {
+    "cat": "telecom",
+    "label": "Wireless Communications",
+    "desc": "Fading channels, diversity, MIMO, OFDM, multiuser capacity, cellular (LTE/5G NR PHY).",
+    "pre": ["comm_theory", "antennas", "info_theory"],
+    "books": [
+      {"t": "Fundamentals of Wireless Communication", "a": "David Tse & Pramod Viswanath (2005)", "n": "Tse & Viswanath. The canonical graduate text. Free PDF.", "primary": true},
+      {"t": "Wireless Communications", "a": "Andrea Goldsmith (2005)", "n": "Goldsmith. The other canonical text — broader, less terse.", "primary": true},
+      {"t": "5G NR: The Next Generation Wireless Access Technology", "a": "Erik Dahlman, Stefan Parkvall & Johan Sköld (2e)", "n": "When you actually want to read the standard."}
+    ]
+  },
+  "optical_comms": {
+    "cat": "telecom",
+    "label": "Optical Fiber Communications",
+    "desc": "Single/multi-mode fibre, dispersion, attenuation, EDFAs, WDM, coherent detection, DSP for fibre.",
+    "pre": ["optics", "comm_theory"],
+    "books": [
+      {"t": "Fiber-Optic Communication Systems", "a": "Govind P. Agrawal (4e)", "n": "Agrawal. The reference.", "primary": true},
+      {"t": "Optical Fiber Communications", "a": "Gerd Keiser (5e)", "n": "Pedagogical alternative — gentler ramp."},
+      {"t": "Nonlinear Fiber Optics", "a": "Govind P. Agrawal (6e)", "n": "For coherent, long-haul, and anything where the Kerr nonlinearity matters."}
+    ]
+  },
   "stoch_proc": {
     "cat": "quant",
     "label": "Stochastic Processes",

@@ -32,6 +32,7 @@ import nodes from '../data/learning-nodes.json';
   --econ:#a21caf;   /* fuchsia */
   --robo:#854d0e;   /* yellow */
   --med:#be185d;    /* pink */
+  --telecom:#1e40af;/* blue */
 
   --anc:#c2410c;     /* direct prerequisites */
   --desc:#0e7490;    /* direct unlocks */
@@ -69,6 +70,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .fb[data-cat="econ"].active{background:var(--econ)}
 .fb[data-cat="robo"].active{background:var(--robo)}
 .fb[data-cat="med"].active{background:var(--med)}
+.fb[data-cat="telecom"].active{background:var(--telecom)}
 
 #main{display:flex;flex:1;overflow:hidden}
 #canvas-area{flex:1;position:relative;display:flex;overflow:hidden}
@@ -242,6 +244,7 @@ const DEVICES={
   digital_logic:['tab','laptop'], circuit_theory:['tab'], art_electronics:['tab','laptop'],
   microelectronics:['tab'], semiconductors:['tab'], signal_processing:['tab','laptop'],
   control_systems:['tab','laptop'], embedded:['laptop','tab'],
+  computer_internals:['tab','laptop'],
   // quant — math-heavy PDFs on the tab, code on the laptop
   stoch_proc:['tab','laptop'], stoch_calc:['tab','laptop'], optim:['tab','laptop'],
   time_series:['laptop','tab'], math_finance:['tab','laptop'],
