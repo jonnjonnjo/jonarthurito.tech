@@ -41,6 +41,16 @@ import nodes from '../data/learning-nodes.json';
   --font:'EB Garamond',Georgia,serif;
   --mono:'IBM Plex Mono',monospace;
 }
+[data-theme="dark"]{
+  --bg:#1a1917;--surf:#252320;--surf2:#2a271f;
+  --b1:#3a3830;--b2:#302e28;
+  --t1:#f0ede6;--t2:#8a8679;--t3:#504c44;
+}
+[data-theme="dark"] .bk{border-color:var(--b1)}
+[data-theme="dark"] #dag-svg .node rect[data-role="bg"]{filter:none}
+.node-text{fill:var(--t1)}
+#dm-toggle{font-size:8px;font-family:var(--mono);padding:2px 8px;border-radius:2px;border:1px solid var(--b1);background:transparent;color:var(--t3);cursor:pointer;letter-spacing:.07em;text-transform:uppercase;transition:all .1s;flex-shrink:0}
+#dm-toggle:hover{color:var(--t2)}
 html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font);overflow:hidden}
 #app{display:flex;flex-direction:column;height:100vh;width:100vw;position:fixed;top:0;left:0}
 
@@ -137,6 +147,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div class="li"><div class="ld" style="background:var(--robo)"></div>Robotics</div>
     <div class="li"><div class="ld" style="background:var(--med)"></div>Medicine</div>
   </div>
+  <button id="dm-toggle" onclick="toggleDark()">dark</button>
 </div>
 <div id="filters">
   <button class="fb active" data-cat="all">All</button>
@@ -185,6 +196,11 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 </div>
 <script define:vars={{ nodes }}>
 const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8',chem:'#2dd4bf',bio:'#a3e635',econ:'#e879f9',robo:'#fbbf24',med:'#f472b6'};
+const isDark=()=>document.documentElement.dataset.theme==='dark';
+const FILL_DEFAULT=()=>isDark()?'#2a2823':'#ffffff';
+const FILL_SELF=()=>isDark()?'#2d2547':'#ede9fe';
+const FILL_ANC=()=>isDark()?'#382a1c':'#fff1e6';
+const FILL_DESC=()=>isDark()?'#152a2d':'#e0f7fa';
 const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity',chem:'Chemistry',bio:'Biology',econ:'Economics',robo:'Robotics',med:'Medicine'};
 const ANC='#f59e0b', DESC='#06b6d4', SELF='#a78bfa';
 
@@ -424,7 +440,7 @@ for(const id in N){
   lines.forEach((ln,i)=>{
     const tx=document.createElementNS(NS,'text');
     tx.setAttribute('x',NW/2);tx.setAttribute('y',ly+i*14);
-    tx.setAttribute('text-anchor','middle');tx.setAttribute('fill','#1f1d18');
+    tx.setAttribute('text-anchor','middle');tx.setAttribute('class','node-text');
     tx.setAttribute('font-family',"'EB Garamond',Georgia,serif");
     tx.setAttribute('font-size','13');tx.setAttribute('font-weight','400');
     tx.style.pointerEvents='none';tx.textContent=ln;
@@ -453,22 +469,22 @@ function applyHighlight(id){
       g.style.opacity='1';
       rect.setAttribute('stroke',SELF);
       rect.setAttribute('stroke-width','2.6');
-      rect.setAttribute('fill','#ede9fe');
+      rect.setAttribute('fill',FILL_SELF());
     } else if(isA){
       g.style.opacity='1';
       rect.setAttribute('stroke',ANC);
       rect.setAttribute('stroke-width','1.8');
-      rect.setAttribute('fill','#fff1e6');
+      rect.setAttribute('fill',FILL_ANC());
     } else if(isD){
       g.style.opacity='1';
       rect.setAttribute('stroke',DESC);
       rect.setAttribute('stroke-width','1.8');
-      rect.setAttribute('fill','#e0f7fa');
+      rect.setAttribute('fill',FILL_DESC());
     } else {
       g.style.opacity='0.18';
       rect.setAttribute('stroke',col+'40');
       rect.setAttribute('stroke-width','0.6');
-      rect.setAttribute('fill','#ffffff');
+      rect.setAttribute('fill',FILL_DEFAULT());
     }
   }
   for(const el of edgeEls){
@@ -492,16 +508,23 @@ function applyHighlight(id){
 }
 
 function clearHighlight(){
+  const filtering=filterCat!=='all';
   for(const nid in nodeEls){
     const{g,rect,col}=nodeEls[nid];
-    const vis=filterCat==='all'||N[nid].cat===filterCat;
+    const vis=!filtering||N[nid].cat===filterCat;
     g.style.opacity=vis?'1':'0.18';
-    rect.setAttribute('stroke',col+'88');
-    rect.setAttribute('stroke-width','0.9');
-    rect.setAttribute('fill','#ffffff');
+    if(vis&&filtering){
+      rect.setAttribute('stroke',col+'cc');
+      rect.setAttribute('stroke-width','1.4');
+      rect.setAttribute('fill',col+'20');
+    } else {
+      rect.setAttribute('stroke',col+'88');
+      rect.setAttribute('stroke-width','0.9');
+      rect.setAttribute('fill',FILL_DEFAULT());
+    }
   }
   for(const el of edgeEls){
-    el.style.opacity=filterCat==='all'?'0.45':'0.1';
+    el.style.opacity=filtering?'0.1':'0.45';
     el.setAttribute('stroke','#a8a497');el.setAttribute('stroke-width','0.7');
     el.setAttribute('marker-end','url(#ar)');
   }
@@ -597,6 +620,14 @@ function openPanel(id){
 function closePanel(){panel.classList.remove('open');lockedId=null;clearHighlight();}
 window.handleClick=handleClick;
 window.closePanel=closePanel;
+function toggleDark(){
+  const html=document.documentElement;
+  const dark=html.dataset.theme!=='dark';
+  html.dataset.theme=dark?'dark':'';
+  document.getElementById('dm-toggle').textContent=dark?'light':'dark';
+  if(lockedId)applyHighlight(lockedId);else clearHighlight();
+}
+window.toggleDark=toggleDark;
 
 // ═══════════════════════════════════════════════════════════════════
 // ZOOM — wheel zooms anchored on cursor; buttons step by 1.2x; label resets to 100%
