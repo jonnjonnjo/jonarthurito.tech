@@ -27,11 +27,7 @@ import nodes from '../data/learning-nodes.json';
   --hw:#0e7490;     /* cyan */
   --quant:#9f1239;  /* rose */
   --sec:#3730a3;    /* indigo */
-  --chem:#0f766e;   /* teal */
-  --bio:#4d7c0f;    /* lime */
-  --econ:#a21caf;   /* fuchsia */
   --robo:#854d0e;   /* yellow */
-  --med:#be185d;    /* pink */
   --telecom:#1e40af;/* blue */
 
   --anc:#c2410c;     /* direct prerequisites */
@@ -47,8 +43,8 @@ import nodes from '../data/learning-nodes.json';
   --t1:#f0ede6;--t2:#8a8679;--t3:#504c44;
   --found:#94a3b8;--math:#34d399;--phil:#c084fc;--ling:#fb923c;
   --cs:#38bdf8;--ai:#facc15;--phys:#f87171;--hw:#22d3ee;
-  --quant:#f43f5e;--sec:#818cf8;--chem:#2dd4bf;--bio:#a3e635;
-  --econ:#e879f9;--robo:#fbbf24;--med:#f472b6;--telecom:#60a5fa;
+  --quant:#f43f5e;--sec:#818cf8;
+  --robo:#fbbf24;--telecom:#60a5fa;
 }
 [data-theme="dark"] .bk{border-color:var(--b1)}
 [data-theme="dark"] #dag-svg .node rect[data-role="bg"]{filter:none}
@@ -95,11 +91,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .fb[data-cat="hw"].active{color:var(--hw);border-color:var(--hw)}
 .fb[data-cat="quant"].active{color:var(--quant);border-color:var(--quant)}
 .fb[data-cat="sec"].active{color:var(--sec);border-color:var(--sec)}
-.fb[data-cat="chem"].active{color:var(--chem);border-color:var(--chem)}
-.fb[data-cat="bio"].active{color:var(--bio);border-color:var(--bio)}
-.fb[data-cat="econ"].active{color:var(--econ);border-color:var(--econ)}
 .fb[data-cat="robo"].active{color:var(--robo);border-color:var(--robo)}
-.fb[data-cat="med"].active{color:var(--med);border-color:var(--med)}
 .fb[data-cat="telecom"].active{color:var(--telecom);border-color:var(--telecom)}
 .fb:not(.active){text-decoration:line-through;opacity:.5}
 
@@ -162,11 +154,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div class="li"><div class="ld" style="background:var(--hw)"></div>Hardware</div>
     <div class="li"><div class="ld" style="background:var(--quant)"></div>Quant</div>
     <div class="li"><div class="ld" style="background:var(--sec)"></div>Security</div>
-    <div class="li"><div class="ld" style="background:var(--chem)"></div>Chemistry</div>
-    <div class="li"><div class="ld" style="background:var(--bio)"></div>Biology</div>
-    <div class="li"><div class="ld" style="background:var(--econ)"></div>Economics</div>
     <div class="li"><div class="ld" style="background:var(--robo)"></div>Robotics</div>
-    <div class="li"><div class="ld" style="background:var(--med)"></div>Medicine</div>
     <div class="li"><div class="ld" style="background:var(--telecom)"></div>Telecom</div>
   </div>
   <div id="search-wrap">
@@ -188,11 +176,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   <button class="fb" data-cat="hw">Hardware</button>
   <button class="fb" data-cat="quant">Quant</button>
   <button class="fb" data-cat="sec">Security</button>
-  <button class="fb" data-cat="chem">Chemistry</button>
-  <button class="fb" data-cat="bio">Biology</button>
-  <button class="fb" data-cat="econ">Economics</button>
   <button class="fb" data-cat="robo">Robotics</button>
-  <button class="fb" data-cat="med">Medicine</button>
   <button class="fb" data-cat="telecom">Telecom</button>
 </div>
 <div id="main">
@@ -224,13 +208,13 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 <div id="tip"></div>
 </div>
 <script define:vars={{ nodes }}>
-const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8',chem:'#2dd4bf',bio:'#a3e635',econ:'#e879f9',robo:'#fbbf24',med:'#f472b6',telecom:'#60a5fa'};
+const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8',robo:'#fbbf24',telecom:'#60a5fa'};
 const isDark=()=>document.documentElement.dataset.theme==='dark';
 const FILL_DEFAULT=()=>isDark()?'#2a2823':'#ffffff';
 const FILL_SELF=()=>isDark()?'#2d2547':'#ede9fe';
 const FILL_ANC=()=>isDark()?'#382a1c':'#fff1e6';
 const FILL_DESC=()=>isDark()?'#152a2d':'#e0f7fa';
-const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity',chem:'Chemistry',bio:'Biology',econ:'Economics',robo:'Robotics',med:'Medicine',telecom:'Telecommunications'};
+const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity',robo:'Robotics',telecom:'Telecommunications'};
 const ANC='#f59e0b', DESC='#06b6d4', SELF='#a78bfa';
 
 // per-node device recommendation; first entry = primary (filled pill), rest = secondary (outlined).
@@ -256,15 +240,16 @@ const DEVICES={
   abstract_algebra:['tab','laptop'], real_analysis:['tab','laptop'], multivar_calc:['tab','laptop'],
   ode:['tab','laptop'], probability:['tab','laptop'], topology:['tab','laptop'],
   complex_analysis:['tab','laptop'], measure_theory:['tab','laptop'], functional_analysis:['tab','laptop'],
-  diff_geometry:['tab','laptop'], pde:['tab','laptop'],
+  diff_geometry:['tab','laptop'], pde:['tab','laptop'], numerical_methods:['laptop','tab'],
   // philosophy — mostly prose → kindle; formal/diagram exceptions → tab
   aristotle_organon:['tab'], ancient_phil:['kindle'], eastern_phil:['kindle'], medieval_phil:['kindle'],
   rationalism:['kindle'], empiricism:['kindle'], ethics:['kindle'], political_phil:['kindle'],
   epistemology:['kindle'], kant:['kindle'], hegel:['kindle'], nietzsche:['kindle'],
   phenomenology:['kindle'], continental:['kindle'], analytic_phil:['tab','kindle'],
   phil_lang:['tab','kindle'], phil_science:['tab','kindle'], phil_mind:['kindle'],
+  metaphysics:['kindle','tab'], phil_math:['tab','kindle'], semiotics:['kindle','tab'],
   // linguistics
-  panini:['tab'], saussure:['kindle'], phonetics:['tab'], phonology:['tab'], morphology:['tab'],
+  panini:['tab'], saussure:['kindle'], morphology:['tab'],
   syntax:['tab'], semantics:['tab','laptop'], pragmatics:['kindle'],
   historical_ling:['kindle'], typology:['kindle'],
   // CS
@@ -273,6 +258,7 @@ const DEVICES={
   type_theory:['tab','laptop'], compilers:['laptop','tab'], comp_arch:['tab'],
   os:['laptop','tab'], networks:['laptop','tab'], databases:['laptop'],
   distributed_sys:['laptop','tab'], cryptography:['tab','laptop'],
+  quantum_computing:['tab','laptop'], hpc:['laptop','tab'],
   // AI
   ai_aima:['tab','laptop'], search_planning:['tab','laptop'], knowledge_repr:['kindle','tab'],
   logic_prog:['laptop'], prob_reasoning:['tab','laptop'], bayesian_nets:['tab','laptop'],
@@ -281,10 +267,12 @@ const DEVICES={
   computer_vision:['tab','laptop'], automated_reasoning:['tab','laptop'],
   game_playing:['tab','laptop'], connectionism:['tab','laptop'], statistical_learning:['tab','laptop'],
   deep_learning:['tab','laptop'], decision_theory:['tab'], ai_safety:['kindle'],
-  // physics
+  // physics — incl. quantum chem (QM applied to molecules) + fluid dynamics & continuum mech (classical mech of continua)
   feynman_lectures:['tab','kindle'], classical_mech:['tab'], electromagnetism:['tab'],
   thermodynamics:['tab'], quantum_mech:['tab'], statistical_mech:['tab'],
   relativity:['tab'], solid_state:['tab'], qft:['tab'], optics:['tab'],
+  quantum_chem:['tab','laptop'],
+  fluid_dynamics:['tab','laptop'], continuum_mech:['tab','laptop'],
   // hardware
   digital_logic:['tab','laptop'], circuit_theory:['tab'], art_electronics:['tab','laptop'],
   microelectronics:['tab'], semiconductors:['tab'], signal_processing:['tab','laptop'],
@@ -305,29 +293,6 @@ const DEVICES={
   formal_sec:['tab','laptop'], privacy:['tab','laptop'],
   ai_sec:['tab','laptop'], fuzzing:['laptop','tab'],
   blockchain_sec:['tab','laptop'],
-  // chemistry — diagram-heavy textbooks on the tab; computational methods on the laptop
-  gen_chem:['tab','laptop'], organic_chem:['tab','laptop'],
-  inorganic_chem:['tab','laptop'], phys_chem:['tab','laptop'],
-  analytical_chem:['tab','laptop'], quantum_chem:['tab','laptop'],
-  biochem:['tab','laptop'], electrochem:['tab','laptop'],
-  photochem:['tab'], organometallic:['tab'],
-  materials_chem:['tab','laptop'], chem_eng:['tab','laptop'],
-  // biology — heavy on figures (tab); prose-leaning topics on the kindle; computational on the laptop
-  cell_bio:['tab','kindle'], mol_bio:['tab','kindle'],
-  genetics:['tab','laptop'], evolution:['kindle','tab'],
-  ecology:['kindle','tab'], physiology:['tab'],
-  neuroscience:['tab','laptop'], developmental_bio:['tab'],
-  microbiology:['tab'], immunology:['tab'],
-  systems_bio:['tab','laptop'], biophysics:['tab','laptop'],
-  structural_bio:['tab','laptop'], bioinformatics:['laptop','tab'],
-  // economics — primary sources are mostly prose (kindle); math-heavy graduate texts on the tab; econometrics on the laptop
-  econ_intro:['kindle'], microeconomics:['tab','laptop'],
-  macroeconomics:['tab','laptop'], game_theory:['tab','laptop'],
-  econometrics:['laptop','tab'], behavioral_econ:['kindle','tab'],
-  monetary_econ:['kindle','tab'], growth_theory:['tab','laptop'],
-  dev_econ:['kindle','tab'], public_econ:['tab','kindle'],
-  industrial_org:['tab','laptop'], mechanism_design:['tab','laptop'],
-  financial_econ:['tab','laptop'], info_econ:['tab','laptop'],
   // robotics — math-heavy textbooks on the tab; ROS/code/algorithms on the laptop
   robotics:['laptop','tab'], kinematics:['tab','laptop'],
   robot_dynamics:['tab','laptop'], state_estimation:['tab','laptop'],
@@ -336,13 +301,6 @@ const DEVICES={
   robot_perception:['laptop','tab'], mobile_robots:['laptop','tab'],
   humanoid:['tab','laptop'], robot_learning:['laptop','tab'],
   hri:['kindle','tab'],
-  // medicine — diagrams and atlases (tab); prose-leaning topics (kindle); ethics canon on the kindle
-  anatomy:['tab'], histology:['tab'], pathology:['tab'],
-  pharmacology:['tab','kindle'], epidemiology:['tab','laptop'],
-  public_health:['kindle','tab'], clinical_med:['tab'],
-  radiology:['tab'], psychiatry:['kindle','tab'],
-  infectious_disease:['tab','kindle'], oncology:['tab','kindle'],
-  evidence_med:['kindle','tab'], med_ethics:['kindle'],
   // telecom — signal-processing math on the tab, GNU-Radio / SDR work on the laptop
   comm_theory:['tab','laptop'], coding_theory:['tab','laptop'],
   antennas:['tab','laptop'], sdr:['laptop','tab'],
@@ -375,7 +333,7 @@ function updateReadCounter(){
 // ═══════════════════════════════════════════════════════════════════
 // LAYOUT — automatic tiering via longest path through *visible* nodes
 // ═══════════════════════════════════════════════════════════════════
-const CAT_ORDER=['found','math','phil','ling','cs','ai','phys','hw','quant','sec','chem','bio','econ','robo','med','telecom'];
+const CAT_ORDER=['found','math','phil','ling','cs','ai','phys','hw','quant','sec','robo','telecom'];
 const COL_W=300,ROW_H=200,PAD_L=220,PAD_T=180;
 let TIER={},REV={},byTier={},tiers=[],POS={},SVGW=0,SVGH=0;
 let zoom=1;
