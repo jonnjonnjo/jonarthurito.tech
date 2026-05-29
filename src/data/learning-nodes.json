@@ -43,6 +43,18 @@
       {"t": "Introduction to Mathematical Logic", "a": "Elliott Mendelson", "n": "The classic axiomatic standard."}
     ]
   },
+  "godel": {
+    "cat": "found",
+    "label": "Gödel & Metamathematics",
+    "desc": "Gödel numbering, the two incompleteness theorems, Tarski's undefinability of truth, and the Church–Turing limits. Metamathematics: the mathematical study of the reach — and the limits — of formal knowledge.",
+    "pre": ["pred_logic", "computability", "number_systems"],
+    "books": [
+      {"t": "An Introduction to Gödel's Theorems", "a": "Peter Smith", "n": "The modern standard. Rigorous and patient — start here.", "primary": true},
+      {"t": "On Formally Undecidable Propositions of Principia Mathematica and Related Systems", "a": "Kurt Gödel (1931)", "n": "The original paper. Read after Smith.", "primary": true},
+      {"t": "Gödel's Incompleteness Theorems", "a": "Raymond Smullyan (1992)", "n": "Oxford Logic Guides — the clean technical treatment."},
+      {"t": "Gödel's Proof", "a": "Ernest Nagel & James R. Newman", "n": "The classic short, accessible account."}
+    ]
+  },
   "number_systems": {
     "cat": "math",
     "label": "Number Systems (ℕ→ℝ)",
@@ -87,17 +99,6 @@
       {"t": "Finite-Dimensional Vector Spaces", "a": "Paul Halmos", "n": "A Hungarian master's 200-page distillation."}
     ]
   },
-  "elementary_geometry": {
-    "cat": "math",
-    "label": "Euclidean & Synthetic Geometry",
-    "desc": "Plane and solid Euclidean geometry, ruler-and-compass constructions, similarity, the conics.",
-    "pre": ["proof"],
-    "books": [
-      {"t": "Kiselev's Geometry, Books I (Planimetry) & II (Stereometry)", "a": "A. P. Kiselev (tr. Alexander Givental, Sumizdat 2006/2008)", "n": "The Russian school textbook. Used in the USSR for over a century.", "primary": true},
-      {"t": "Elements", "a": "Euclid (~300 BC)", "n": "Books I–VI. The model."},
-      {"t": "Geometry Revisited", "a": "H. S. M. Coxeter & S. L. Greitzer", "n": "Olympiad-flavoured geometry, beautifully done."}
-    ]
-  },
   "elem_number_theory": {
     "cat": "math",
     "label": "Elementary Number Theory",
@@ -120,6 +121,18 @@
       {"t": "Basic Algebra I & II", "a": "Nathan Jacobson", "n": "American classic. Comprehensive."}
     ]
   },
+  "category_theory": {
+    "cat": "math",
+    "label": "Category Theory",
+    "desc": "Categories, functors, natural transformations, universal properties, limits, adjunctions, the Yoneda lemma, monads. The mathematics of structure itself — and, via Curry–Howard–Lambek, the shared spine of logic, types, and computation.",
+    "pre": ["abstract_algebra"],
+    "books": [
+      {"t": "Category Theory", "a": "Steve Awodey", "n": "The best rigorous entry once algebra is behind you.", "primary": true},
+      {"t": "Categories for the Working Mathematician", "a": "Saunders Mac Lane", "n": "The reference, by a co-founder of the subject.", "primary": true},
+      {"t": "Category Theory in Context", "a": "Emily Riehl", "n": "Modern, free PDF, richly motivated by examples."},
+      {"t": "Introduction to Higher-Order Categorical Logic", "a": "J. Lambek & P. J. Scott", "n": "The bridge made explicit: logic ≅ types ≅ categories.", "primary": true}
+    ]
+  },
   "real_analysis": {
     "cat": "math",
     "label": "Real Analysis",
@@ -129,17 +142,6 @@
       {"t": "Principles of Mathematical Analysis", "a": "Walter Rudin", "n": "\"Baby Rudin\". The American gold standard. Terse.", "primary": true},
       {"t": "Mathematical Analysis I & II", "a": "V. A. Zorich", "n": "Soviet/Russian. More complete than Rudin and arguably better.", "primary": true},
       {"t": "Cours d'analyse", "a": "Roger Godement", "n": "French analytic tradition (Bourbaki-adjacent)."}
-    ]
-  },
-  "multivar_calc": {
-    "cat": "math",
-    "label": "Multivariable & Vector Calculus",
-    "desc": "Differentiation in ℝⁿ, implicit/inverse function theorems, multiple integrals, line/surface integrals, Stokes.",
-    "pre": ["calculus", "linear_algebra"],
-    "books": [
-      {"t": "Calculus on Manifolds", "a": "Michael Spivak", "n": "140 pages. Stokes' theorem on manifolds in chapter 5.", "primary": true},
-      {"t": "Mathematical Analysis II", "a": "V. A. Zorich", "n": "The complete multivariable treatment."},
-      {"t": "Advanced Calculus", "a": "L. H. Loomis & S. Sternberg", "n": "Free PDF. Coordinate-free, banach-space-flavoured."}
     ]
   },
   "ode": {
@@ -164,17 +166,6 @@
       {"t": "Probability Theory: A Comprehensive Course", "a": "Achim Klenke", "n": "German. Modern and complete."}
     ]
   },
-  "topology": {
-    "cat": "math",
-    "label": "General Topology",
-    "desc": "Open sets, continuity, compactness, connectedness, product/quotient spaces, Tychonoff. The home of \"limit\".",
-    "pre": ["real_analysis", "set_theory"],
-    "books": [
-      {"t": "Topology", "a": "James Munkres", "n": "The pedagogical standard.", "primary": true},
-      {"t": "General Topology", "a": "John L. Kelley", "n": "Classic graduate reference."},
-      {"t": "Topologie", "a": "Klaus Jänich", "n": "German. Geometric intuition."}
-    ]
-  },
   "complex_analysis": {
     "cat": "math",
     "label": "Complex Analysis",
@@ -184,50 +175,6 @@
       {"t": "Complex Analysis", "a": "Lars V. Ahlfors", "n": "Fields-medallist's textbook. The standard.", "primary": true},
       {"t": "Methods of the Theory of Functions of a Complex Variable", "a": "M. A. Lavrentiev & B. V. Shabat", "n": "Soviet classic, geometric style."},
       {"t": "Complex Analysis", "a": "Stein & Shakarchi", "n": "Modern Princeton series."}
-    ]
-  },
-  "measure_theory": {
-    "cat": "math",
-    "label": "Measure & Integration",
-    "desc": "σ-algebras, Lebesgue measure, dominated convergence, Lᵖ spaces, Radon-Nikodym, Fubini-Tonelli.",
-    "pre": ["real_analysis"],
-    "books": [
-      {"t": "Real Analysis: Modern Techniques and Their Applications", "a": "Gerald B. Folland", "n": "The standard graduate text.", "primary": true},
-      {"t": "Measure Theory", "a": "Paul Halmos", "n": "1950 classic, still readable."},
-      {"t": "Real Analysis", "a": "H. L. Royden & P. M. Fitzpatrick", "n": "The traditional American course."}
-    ]
-  },
-  "functional_analysis": {
-    "cat": "math",
-    "label": "Functional Analysis",
-    "desc": "Banach/Hilbert spaces, bounded operators, Hahn-Banach, open mapping, spectral theorem.",
-    "pre": ["real_analysis", "linear_algebra", "measure_theory"],
-    "books": [
-      {"t": "Elements of the Theory of Functions and Functional Analysis", "a": "A. N. Kolmogorov & S. V. Fomin", "n": "Soviet. The most-used functional analysis book on Earth.", "primary": true},
-      {"t": "Functional Analysis", "a": "Walter Rudin", "n": "\"Big Rudin\". Western standard."},
-      {"t": "Functional Analysis", "a": "Peter D. Lax", "n": "Modern, motivated."}
-    ]
-  },
-  "diff_geometry": {
-    "cat": "math",
-    "label": "Differential Geometry",
-    "desc": "Smooth manifolds, tangent bundles, differential forms, Riemannian metrics, curvature.",
-    "pre": ["multivar_calc", "topology", "linear_algebra"],
-    "books": [
-      {"t": "Differential Geometry of Curves and Surfaces", "a": "Manfredo P. do Carmo", "n": "The standard introduction.", "primary": true},
-      {"t": "Riemannian Geometry", "a": "Manfredo P. do Carmo", "n": "The natural sequel."},
-      {"t": "Modern Geometry I, II, III", "a": "B. A. Dubrovin, A. T. Fomenko, S. P. Novikov", "n": "Soviet trilogy. Geometry from a physicist's viewpoint."}
-    ]
-  },
-  "pde": {
-    "cat": "math",
-    "label": "Partial Differential Equations",
-    "desc": "Heat, wave, Laplace equations; Fourier methods; Sobolev spaces; weak solutions; method of characteristics.",
-    "pre": ["real_analysis", "ode", "multivar_calc"],
-    "books": [
-      {"t": "Partial Differential Equations", "a": "Lawrence C. Evans", "n": "The American graduate standard.", "primary": true},
-      {"t": "Equations of Mathematical Physics", "a": "A. N. Tikhonov & A. A. Samarskii", "n": "Soviet classic."},
-      {"t": "Partial Differential Equations", "a": "V. I. Arnold (Lectures)", "n": "Geometric, characteristics-first."}
     ]
   },
   "aristotle_organon": {
@@ -250,19 +197,6 @@
       {"t": "Metaphysics & Nicomachean Ethics", "a": "Aristotle", "n": "Read with a guide. Hard.", "primary": true},
       {"t": "A History of Western Philosophy", "a": "Bertrand Russell", "n": "Bk. I — biased but readable."},
       {"t": "The Presocratic Philosophers", "a": "G. S. Kirk, J. E. Raven, M. Schofield", "n": "Standard fragment-collection with commentary."}
-    ]
-  },
-  "eastern_phil": {
-    "cat": "phil",
-    "label": "Eastern Philosophy",
-    "desc": "Chinese (Confucius, Laozi, Zhuangzi), Indian (Upanishads, Buddhist Madhyamaka), classical Japanese. Intentionally unparalleled by Greek thought.",
-    "pre": [],
-    "books": [
-      {"t": "道德經 (Dao De Jing / Tao Te Ching)", "a": "Lao Tzu (老子)", "n": "Read D. C. Lau or Robert Henricks translation.", "primary": true},
-      {"t": "論語 (Analects)", "a": "Confucius (孔子)", "n": "D. C. Lau or Edward Slingerland translation.", "primary": true},
-      {"t": "Mūlamadhyamakakārikā", "a": "Nāgārjuna (नागार्जुन, c. 150 CE)", "n": "Foundation of Mahāyāna Buddhist philosophy. Garfield translation.", "primary": true},
-      {"t": "The Principal Upaniṣads", "a": "ed. & tr. S. Radhakrishnan", "n": "Hindu philosophical canon."},
-      {"t": "A Source Book in Indian Philosophy", "a": "Radhakrishnan & C. A. Moore", "n": "Survey anthology."}
     ]
   },
   "medieval_phil": {
@@ -299,29 +233,6 @@
       {"t": "Three Dialogues Between Hylas and Philonous", "a": "George Berkeley", "n": "Idealism, beautifully written."}
     ]
   },
-  "ethics": {
-    "cat": "phil",
-    "label": "Ethics",
-    "desc": "Virtue (Aristotle), deontology (Kant), utilitarianism (Mill, Bentham), modern metaethics.",
-    "pre": ["ancient_phil"],
-    "books": [
-      {"t": "Nicomachean Ethics", "a": "Aristotle", "n": "Virtue ethics from the source.", "primary": true},
-      {"t": "Groundwork of the Metaphysics of Morals", "a": "Immanuel Kant (1785)", "n": "Categorical imperative in 80 pages.", "primary": true},
-      {"t": "Utilitarianism", "a": "John Stuart Mill (1861)", "n": "The classical defence.", "primary": true}
-    ]
-  },
-  "political_phil": {
-    "cat": "phil",
-    "label": "Political Philosophy",
-    "desc": "Hobbes, Locke, Rousseau, Marx, Rawls. The basis of legitimacy of the state.",
-    "pre": ["ancient_phil", "ethics"],
-    "books": [
-      {"t": "Leviathan", "a": "Thomas Hobbes (1651)", "n": "The state of nature argument.", "primary": true},
-      {"t": "The Social Contract", "a": "Jean-Jacques Rousseau (1762)", "n": "Foundation of modern political theory.", "primary": true},
-      {"t": "Capital, Vol. I", "a": "Karl Marx (1867)", "n": "Critique of political economy.", "primary": true},
-      {"t": "A Theory of Justice", "a": "John Rawls (1971)", "n": "20th-c. liberal canon."}
-    ]
-  },
   "epistemology": {
     "cat": "phil",
     "label": "Epistemology",
@@ -339,6 +250,18 @@
       {"t": "Probability Theory: The Logic of Science", "a": "E. T. Jaynes (2003)", "n": "Bayesian/formal epistemology. Probability as extended logic.", "primary": true}
     ]
   },
+  "epistemic_logic": {
+    "cat": "phil",
+    "label": "Modal & Epistemic Logic",
+    "desc": "Modal logic (necessity/possibility, Kripke / possible-world semantics) and its epistemic reading: operators for knowledge and belief, the KK thesis, common knowledge, dynamic update. The formal core of what it is to know.",
+    "pre": ["pred_logic", "epistemology"],
+    "books": [
+      {"t": "Knowledge and Belief: An Introduction to the Logic of the Two Notions", "a": "Jaakko Hintikka (1962)", "n": "Founded epistemic logic — knowledge and belief as modal operators.", "primary": true},
+      {"t": "Reasoning About Knowledge", "a": "R. Fagin, J. Y. Halpern, Y. Moses & M. Y. Vardi (1995)", "n": "The computer-science treatment: common knowledge, multi-agent epistemics, distributed systems.", "primary": true},
+      {"t": "Modal Logic", "a": "P. Blackburn, M. de Rijke & Y. Venema", "n": "The standard modern modal-logic text; Kripke semantics done properly."},
+      {"t": "Dynamic Epistemic Logic", "a": "H. van Ditmarsch, W. van der Hoek & B. Kooi", "n": "How knowledge changes under announcement and observation."}
+    ]
+  },
   "kant": {
     "cat": "phil",
     "label": "Kant",
@@ -348,49 +271,6 @@
       {"t": "Critique of Pure Reason (1781/1787)", "a": "Immanuel Kant", "n": "Read Kemp Smith or Guyer & Wood translation. Plan a year.", "primary": true},
       {"t": "Critique of Practical Reason (1788)", "a": "Immanuel Kant", "n": "Ethics, sequel to KrV.", "primary": true},
       {"t": "Prolegomena to Any Future Metaphysics", "a": "Immanuel Kant", "n": "Self-summary of the first Critique. Start here."}
-    ]
-  },
-  "hegel": {
-    "cat": "phil",
-    "label": "Hegel",
-    "desc": "Phenomenology of Spirit, Logic. Dialectical method. The most ambitious 19th-century system.",
-    "pre": ["kant"],
-    "books": [
-      {"t": "Phenomenology of Spirit (1807)", "a": "G. W. F. Hegel", "n": "Notoriously hard. Pinkard translation. Use a guide (e.g. Stern).", "primary": true},
-      {"t": "Science of Logic", "a": "G. W. F. Hegel", "n": "Hegel's \"logical\" system, post-Phenomenology.", "primary": true}
-    ]
-  },
-  "nietzsche": {
-    "cat": "phil",
-    "label": "Nietzsche",
-    "desc": "Genealogy of morals, eternal recurrence, will to power. The hammer of 19th-c. metaphysics.",
-    "pre": ["kant"],
-    "books": [
-      {"t": "Beyond Good and Evil", "a": "Friedrich Nietzsche (1886)", "n": "Most accessible mature work.", "primary": true},
-      {"t": "On the Genealogy of Morals", "a": "Friedrich Nietzsche (1887)", "n": "Three essays. Tightest argument.", "primary": true},
-      {"t": "Thus Spoke Zarathustra", "a": "Friedrich Nietzsche", "n": "Read after the others."}
-    ]
-  },
-  "phenomenology": {
-    "cat": "phil",
-    "label": "Phenomenology (Husserl)",
-    "desc": "Intentionality, the epoché, lifeworld. The descriptive science of consciousness.",
-    "pre": ["kant"],
-    "books": [
-      {"t": "Logical Investigations", "a": "Edmund Husserl (1900–01)", "n": "Two volumes. The foundational text.", "primary": true},
-      {"t": "Ideas I", "a": "Edmund Husserl (1913)", "n": "Phenomenological reduction at the source.", "primary": true},
-      {"t": "Cartesian Meditations", "a": "Edmund Husserl", "n": "Late, condensed."}
-    ]
-  },
-  "continental": {
-    "cat": "phil",
-    "label": "20th-c. Continental",
-    "desc": "Heidegger, Merleau-Ponty, Sartre, Foucault, Derrida.",
-    "pre": ["hegel", "phenomenology", "nietzsche"],
-    "books": [
-      {"t": "Being and Time", "a": "Martin Heidegger (1927)", "n": "Macquarrie & Robinson or Stambaugh translation.", "primary": true},
-      {"t": "Phenomenology of Perception", "a": "Maurice Merleau-Ponty (1945)", "n": "Embodied cognition's philosophical root.", "primary": true},
-      {"t": "Discipline and Punish", "a": "Michel Foucault (1975)", "n": "Genealogy of modern power."}
     ]
   },
   "analytic_phil": {
@@ -437,17 +317,6 @@
       {"t": "Materialism and the Mind-Body Problem", "a": "ed. David M. Rosenthal (1971; 2e Hackett 2000)", "n": "Anthology of canonical papers."}
     ]
   },
-  "panini": {
-    "cat": "ling",
-    "label": "Pāṇinian Grammar",
-    "desc": "Aṣṭādhyāyī (~5th c. BCE): the world's first generative grammar. ~4000 sūtras describing Sanskrit. Predates Western linguistics by 2300 years.",
-    "pre": [],
-    "books": [
-      {"t": "Aṣṭādhyāyī (अष्टाध्यायी)", "a": "Pāṇini (c. 4th c. BCE)", "n": "Read Sumitra M. Katre's translation.", "primary": true},
-      {"t": "Pāṇini: His Work and Its Traditions", "a": "George Cardona", "n": "The standard scholarly key."},
-      {"t": "The Aṣṭādhyāyī of Pāṇini", "a": "Rama Nath Sharma", "n": "6-volume annotated translation."}
-    ]
-  },
   "saussure": {
     "cat": "ling",
     "label": "Structural Linguistics (Saussure)",
@@ -489,38 +358,6 @@
       {"t": "Semantics in Generative Grammar", "a": "Irene Heim & Angelika Kratzer", "n": "The standard textbook.", "primary": true},
       {"t": "The Proper Treatment of Quantification in Ordinary English", "a": "Richard Montague (1973)", "n": "Foundational paper."},
       {"t": "Introduction to Montague Semantics", "a": "D. R. Dowty, R. E. Wall, S. Peters", "n": "Tutorial classic."}
-    ]
-  },
-  "pragmatics": {
-    "cat": "ling",
-    "label": "Pragmatics",
-    "desc": "Speech acts, presupposition, conversational implicature, deixis, politeness.",
-    "pre": ["syntax", "phil_lang"],
-    "books": [
-      {"t": "Pragmatics", "a": "Stephen C. Levinson", "n": "Cambridge textbook standard.", "primary": true},
-      {"t": "Logic and Conversation", "a": "H. P. Grice (1975)", "n": "The founding paper. ~25 pages.", "primary": true},
-      {"t": "Relevance: Communication and Cognition", "a": "D. Sperber & D. Wilson", "n": "Modern alternative framework."}
-    ]
-  },
-  "historical_ling": {
-    "cat": "ling",
-    "label": "Historical Linguistics",
-    "desc": "Sound change, the comparative method, Indo-European reconstruction, grammaticalisation.",
-    "pre": ["morphology"],
-    "books": [
-      {"t": "Language History, Language Change, and Language Relationship", "a": "Hans Henrich Hock & Brian D. Joseph", "n": "The standard.", "primary": true},
-      {"t": "Indo-European Language and Culture", "a": "Benjamin W. Fortson IV", "n": "Best PIE/IE survey."},
-      {"t": "Sound Change", "a": "Joseph Salmons", "n": "Modern phonological-change reference."}
-    ]
-  },
-  "typology": {
-    "cat": "ling",
-    "label": "Linguistic Typology",
-    "desc": "Cross-linguistic variation in word order, morphology, alignment. Universals.",
-    "pre": ["syntax", "morphology"],
-    "books": [
-      {"t": "Typology and Universals", "a": "William Croft", "n": "The standard textbook.", "primary": true},
-      {"t": "Describing Morphosyntax", "a": "Thomas E. Payne", "n": "Field-grammar handbook."}
     ]
   },
   "sicp": {
@@ -682,21 +519,11 @@
       {"t": "Artificial Intelligence", "a": "Patrick H. Winston", "n": "Older MIT classic, useful complement."}
     ]
   },
-  "search_planning": {
-    "cat": "ai",
-    "label": "Search & Heuristics",
-    "desc": "Uninformed search, A*, IDA*, heuristic admissibility/consistency, AND-OR graphs.",
-    "pre": ["ai_aima", "algorithms"],
-    "books": [
-      {"t": "Heuristics: Intelligent Search Strategies for Computer Problem Solving", "a": "Judea Pearl (1984)", "n": "The book on search.", "primary": true},
-      {"t": "Artificial Intelligence: Structures and Strategies for Complex Problem Solving", "a": "G. F. Luger", "n": "Strong on classical search."}
-    ]
-  },
   "knowledge_repr": {
     "cat": "ai",
     "label": "Knowledge Representation",
     "desc": "Description logics, frames, semantic networks, ontologies, situation/event calculi, non-monotonic reasoning.",
-    "pre": ["ai_aima", "pred_logic"],
+    "pre": ["ai_aima", "pred_logic", "epistemic_logic"],
     "books": [
       {"t": "Knowledge Representation and Reasoning", "a": "R. J. Brachman & H. J. Levesque", "n": "The textbook.", "primary": true},
       {"t": "Handbook of Knowledge Representation", "a": "ed. van Harmelen, Lifschitz, Porter", "n": "Field reference."}
@@ -742,44 +569,6 @@
       {"t": "Algorithms for Reinforcement Learning", "a": "Csaba Szepesvári", "n": "Theoretical companion."}
     ]
   },
-  "planning_ai": {
-    "cat": "ai",
-    "label": "Automated Planning",
-    "desc": "STRIPS, PDDL, partial-order planning, hierarchical task networks, planning under uncertainty.",
-    "pre": ["search_planning", "knowledge_repr"],
-    "books": [
-      {"t": "Automated Planning: Theory and Practice", "a": "M. Ghallab, D. Nau, P. Traverso", "n": "The standard reference.", "primary": true}
-    ]
-  },
-  "multi_agent": {
-    "cat": "ai",
-    "label": "Multi-Agent Systems",
-    "desc": "Game theory, mechanism design, distributed constraint optimisation, social choice.",
-    "pre": ["search_planning", "knowledge_repr"],
-    "books": [
-      {"t": "Multiagent Systems", "a": "Y. Shoham & K. Leyton-Brown", "n": "Algorithmic, game-theoretic, logical foundations.", "primary": true}
-    ]
-  },
-  "cognitive_sci": {
-    "cat": "ai",
-    "label": "Cognitive Science",
-    "desc": "Vision, memory, attention; computational levels (Marr); embodiment; ACT-R.",
-    "pre": ["ai_aima", "phil_mind"],
-    "books": [
-      {"t": "Vision: A Computational Investigation", "a": "David Marr (1982)", "n": "Three-level theory. Foundational.", "primary": true},
-      {"t": "Unified Theories of Cognition", "a": "Allen Newell (1990)", "n": "The Soar/ACT-R programme.", "primary": true}
-    ]
-  },
-  "agi": {
-    "cat": "ai",
-    "label": "AGI / Universal AI",
-    "desc": "AIXI, Solomonoff induction, Kolmogorov complexity, theoretical foundations of agency.",
-    "pre": ["computability", "complexity", "prob_reasoning", "measure_theory"],
-    "books": [
-      {"t": "Universal Artificial Intelligence", "a": "Marcus Hutter (2005)", "n": "AIXI; the mathematical AGI book.", "primary": true},
-      {"t": "An Introduction to Kolmogorov Complexity and Its Applications", "a": "M. Li & P. Vitányi", "n": "Algorithmic information theory."}
-    ]
-  },
   "info_theory": {
     "cat": "ai",
     "label": "Information Theory",
@@ -813,17 +602,6 @@
       {"t": "Multiple View Geometry in Computer Vision", "a": "Richard Hartley & Andrew Zisserman", "n": "Geometric vision; the projective-geometry reference.", "primary": true}
     ]
   },
-  "robotics": {
-    "cat": "robo",
-    "label": "Robotics — Foundations",
-    "desc": "Kinematics and dynamics, motion planning, SLAM, state estimation, manipulation. Where perception, planning and control meet a body.",
-    "pre": ["probability", "linear_algebra", "control_systems"],
-    "books": [
-      {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox", "n": "The Bayes-filter, SLAM, localisation reference.", "primary": true},
-      {"t": "Modern Robotics: Mechanics, Planning, and Control", "a": "Kevin M. Lynch & Frank C. Park", "n": "Free PDF; geometric kinematics from screws and Lie groups."},
-      {"t": "Robotics: Modelling, Planning and Control", "a": "B. Siciliano, L. Sciavicco, L. Villani & G. Oriolo", "n": "European reference, comprehensive."}
-    ]
-  },
   "automated_reasoning": {
     "cat": "ai",
     "label": "Automated Reasoning",
@@ -834,17 +612,6 @@
       {"t": "Handbook of Practical Logic and Automated Reasoning", "a": "John Harrison", "n": "Single-volume integration of logic, decision procedures, theorem proving — with OCaml code.", "primary": true},
       {"t": "Handbook of Satisfiability", "a": "ed. A. Biere, M. Heule, H. van Maaren, T. Walsh", "n": "The SAT/SMT reference."},
       {"t": "Handbook of Automated Reasoning", "a": "ed. A. Robinson & A. Voronkov", "n": "Two-volume field reference."}
-    ]
-  },
-  "game_playing": {
-    "cat": "ai",
-    "label": "Game Playing & Adversarial Search",
-    "desc": "Minimax, alpha-beta pruning, transposition tables, MCTS, evaluation functions. The classical AI of chess, Go, poker.",
-    "pre": ["search_planning"],
-    "books": [
-      {"t": "An Analysis of Alpha-Beta Pruning", "a": "Donald E. Knuth & Ronald W. Moore (1975)", "n": "The classical adversarial-search analysis.", "primary": true},
-      {"t": "A Survey of Monte Carlo Tree Search Methods", "a": "C. B. Browne et al. (2012)", "n": "The MCTS canonical survey.", "primary": true},
-      {"t": "One Jump Ahead: Computer Perfection at Checkers", "a": "Jonathan Schaeffer", "n": "First-hand account of solving checkers; the Chinook story."}
     ]
   },
   "connectionism": {
@@ -896,123 +663,6 @@
       {"t": "The Foundations of Causal Decision Theory", "a": "James M. Joyce (1999)", "n": "The CDT defence. Modern philosophical decision theory."}
     ]
   },
-  "ai_safety": {
-    "cat": "ai",
-    "label": "AI Safety & Alignment",
-    "desc": "Specification, robustness, interpretability, reward hacking, scalable oversight. The technical agenda of building AI systems whose objectives match ours.",
-    "pre": ["ai_aima", "decision_theory", "ethics"],
-    "books": [
-      {"t": "Human Compatible: Artificial Intelligence and the Problem of Control", "a": "Stuart Russell (2019)", "n": "AIMA's co-author on assistance games and inverse reward design.", "primary": true},
-      {"t": "Superintelligence: Paths, Dangers, Strategies", "a": "Nick Bostrom (2014)", "n": "The orthogonality thesis and instrumental convergence at length.", "primary": true},
-      {"t": "Concrete Problems in AI Safety", "a": "Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman & Dan Mané (2016)", "n": "The first widely-circulated technical-research agenda.", "primary": true},
-      {"t": "Deep Reinforcement Learning from Human Preferences", "a": "Paul F. Christiano, Jan Leike, Tom B. Brown, Miljan Martic, Shane Legg & Dario Amodei (2017)", "n": "RLHF; the alignment-via-feedback method that scaled to LLMs.", "primary": true}
-    ]
-  },
-  "feynman_lectures": {
-    "cat": "phys",
-    "label": "General Physics (Feynman)",
-    "desc": "Mechanics, E&M, quantum, statistical — at the level of feel-the-truth physics. The pedagogical anchor.",
-    "pre": ["calculus", "linear_algebra"],
-    "books": [
-      {"t": "The Feynman Lectures on Physics (3 vols.)", "a": "R. P. Feynman, R. B. Leighton, M. Sands", "n": "Free online at Caltech. Read all 3 volumes.", "primary": true},
-      {"t": "Problems in General Physics", "a": "I. E. Irodov", "n": "Soviet. The hardest problem book; canonical for top Russian undergrads.", "primary": true}
-    ]
-  },
-  "classical_mech": {
-    "cat": "phys",
-    "label": "Classical Mechanics",
-    "desc": "Lagrangian and Hamiltonian mechanics, symplectic geometry, rigid bodies, perturbation.",
-    "pre": ["ode", "multivar_calc", "feynman_lectures"],
-    "books": [
-      {"t": "Mechanics (Course of Theoretical Physics, Vol. 1)", "a": "L. D. Landau & E. M. Lifshitz", "n": "~200 pages. The most concentrated mechanics book ever written.", "primary": true},
-      {"t": "Mathematical Methods of Classical Mechanics", "a": "V. I. Arnold", "n": "Soviet. Differential-geometric mechanics from a master.", "primary": true},
-      {"t": "Classical Mechanics", "a": "Herbert Goldstein", "n": "American graduate standard."}
-    ]
-  },
-  "electromagnetism": {
-    "cat": "phys",
-    "label": "Electromagnetism",
-    "desc": "Maxwell's equations, gauges, radiation, Lorentz invariance.",
-    "pre": ["classical_mech", "multivar_calc", "complex_analysis", "pde"],
-    "books": [
-      {"t": "The Classical Theory of Fields (Course of Theoretical Physics, Vol. 2)", "a": "L. D. Landau & E. M. Lifshitz", "n": "Special and general relativity included. Soviet rigour.", "primary": true},
-      {"t": "Classical Electrodynamics", "a": "J. D. Jackson", "n": "The American graduate canon."},
-      {"t": "Introduction to Electrodynamics", "a": "David J. Griffiths", "n": "Best undergraduate intro."}
-    ]
-  },
-  "thermodynamics": {
-    "cat": "phys",
-    "label": "Thermodynamics",
-    "desc": "Laws of thermodynamics, entropy, free energies, phase transitions.",
-    "pre": ["classical_mech"],
-    "books": [
-      {"t": "Thermodynamics", "a": "Enrico Fermi (1937)", "n": "Pisa lectures. ~160 pages.", "primary": true},
-      {"t": "Thermodynamics and an Introduction to Thermostatistics", "a": "Herbert B. Callen", "n": "The thermodynamic-postulates approach."}
-    ]
-  },
-  "quantum_mech": {
-    "cat": "phys",
-    "label": "Quantum Mechanics",
-    "desc": "Hilbert spaces, observables, Schrödinger equation, perturbation theory, scattering, identical particles.",
-    "pre": ["classical_mech", "linear_algebra", "functional_analysis"],
-    "books": [
-      {"t": "Quantum Mechanics: Non-Relativistic Theory (Course of Theoretical Physics, Vol. 3)", "a": "L. D. Landau & E. M. Lifshitz", "n": "Soviet. Tighter than any Western text.", "primary": true},
-      {"t": "The Principles of Quantum Mechanics (4e)", "a": "Paul A. M. Dirac (1958)", "n": "The bra-ket inventor's own book.", "primary": true},
-      {"t": "Modern Quantum Mechanics", "a": "J. J. Sakurai", "n": "Best graduate-level Western text."}
-    ]
-  },
-  "statistical_mech": {
-    "cat": "phys",
-    "label": "Statistical Mechanics",
-    "desc": "Ensembles, partition functions, Bose/Fermi/Maxwell-Boltzmann statistics, phase transitions.",
-    "pre": ["classical_mech", "probability"],
-    "books": [
-      {"t": "Statistical Physics, Part 1 (Course of Theoretical Physics, Vol. 5)", "a": "L. D. Landau & E. M. Lifshitz", "n": "Soviet. The standard.", "primary": true},
-      {"t": "Fundamentals of Statistical and Thermal Physics", "a": "Frederick Reif", "n": "American gold standard."}
-    ]
-  },
-  "relativity": {
-    "cat": "phys",
-    "label": "General Relativity",
-    "desc": "Curved spacetime, Einstein field equations, Schwarzschild, FLRW cosmology.",
-    "pre": ["electromagnetism", "diff_geometry"],
-    "books": [
-      {"t": "The Classical Theory of Fields (latter half)", "a": "L. D. Landau & E. M. Lifshitz", "n": "GR developed alongside special relativity.", "primary": true},
-      {"t": "Gravitation", "a": "C. W. Misner, K. S. Thorne, J. A. Wheeler (MTW)", "n": "1300 pages. The encyclopedic text."},
-      {"t": "General Relativity", "a": "Robert M. Wald", "n": "Modern, mathematical."}
-    ]
-  },
-  "solid_state": {
-    "cat": "phys",
-    "label": "Solid State Physics",
-    "desc": "Crystals, band theory, phonons, semiconductors, superconductivity.",
-    "pre": ["quantum_mech", "statistical_mech"],
-    "books": [
-      {"t": "Solid State Physics", "a": "Neil W. Ashcroft & N. David Mermin", "n": "The graduate standard.", "primary": true},
-      {"t": "Introduction to Solid State Physics", "a": "Charles Kittel", "n": "The classical undergraduate text."}
-    ]
-  },
-  "qft": {
-    "cat": "phys",
-    "label": "Quantum Field Theory",
-    "desc": "Path integrals, Feynman diagrams, gauge theory, renormalisation. The deep theory.",
-    "pre": ["quantum_mech", "electromagnetism", "relativity"],
-    "books": [
-      {"t": "An Introduction to Quantum Field Theory", "a": "Michael E. Peskin & Daniel V. Schroeder", "n": "Standard graduate text.", "primary": true},
-      {"t": "Quantum Field Theory", "a": "Mark Srednicki", "n": "Tighter modern alternative; free online."},
-      {"t": "Quantum Electrodynamics (Course of Theoretical Physics, Vol. 4)", "a": "V. B. Berestetskii, E. M. Lifshitz, L. P. Pitaevskii", "n": "Soviet QED."}
-    ]
-  },
-  "optics": {
-    "cat": "phys",
-    "label": "Optics",
-    "desc": "Wave optics, diffraction, polarisation, coherence, Fourier optics.",
-    "pre": ["electromagnetism"],
-    "books": [
-      {"t": "Principles of Optics", "a": "Max Born & Emil Wolf", "n": "The bible of classical optics. German-Polish-British rigour.", "primary": true},
-      {"t": "Optics", "a": "Eugene Hecht", "n": "Best undergraduate intro."}
-    ]
-  },
   "digital_logic": {
     "cat": "hw",
     "label": "Digital Logic",
@@ -1043,26 +693,6 @@
       {"t": "Learning the Art of Electronics: A Hands-On Lab Course", "a": "T. C. Hayes & Paul Horowitz", "n": "The companion lab manual."}
     ]
   },
-  "microelectronics": {
-    "cat": "hw",
-    "label": "Microelectronics",
-    "desc": "Transistor-level design (CMOS), differential amplifiers, mixed-signal, op-amp internals.",
-    "pre": ["art_electronics", "electromagnetism"],
-    "books": [
-      {"t": "Microelectronic Circuits", "a": "Adel S. Sedra & Kenneth C. Smith", "n": "Canonical undergraduate microelectronics text.", "primary": true},
-      {"t": "Design of Analog CMOS Integrated Circuits", "a": "Behzad Razavi", "n": "IC design standard."}
-    ]
-  },
-  "semiconductors": {
-    "cat": "hw",
-    "label": "Semiconductor Physics",
-    "desc": "p-n junctions, MOSFETs, BJTs, drift/diffusion, device equations from band theory.",
-    "pre": ["solid_state", "microelectronics"],
-    "books": [
-      {"t": "Physics of Semiconductor Devices", "a": "S. M. Sze & Kwok K. Ng", "n": "The encyclopedic reference.", "primary": true},
-      {"t": "Semiconductor Device Fundamentals", "a": "Robert F. Pierret", "n": "Cleanest pedagogy."}
-    ]
-  },
   "signal_processing": {
     "cat": "hw",
     "label": "Digital Signal Processing",
@@ -1073,16 +703,6 @@
       {"t": "Signals and Systems", "a": "A. V. Oppenheim, A. S. Willsky, S. H. Nawab", "n": "Continuous-time prerequisite reading."}
     ]
   },
-  "control_systems": {
-    "cat": "hw",
-    "label": "Control Systems",
-    "desc": "Feedback, transfer functions, state-space, stability (Lyapunov), optimal control.",
-    "pre": ["signal_processing", "ode"],
-    "books": [
-      {"t": "Modern Control Engineering", "a": "Katsuhiko Ogata", "n": "Japanese-American standard.", "primary": true},
-      {"t": "Feedback Systems: An Introduction for Scientists and Engineers", "a": "K. J. Åström & R. M. Murray", "n": "Modern, free PDF."}
-    ]
-  },
   "embedded": {
     "cat": "hw",
     "label": "Embedded Systems",
@@ -1091,61 +711,6 @@
     "books": [
       {"t": "Embedded Systems: Real-Time Operating Systems for ARM Cortex-M Microcontrollers", "a": "Jonathan W. Valvano", "n": "Hands-on ARM book.", "primary": true},
       {"t": "Making Embedded Systems", "a": "Elecia White", "n": "Engineering wisdom."}
-    ]
-  },
-  "engr_em": {
-    "cat": "hw",
-    "label": "Engineering Electromagnetics",
-    "desc": "Transmission lines, Smith chart, S-parameters, waveguides, microwave networks, impedance matching.",
-    "pre": ["electromagnetism", "circuit_theory"],
-    "books": [
-      {"t": "Microwave Engineering", "a": "David M. Pozar (4e)", "n": "Pozar. The single most-used RF/microwave text in industry and academia.", "primary": true},
-      {"t": "Field and Wave Electromagnetics", "a": "David K. Cheng (2e)", "n": "Cleanest pedagogy on transmission lines and the Smith chart."},
-      {"t": "Engineering Electromagnetics", "a": "William H. Hayt & John A. Buck (9e)", "n": "Workhorse undergraduate text — for a slower first pass."}
-    ]
-  },
-  "fpga_hdl": {
-    "cat": "hw",
-    "label": "HDL & FPGA Design",
-    "desc": "Verilog/SystemVerilog/VHDL, synthesis, timing closure, on-chip RAM, RTL idioms, simulation/verification.",
-    "pre": ["digital_logic"],
-    "books": [
-      {"t": "FPGA Prototyping by SystemVerilog Examples", "a": "Pong P. Chu (2e)", "n": "Cheapest path from RTL to a working board — pair with a Tang Nano, iCEBreaker, or ULX3S.", "primary": true},
-      {"t": "RTL Modeling with SystemVerilog for Simulation and Synthesis", "a": "Stuart Sutherland", "n": "Idioms that synthesise the way you mean."},
-      {"t": "Reconfigurable Computing", "a": "Scott Hauck & André DeHon", "n": "When you want to know why the substrate looks the way it does."}
-    ]
-  },
-  "power_electronics": {
-    "cat": "hw",
-    "label": "Power Electronics",
-    "desc": "Switching converters (buck/boost/flyback), inverters, PWM, magnetics, motor drives, control of converters.",
-    "pre": ["art_electronics", "control_systems"],
-    "books": [
-      {"t": "Power Electronics: Converters, Applications, and Design", "a": "Ned Mohan, Tore M. Undeland & William P. Robbins (3e)", "n": "Mohan. The standard.", "primary": true},
-      {"t": "Fundamentals of Power Electronics", "a": "Robert W. Erickson & Dragan Maksimović (3e)", "n": "Erickson — converter modelling done right.", "primary": true},
-      {"t": "Power Electronics Handbook", "a": "Muhammad H. Rashid (ed., 4e)", "n": "Reference compendium."}
-    ]
-  },
-  "electric_machines": {
-    "cat": "hw",
-    "label": "Electric Machines & Drives",
-    "desc": "DC machines, transformers, induction and synchronous motors, BLDC/PMSM, field-oriented control.",
-    "pre": ["electromagnetism", "circuit_theory"],
-    "books": [
-      {"t": "Electric Machinery", "a": "A. E. Fitzgerald, Charles Kingsley Jr. & Stephen D. Umans (7e)", "n": "Fitzgerald. The standard.", "primary": true},
-      {"t": "Electric Machinery Fundamentals", "a": "Stephen J. Chapman (5e)", "n": "Pedagogically the cleanest entry point."},
-      {"t": "Analysis of Electric Machinery and Drive Systems", "a": "P. C. Krause, O. Wasynczuk, S. D. Sudhoff & S. Pekarek (3e)", "n": "For drives and field-oriented control — the dq-frame book."}
-    ]
-  },
-  "pcb_design": {
-    "cat": "hw",
-    "label": "PCB & Signal Integrity",
-    "desc": "Stack-up, return paths, controlled impedance, decoupling, EMC, high-speed routing, BGA fanout.",
-    "pre": ["art_electronics", "engr_em"],
-    "books": [
-      {"t": "High-Speed Digital Design: A Handbook of Black Magic", "a": "Howard W. Johnson & Martin Graham (1993)", "n": "Johnson & Graham. Required reading the moment edges get sharp.", "primary": true},
-      {"t": "Electromagnetic Compatibility Engineering", "a": "Henry W. Ott", "n": "Ott — the EMC text. Why your board fails the chamber.", "primary": true},
-      {"t": "Signal and Power Integrity — Simplified", "a": "Eric Bogatin (3e)", "n": "Best modern teaching. Pair with KiCad and a cheap VNA on the bench."}
     ]
   },
   "computer_internals": {
@@ -1179,71 +744,78 @@
       {"t": "Chip War", "a": "Chris Miller (2022)", "n": "Not engineering — the political/economic history of the semiconductor industry. Context for why the silicon you're reading about looks the way it does."}
     ]
   },
-  "comm_theory": {
-    "cat": "telecom",
-    "label": "Communication Theory",
-    "desc": "Modulation (PSK/QAM/OFDM), matched filtering, ML/MAP detection, link budgets, equalisation, synchronisation.",
-    "pre": ["signal_processing", "probability"],
+  "metaphysics": {
+    "cat": "phil",
+    "label": "Metaphysics",
+    "desc": "Ontology (what is there?), substance, properties, universals, causation, modality, possible worlds, time, personal identity. Sits opposite epistemology — the 'what is?' to its 'how do we know?'.",
+    "pre": ["aristotle_organon", "kant", "analytic_phil"],
     "books": [
-      {"t": "Digital Communications", "a": "John G. Proakis & Masoud Salehi (5e)", "n": "Proakis. The reference.", "primary": true},
-      {"t": "Principles of Digital Communication", "a": "Robert G. Gallager (2008)", "n": "Gallager — MIT 6.450 lectures. Mathematical rigour with no fat.", "primary": true},
-      {"t": "Principles of Communication Engineering", "a": "J. M. Wozencraft & I. M. Jacobs (1965)", "n": "The primary source. Where detection theory got its modern form.", "primary": true},
-      {"t": "Communication Systems", "a": "Simon Haykin (5e)", "n": "The cleanest undergraduate path."}
+      {"t": "Metaphysics", "a": "Aristotle (c. 350 BCE)", "n": "Founding text. Read Books Α, Γ, Δ, Ζ at minimum.", "primary": true},
+      {"t": "Naming and Necessity", "a": "Saul Kripke (1980)", "n": "Necessity, rigid designation, natural kinds. Lectures from 1970. Primary.", "primary": true},
+      {"t": "On the Plurality of Worlds", "a": "David Lewis (1986)", "n": "Modal realism — the most rigorous metaphysical system of the 20th century. Primary.", "primary": true},
+      {"t": "From a Logical Point of View", "a": "W. V. O. Quine (1953)", "n": "Contains 'On What There Is'. Primary.", "primary": true},
+      {"t": "Universals and Scientific Realism (Vols. I & II)", "a": "D. M. Armstrong (1978)", "n": "The systematic defense of universals."},
+      {"t": "Writing the Book of the World", "a": "Theodore Sider (2011)", "n": "Contemporary structural metaphysics."}
     ]
   },
-  "coding_theory": {
-    "cat": "telecom",
-    "label": "Error-Control Coding",
-    "desc": "Linear block codes, BCH/Reed–Solomon, convolutional/Viterbi, turbo, LDPC, polar codes.",
-    "pre": ["info_theory", "abstract_algebra"],
+  "phil_math": {
+    "cat": "phil",
+    "label": "Philosophy of Mathematics",
+    "desc": "Logicism, formalism, intuitionism, structuralism. Frege–Russell logicism, Hilbert's program, Brouwer's constructivism, Gödel's incompleteness, the Quine–Putnam indispensability argument.",
+    "pre": ["pred_logic", "real_analysis", "analytic_phil", "godel"],
     "books": [
-      {"t": "Error Control Coding", "a": "Shu Lin & Daniel J. Costello (2e)", "n": "Lin & Costello. The standard.", "primary": true},
-      {"t": "The Theory of Error-Correcting Codes", "a": "F. J. MacWilliams & N. J. A. Sloane (1977)", "n": "The algebraic-coding bible. Heavy.", "primary": true},
-      {"t": "Information Theory, Inference, and Learning Algorithms", "a": "David J. C. MacKay", "n": "Chapters 8–10 and 47–50 are the coding parts; free PDF."}
+      {"t": "The Foundations of Arithmetic", "a": "Gottlob Frege (1884)", "n": "The logicist program. Short. Read first.", "primary": true},
+      {"t": "Principia Mathematica", "a": "A. N. Whitehead & B. Russell (1910–1913)", "n": "The logicist execution. Primary; consult the introduction and selected passages, not cover to cover.", "primary": true},
+      {"t": "On Formally Undecidable Propositions of Principia Mathematica and Related Systems", "a": "Kurt Gödel (1931)", "n": "Incompleteness. ~30 pages. Read the primary.", "primary": true},
+      {"t": "Proofs and Refutations", "a": "Imre Lakatos (1976)", "n": "How mathematical knowledge actually grows. Dialogue form, beautiful.", "primary": true},
+      {"t": "Remarks on the Foundations of Mathematics", "a": "Ludwig Wittgenstein (1956)", "n": "The dissenting voice. Primary.", "primary": true},
+      {"t": "Philosophy of Mathematics: Structure and Ontology", "a": "Stewart Shapiro (1997)", "n": "Modern ante rem structuralism."}
     ]
   },
-  "antennas": {
-    "cat": "telecom",
-    "label": "Antenna Theory",
-    "desc": "Radiation integrals, dipoles, apertures, arrays, beam steering, impedance matching, near vs. far field.",
-    "pre": ["engr_em"],
+  "semiotics": {
+    "cat": "phil",
+    "label": "Semiotics",
+    "desc": "The general theory of signs. Peirce's triadic semiotic (sign–object–interpretant), Saussure's dyadic semiology (signifier–signified), Eco's structuralist synthesis. Sits between philosophy of language and structural linguistics.",
+    "pre": ["saussure", "phil_lang", "analytic_phil"],
     "books": [
-      {"t": "Antenna Theory: Analysis and Design", "a": "Constantine A. Balanis (4e)", "n": "Balanis. The reference.", "primary": true},
-      {"t": "Antennas: From Theory to Practice", "a": "Yi Huang & Kevin Boyle (2e)", "n": "Pragmatic, with measurement chapters — homelab-friendly."},
-      {"t": "The ARRL Antenna Book", "a": "American Radio Relay League", "n": "Amateur-radio canon — practical builds, NEC simulation, real designs you can wind in an afternoon."}
+      {"t": "Collected Papers (Vols. 1–8)", "a": "Charles Sanders Peirce (1931–1958)", "n": "The founder. Vol. 2 on logic-as-semiotic is essential. Primary.", "primary": true},
+      {"t": "Course in General Linguistics", "a": "Ferdinand de Saussure (1916)", "n": "European semiology. Also primary for the saussure node.", "primary": true},
+      {"t": "A Theory of Semiotics", "a": "Umberto Eco (1976)", "n": "The structuralist synthesis.", "primary": true},
+      {"t": "Foundations of the Theory of Signs", "a": "Charles W. Morris (1938)", "n": "Compact treatise — the syntax/semantics/pragmatics trichotomy comes from here.", "primary": true},
+      {"t": "Elements of Semiology", "a": "Roland Barthes (1964)", "n": "Short, accessible structural semiotics."}
     ]
   },
-  "sdr": {
-    "cat": "telecom",
-    "label": "Software-Defined Radio",
-    "desc": "I/Q sampling, DDC/DUC, GNU Radio flowgraphs, full-stack baseband-to-RF on commodity hardware (RTL-SDR, HackRF, PlutoSDR, LimeSDR).",
-    "pre": ["signal_processing", "comm_theory", "art_electronics"],
+  "multivar_calc": {
+    "cat": "math",
+    "label": "Multivariable & Vector Calculus",
+    "desc": "Differentiation in ℝⁿ, implicit/inverse function theorems, multiple integrals, line/surface integrals, Stokes.",
+    "pre": ["calculus", "linear_algebra"],
     "books": [
-      {"t": "Software-Defined Radio for Engineers", "a": "Travis F. Collins, Robin Getz, Di Pu & Alexander M. Wyglinski (2018)", "n": "Free PDF from Analog Devices, built around the PlutoSDR. The cleanest practical entry point.", "primary": true},
-      {"t": "Software Receiver Design", "a": "C. R. Johnson, W. A. Sethares & A. G. Klein", "n": "Builds a full receiver step-by-step. The pedagogical companion to the textbook physics."},
-      {"t": "PySDR: A Guide to SDR and DSP Using Python", "a": "Marc Lichtman (pysdr.org)", "n": "Free online. Modern Python/NumPy — the path most homelab projects actually take."}
+      {"t": "Calculus on Manifolds", "a": "Michael Spivak", "n": "140 pages. Stokes' theorem on manifolds in chapter 5.", "primary": true},
+      {"t": "Mathematical Analysis II", "a": "V. A. Zorich", "n": "The complete multivariable treatment."},
+      {"t": "Advanced Calculus", "a": "L. H. Loomis & S. Sternberg", "n": "Free PDF. Coordinate-free, banach-space-flavoured."}
     ]
   },
-  "wireless_comms": {
-    "cat": "telecom",
-    "label": "Wireless Communications",
-    "desc": "Fading channels, diversity, MIMO, OFDM, multiuser capacity, cellular (LTE/5G NR PHY).",
-    "pre": ["comm_theory", "antennas", "info_theory"],
+  "measure_theory": {
+    "cat": "math",
+    "label": "Measure & Integration",
+    "desc": "σ-algebras, Lebesgue measure, dominated convergence, Lᵖ spaces, Radon-Nikodym, Fubini-Tonelli.",
+    "pre": ["real_analysis"],
     "books": [
-      {"t": "Fundamentals of Wireless Communication", "a": "David Tse & Pramod Viswanath (2005)", "n": "Tse & Viswanath. The canonical graduate text. Free PDF.", "primary": true},
-      {"t": "Wireless Communications", "a": "Andrea Goldsmith (2005)", "n": "Goldsmith. The other canonical text — broader, less terse.", "primary": true},
-      {"t": "5G NR: The Next Generation Wireless Access Technology", "a": "Erik Dahlman, Stefan Parkvall & Johan Sköld (2e)", "n": "When you actually want to read the standard."}
+      {"t": "Real Analysis: Modern Techniques and Their Applications", "a": "Gerald B. Folland", "n": "The standard graduate text.", "primary": true},
+      {"t": "Measure Theory", "a": "Paul Halmos", "n": "1950 classic, still readable."},
+      {"t": "Real Analysis", "a": "H. L. Royden & P. M. Fitzpatrick", "n": "The traditional American course."}
     ]
   },
-  "optical_comms": {
-    "cat": "telecom",
-    "label": "Optical Fiber Communications",
-    "desc": "Single/multi-mode fibre, dispersion, attenuation, EDFAs, WDM, coherent detection, DSP for fibre.",
-    "pre": ["optics", "comm_theory"],
+  "pde": {
+    "cat": "math",
+    "label": "Partial Differential Equations",
+    "desc": "Heat, wave, Laplace equations; Fourier methods; Sobolev spaces; weak solutions; method of characteristics.",
+    "pre": ["real_analysis", "ode", "multivar_calc"],
     "books": [
-      {"t": "Fiber-Optic Communication Systems", "a": "Govind P. Agrawal (4e)", "n": "Agrawal. The reference.", "primary": true},
-      {"t": "Optical Fiber Communications", "a": "Gerd Keiser (5e)", "n": "Pedagogical alternative — gentler ramp."},
-      {"t": "Nonlinear Fiber Optics", "a": "Govind P. Agrawal (6e)", "n": "For coherent, long-haul, and anything where the Kerr nonlinearity matters."}
+      {"t": "Partial Differential Equations", "a": "Lawrence C. Evans", "n": "The American graduate standard.", "primary": true},
+      {"t": "Equations of Mathematical Physics", "a": "A. N. Tikhonov & A. A. Samarskii", "n": "Soviet classic."},
+      {"t": "Partial Differential Equations", "a": "V. I. Arnold (Lectures)", "n": "Geometric, characteristics-first."}
     ]
   },
   "stoch_proc": {
@@ -1323,474 +895,6 @@
       {"t": "Optimal Execution of Portfolio Transactions", "a": "R. Almgren & N. Chriss (2000)", "n": "The execution-cost framework everyone references.", "primary": true},
       {"t": "Algorithmic and High-Frequency Trading", "a": "Á. Cartea, S. Jaimungal & J. Penalva", "n": "Stochastic-control treatment of trading."},
       {"t": "Trading and Exchanges", "a": "Larry Harris", "n": "The institutional context — markets as designed objects."}
-    ]
-  },
-  "sec_principles": {
-    "cat": "sec",
-    "label": "Security Foundations & Threat Modeling",
-    "desc": "The eight Saltzer–Schroeder principles, the reference monitor, the trusted computing base, threat models, end-to-end argument.",
-    "pre": ["os"],
-    "books": [
-      {"t": "The Protection of Information in Computer Systems", "a": "J. H. Saltzer & M. D. Schroeder (1975)", "n": "The founding paper. Eight design principles still in use 50 years later.", "primary": true},
-      {"t": "Security Engineering", "a": "Ross Anderson (3e, 2020)", "n": "Free PDF. The single best book on the field — encyclopaedic, opinionated.", "primary": true},
-      {"t": "Secrets and Lies", "a": "Bruce Schneier", "n": "The mindset shift: security is risk management, not crypto."},
-      {"t": "Threat Modeling: Designing for Security", "a": "Adam Shostack", "n": "STRIDE, attack trees, the practical apparatus."}
-    ]
-  },
-  "access_control": {
-    "cat": "sec",
-    "label": "Access Control & Authorization",
-    "desc": "Access matrices, capabilities vs ACLs, Bell–LaPadula, Biba, Clark–Wilson, RBAC, ABAC, the take-grant and HRU undecidability results.",
-    "pre": ["sec_principles"],
-    "books": [
-      {"t": "Protection", "a": "Butler Lampson (1971)", "n": "The access matrix. Primary source.", "primary": true},
-      {"t": "Protection in Operating Systems", "a": "M. A. Harrison, W. L. Ruzzo & J. D. Ullman (1976)", "n": "The HRU undecidability theorem.", "primary": true},
-      {"t": "Secure Computer Systems: Mathematical Foundations", "a": "D. E. Bell & L. J. LaPadula (1973)", "n": "The lattice model of multi-level security.", "primary": true},
-      {"t": "Role-Based Access Control Models", "a": "R. Sandhu, E. Coyne, H. Feinstein & C. Youman (1996)", "n": "The RBAC paper.", "primary": true}
-    ]
-  },
-  "crypto_eng": {
-    "cat": "sec",
-    "label": "Applied & Modern Cryptography",
-    "desc": "Provable security, semantic security, authenticated encryption, hash functions, digital signatures, zero-knowledge — built rigorously, then built right.",
-    "pre": ["cryptography", "info_theory"],
-    "books": [
-      {"t": "Introduction to Modern Cryptography", "a": "J. Katz & Y. Lindell", "n": "The rigorous standard. Reductionist, definitional.", "primary": true},
-      {"t": "A Graduate Course in Applied Cryptography", "a": "D. Boneh & V. Shoup", "n": "Free PDF. The other modern standard, more comprehensive.", "primary": true},
-      {"t": "Cryptography Engineering", "a": "N. Ferguson, B. Schneier & T. Kohno", "n": "How to actually build it without shooting yourself."},
-      {"t": "Applied Cryptography", "a": "Bruce Schneier (2e, 1996)", "n": "The classic. Dated on details, evergreen on instinct."}
-    ]
-  },
-  "crypto_protocols": {
-    "cat": "sec",
-    "label": "Cryptographic Protocols",
-    "desc": "Authentication, key exchange, TLS, Signal, MPC. Why protocols fail even when the primitives are sound.",
-    "pre": ["crypto_eng"],
-    "books": [
-      {"t": "Using Encryption for Authentication in Large Networks of Computers", "a": "R. M. Needham & M. D. Schroeder (1978)", "n": "The first authentication protocol — and the bug that took 17 years to find.", "primary": true},
-      {"t": "Breaking and Fixing the Needham–Schroeder Public-Key Protocol", "a": "Gavin Lowe (1995)", "n": "The fix, found by model checking. A landmark.", "primary": true},
-      {"t": "Protocols for Authentication and Key Establishment", "a": "C. Boyd, A. Mathuria & D. Stebila", "n": "The reference catalogue."},
-      {"t": "The Double Ratchet Algorithm", "a": "T. Perrin & M. Marlinspike (Signal, 2016)", "n": "The end-to-end-encryption design that everyone copies.", "primary": true}
-    ]
-  },
-  "network_sec": {
-    "cat": "sec",
-    "label": "Network Security",
-    "desc": "TCP/IP attacks, DNS poisoning, BGP hijacks, firewalls, IDS/IPS, VPN protocols, DDoS.",
-    "pre": ["networks", "cryptography"],
-    "books": [
-      {"t": "Security Problems in the TCP/IP Protocol Suite", "a": "Steven M. Bellovin (1989)", "n": "The paper that catalogued the attacks the internet was born with.", "primary": true},
-      {"t": "Cryptography and Network Security", "a": "William Stallings", "n": "The textbook. Comprehensive, methodical."},
-      {"t": "Practical UNIX & Internet Security", "a": "S. Garfinkel, G. Spafford & A. Schwartz (3e)", "n": "The operator's bible — old but the foundations don't move."},
-      {"t": "Firewalls and Internet Security", "a": "W. R. Cheswick, S. M. Bellovin & A. D. Rubin (2e, 2003)", "n": "By the people who built the first firewalls."}
-    ]
-  },
-  "web_sec": {
-    "cat": "sec",
-    "label": "Web & Application Security",
-    "desc": "OWASP Top 10, XSS, CSRF, SQL injection, SSRF, deserialization, same-origin policy, CSP, OAuth/OIDC pitfalls.",
-    "pre": ["networks", "databases"],
-    "books": [
-      {"t": "The Web Application Hacker's Handbook", "a": "D. Stuttard & M. Pinto (2e)", "n": "The standard. Burp Suite authors. Read cover-to-cover.", "primary": true},
-      {"t": "The Tangled Web", "a": "Michał Zalewski", "n": "The web's security model is an accident — Zalewski explains the accident."},
-      {"t": "Real-World Bug Hunting", "a": "Peter Yaworski", "n": "Postmortems of real disclosed bug-bounty findings."},
-      {"t": "OWASP Web Security Testing Guide", "a": "OWASP (free)", "n": "The community-maintained methodology."}
-    ]
-  },
-  "os_sec": {
-    "cat": "sec",
-    "label": "Operating System Security",
-    "desc": "Privilege separation, sandboxing, capabilities, MAC (SELinux/AppArmor), kernel hardening, syscall filtering, container isolation.",
-    "pre": ["os", "sec_principles"],
-    "books": [
-      {"t": "Operating System Security", "a": "Trent Jaeger", "n": "The textbook treatment. Reference-monitor-first.", "primary": true},
-      {"t": "Multics Security Evaluation: Vulnerability Analysis", "a": "P. A. Karger & R. R. Schell (1974)", "n": "The first red-team report. Still essential reading.", "primary": true},
-      {"t": "Linux Security Modules: General Security Support for the Linux Kernel", "a": "C. Wright, C. Cowan, S. Smalley, J. Morris & G. Kroah-Hartman (2002)", "n": "How LSM/SELinux got into Linux.", "primary": true}
-    ]
-  },
-  "bin_exploit": {
-    "cat": "sec",
-    "label": "Binary Exploitation",
-    "desc": "Stack and heap overflows, format strings, ROP/JOP, ASLR/DEP/CFI bypass, shellcoding, kernel exploitation.",
-    "pre": ["comp_arch", "os", "compilers"],
-    "books": [
-      {"t": "Smashing the Stack for Fun and Profit", "a": "Aleph One — Phrack 49 (1996)", "n": "The primary text. Required reading.", "primary": true},
-      {"t": "Hacking: The Art of Exploitation", "a": "Jon Erickson (2e)", "n": "The cleanest hands-on intro. From bits to shellcode.", "primary": true},
-      {"t": "The Shellcoder's Handbook", "a": "C. Anley, J. Heasman, F. Lindner & G. Richarte (2e)", "n": "The exploitation reference, multi-platform."},
-      {"t": "Return-into-libc Without Function Calls", "a": "Hovav Shacham (2007)", "n": "The ROP paper — the response to non-executable stacks.", "primary": true}
-    ]
-  },
-  "reverse_eng": {
-    "cat": "sec",
-    "label": "Reverse Engineering",
-    "desc": "Disassembly, decompilation, dynamic instrumentation, anti-debug, packers, symbolic execution.",
-    "pre": ["comp_arch", "compilers"],
-    "books": [
-      {"t": "Reversing: Secrets of Reverse Engineering", "a": "Eldad Eilam", "n": "The classic intro. Windows-flavoured but principles transfer.", "primary": true},
-      {"t": "Practical Binary Analysis", "a": "Dennis Andriesse", "n": "Modern, Linux-flavoured, with instrumentation and symbex."},
-      {"t": "The IDA Pro Book", "a": "Chris Eagle (2e)", "n": "If you're using IDA, this is the manual that should have shipped with it."},
-      {"t": "The Ghidra Book", "a": "C. Eagle & K. Nance", "n": "The free-tool counterpart, by the IDA Pro Book author."}
-    ]
-  },
-  "malware": {
-    "cat": "sec",
-    "label": "Malware Analysis",
-    "desc": "Static and dynamic analysis, unpacking, behavioural triage, YARA, sandbox evasion, families and lineages.",
-    "pre": ["reverse_eng"],
-    "books": [
-      {"t": "Practical Malware Analysis", "a": "M. Sikorski & A. Honig", "n": "The teaching standard — labs included.", "primary": true},
-      {"t": "The Art of Memory Forensics", "a": "M. H. Ligh, A. Case, J. Levy & A. Walters", "n": "Volatility-focused; the memory side of analysis."},
-      {"t": "Malware: Fighting Malicious Code", "a": "E. Skoudis & L. Zeltser", "n": "Older, but the taxonomy is still right."}
-    ]
-  },
-  "forensics": {
-    "cat": "sec",
-    "label": "Digital Forensics & Incident Response",
-    "desc": "Disk imaging, file-system carving, memory forensics, network artifacts, timeline reconstruction, chain of custody.",
-    "pre": ["os", "network_sec"],
-    "books": [
-      {"t": "File System Forensic Analysis", "a": "Brian Carrier", "n": "The Sleuth Kit author. The reference for file-system internals.", "primary": true},
-      {"t": "Digital Evidence and Computer Crime", "a": "Eoghan Casey (3e)", "n": "The methodology and legal frame."},
-      {"t": "Network Forensics", "a": "S. Davidoff & J. Ham", "n": "Wire-side investigation, with case-driven structure."}
-    ]
-  },
-  "offensive_sec": {
-    "cat": "sec",
-    "label": "Offensive Security & Red Team",
-    "desc": "Recon, lateral movement, post-exploitation, C2, OPSEC, social engineering, adversary emulation.",
-    "pre": ["network_sec", "web_sec", "bin_exploit"],
-    "books": [
-      {"t": "The Hacker Playbook 3", "a": "Peter Kim", "n": "Workflow-driven, red-team-flavoured.", "primary": true},
-      {"t": "Penetration Testing", "a": "Georgia Weidman", "n": "The hands-on intro. Lab-heavy."},
-      {"t": "The Art of Deception", "a": "Kevin Mitnick", "n": "Social engineering from the man who lived it."},
-      {"t": "Red Team Field Manual", "a": "Ben Clark", "n": "Pocket reference for engagement."}
-    ]
-  },
-  "defensive_sec": {
-    "cat": "sec",
-    "label": "Defensive Security & Detection Engineering",
-    "desc": "SOC operations, log analysis, EDR, threat hunting, NSM, MITRE ATT&CK mapping, detection-as-code.",
-    "pre": ["network_sec", "os_sec"],
-    "books": [
-      {"t": "The Practice of Network Security Monitoring", "a": "Richard Bejtlich", "n": "NSM as a discipline, by the practitioner who named it.", "primary": true},
-      {"t": "Applied Network Security Monitoring", "a": "C. Sanders & J. Smith", "n": "The hands-on companion."},
-      {"t": "Intelligence-Driven Incident Response", "a": "S. Roberts & R. Brown", "n": "Threat intel as a feedback loop into detection."},
-      {"t": "Blue Team Field Manual", "a": "A. White & B. Clark", "n": "Counterpart to RTFM, defender-side."}
-    ]
-  },
-  "hw_sec": {
-    "cat": "sec",
-    "label": "Hardware Security & Side Channels",
-    "desc": "Timing attacks, power analysis (DPA), fault injection, cache side channels, speculative-execution leaks (Spectre/Meltdown), hardware roots of trust.",
-    "pre": ["comp_arch", "cryptography"],
-    "books": [
-      {"t": "Timing Attacks on Implementations of Diffie-Hellman, RSA, DSS, and Other Systems", "a": "Paul Kocher (1996)", "n": "The first side-channel paper. Three pages.", "primary": true},
-      {"t": "Differential Power Analysis", "a": "P. Kocher, J. Jaffe & B. Jun (1999)", "n": "DPA. The smartcard nightmare.", "primary": true},
-      {"t": "Meltdown: Reading Kernel Memory from User Space", "a": "M. Lipp et al. (2018)", "n": "Speculative execution turns into a data-leak primitive.", "primary": true},
-      {"t": "Spectre Attacks: Exploiting Speculative Execution", "a": "P. Kocher et al. (2019)", "n": "The companion paper that showed the class of bug.", "primary": true},
-      {"t": "The Hardware Hacker", "a": "Andrew \"bunnie\" Huang", "n": "Field notes from someone who actually opens chips."}
-    ]
-  },
-  "formal_sec": {
-    "cat": "sec",
-    "label": "Formal Methods & Verified Security",
-    "desc": "Non-interference, information-flow control, verified kernels and compilers, protocol verification (ProVerif, Tamarin).",
-    "pre": ["type_theory", "automated_reasoning"],
-    "books": [
-      {"t": "Security Policies and Security Models", "a": "J. A. Goguen & J. Meseguer (1982)", "n": "The non-interference paper.", "primary": true},
-      {"t": "seL4: Formal Verification of an OS Kernel", "a": "G. Klein et al. (2009)", "n": "The verified microkernel.", "primary": true},
-      {"t": "Formal Verification of a Realistic Compiler", "a": "Xavier Leroy (2009)", "n": "CompCert. A verified C compiler is an attack-surface eliminator.", "primary": true},
-      {"t": "Software Foundations, Vol. 4: QuickChick", "a": "Pierce et al. (free)", "n": "Hands-on Coq for security-relevant properties."}
-    ]
-  },
-  "privacy": {
-    "cat": "sec",
-    "label": "Privacy, Anonymity & Differential Privacy",
-    "desc": "Mix networks, onion routing, k-anonymity, differential privacy, secure multiparty computation, private information retrieval.",
-    "pre": ["crypto_eng"],
-    "books": [
-      {"t": "Untraceable Electronic Mail, Return Addresses, and Digital Pseudonyms", "a": "David Chaum (1981)", "n": "The mix-network paper. Where anonymity research begins.", "primary": true},
-      {"t": "Tor: The Second-Generation Onion Router", "a": "R. Dingledine, N. Mathewson & P. Syverson (2004)", "n": "The Tor design paper.", "primary": true},
-      {"t": "Differential Privacy", "a": "Cynthia Dwork (2006)", "n": "The definition.", "primary": true},
-      {"t": "The Algorithmic Foundations of Differential Privacy", "a": "C. Dwork & A. Roth (2014)", "n": "The book-length follow-up. Free PDF."}
-    ]
-  },
-  "ai_sec": {
-    "cat": "sec",
-    "label": "Adversarial ML & AI Security",
-    "desc": "Adversarial examples, model extraction, membership inference, data poisoning, prompt injection, jailbreaks, robust training.",
-    "pre": ["deep_learning", "sec_principles"],
-    "books": [
-      {"t": "Intriguing Properties of Neural Networks", "a": "C. Szegedy et al. (2013)", "n": "The paper that coined adversarial examples.", "primary": true},
-      {"t": "Explaining and Harnessing Adversarial Examples", "a": "I. Goodfellow, J. Shlens & C. Szegedy (2014)", "n": "FGSM. The reading after Szegedy.", "primary": true},
-      {"t": "Towards Evaluating the Robustness of Neural Networks", "a": "N. Carlini & D. Wagner (2017)", "n": "C&W attacks. How to actually evaluate defences.", "primary": true},
-      {"t": "Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning", "a": "B. Biggio & F. Roli (2018)", "n": "The retrospective."}
-    ]
-  },
-  "fuzzing": {
-    "cat": "sec",
-    "label": "Fuzzing & Software Testing for Security",
-    "desc": "Mutation and generation fuzzing, coverage-guided fuzzing (AFL/libFuzzer), structure-aware fuzzing, sanitizers, hybrid fuzzing.",
-    "pre": ["bin_exploit", "compilers"],
-    "books": [
-      {"t": "An Empirical Study of the Reliability of UNIX Utilities", "a": "B. P. Miller, L. Fredriksen & B. So (1990)", "n": "The original fuzzing paper. \"It still finds bugs decades later.\"", "primary": true},
-      {"t": "American Fuzzy Lop — Technical Whitepaper", "a": "Michał Zalewski", "n": "The design notes for AFL.", "primary": true},
-      {"t": "The Fuzzing Book", "a": "A. Zeller, R. Gopinath, M. Böhme, G. Fraser & C. Holler (free)", "n": "Interactive textbook. Modern."},
-      {"t": "Evaluating Fuzz Testing", "a": "G. Klees, A. Ruef, B. Cooper, S. Wei & M. Hicks (2018)", "n": "How to actually compare fuzzers without lying to yourself.", "primary": true}
-    ]
-  },
-  "blockchain_sec": {
-    "cat": "sec",
-    "label": "Blockchain & Smart Contract Security",
-    "desc": "Consensus, BFT, double-spends, MEV, smart-contract vulnerabilities (reentrancy, integer issues), bridge hacks.",
-    "pre": ["crypto_protocols"],
-    "books": [
-      {"t": "Bitcoin: A Peer-to-Peer Electronic Cash System", "a": "Satoshi Nakamoto (2008)", "n": "The 9-page primary source. Read it before any commentary.", "primary": true},
-      {"t": "The Byzantine Generals Problem", "a": "L. Lamport, R. Shostak & M. Pease (1982)", "n": "The consensus problem that blockchains pretend to have solved.", "primary": true},
-      {"t": "A Survey of Attacks on Ethereum Smart Contracts", "a": "N. Atzei, M. Bartoletti & T. Cimoli (2017)", "n": "The taxonomy of smart-contract bugs.", "primary": true},
-      {"t": "Mastering Bitcoin", "a": "Andreas M. Antonopoulos (2e)", "n": "Free online. The protocol-level operator's guide."}
-    ]
-  },
-  "quantum_chem": {
-    "cat": "phys",
-    "label": "Quantum & Computational Chemistry",
-    "desc": "Born–Oppenheimer, Hartree–Fock, post-HF methods, DFT, basis sets, ab initio and semi-empirical calculation.",
-    "pre": ["quantum_mech", "linear_algebra"],
-    "books": [
-      {"t": "Quantum Chemistry", "a": "Donald A. McQuarrie", "n": "The cleanest introduction. Read first.", "primary": true},
-      {"t": "Modern Quantum Chemistry", "a": "Attila Szabo & Neil S. Ostlund", "n": "The Hartree–Fock and post-HF reference.", "primary": true},
-      {"t": "Molecular Electronic-Structure Theory", "a": "T. Helgaker, P. Jørgensen & J. Olsen", "n": "Encyclopaedic. For when McQuarrie isn't enough."}
-    ]
-  },
-  "kinematics": {
-    "cat": "robo",
-    "label": "Robot Kinematics",
-    "desc": "Rigid-body transforms (SE(3)), Denavit–Hartenberg, forward and inverse kinematics, Jacobians, screw theory, Lie groups.",
-    "pre": ["linear_algebra", "multivar_calc"],
-    "books": [
-      {"t": "A Mathematical Introduction to Robotic Manipulation", "a": "Richard M. Murray, Zexiang Li & S. Shankar Sastry (1994)", "n": "Free PDF. Screws, twists and exponential coordinates. Primary.", "primary": true},
-      {"t": "Modern Robotics: Mechanics, Planning, and Control", "a": "Kevin M. Lynch & Frank C. Park (2017)", "n": "Free PDF. Lie-group kinematics, the modern teaching standard.", "primary": true},
-      {"t": "Robotics: Modelling, Planning and Control", "a": "B. Siciliano, L. Sciavicco, L. Villani & G. Oriolo", "n": "The comprehensive European reference."}
-    ]
-  },
-  "robot_dynamics": {
-    "cat": "robo",
-    "label": "Robot Dynamics",
-    "desc": "Newton–Euler and Lagrangian formulations, manipulator equations of motion, recursive algorithms, articulated-body inertia.",
-    "pre": ["kinematics", "classical_mech"],
-    "books": [
-      {"t": "Rigid Body Dynamics Algorithms", "a": "Roy Featherstone (2008)", "n": "Recursive O(n) dynamics. The algorithms reference.", "primary": true},
-      {"t": "Robot Modeling and Control", "a": "Mark W. Spong, Seth Hutchinson & M. Vidyasagar (2e)", "n": "The standard teaching text."},
-      {"t": "Dynamics of Multibody Systems", "a": "Ahmed A. Shabana (5e)", "n": "Multibody view — generalises beyond serial manipulators."}
-    ]
-  },
-  "state_estimation": {
-    "cat": "robo",
-    "label": "State Estimation",
-    "desc": "Bayes filter, Kalman/EKF/UKF, particle filters, factor graphs, smoothing — making sense of noisy sensors.",
-    "pre": ["probability", "linear_algebra"],
-    "books": [
-      {"t": "A New Approach to Linear Filtering and Prediction Problems", "a": "R. E. Kalman (1960)", "n": "The Kalman filter paper. Primary.", "primary": true},
-      {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox (2005)", "n": "Bayes-filter and beyond. The bible.", "primary": true},
-      {"t": "State Estimation for Robotics", "a": "Timothy D. Barfoot (2017)", "n": "Lie-group state estimation. Modern."}
-    ]
-  },
-  "motion_planning": {
-    "cat": "robo",
-    "label": "Motion Planning",
-    "desc": "Configuration space, sampling-based planners (PRM, RRT, RRT*), grid search, optimisation-based planning, kinodynamic planning.",
-    "pre": ["algorithms", "kinematics"],
-    "books": [
-      {"t": "Planning Algorithms", "a": "Steven M. LaValle (2006)", "n": "Free online. The standard — encyclopaedic and rigorous.", "primary": true},
-      {"t": "Probabilistic Roadmaps for Path Planning in High-Dimensional Configuration Spaces", "a": "L. E. Kavraki, P. Švestka, J.-C. Latombe & M. H. Overmars (1996)", "n": "The PRM paper. Primary.", "primary": true},
-      {"t": "Rapidly-Exploring Random Trees: A New Tool for Path Planning", "a": "Steven M. LaValle (1998)", "n": "The RRT paper. Primary.", "primary": true},
-      {"t": "Principles of Robot Motion", "a": "Howie Choset, Kevin Lynch, Seth Hutchinson, et al.", "n": "Excellent teaching companion to LaValle."}
-    ]
-  },
-  "robot_control": {
-    "cat": "robo",
-    "label": "Robot Control",
-    "desc": "Computed-torque control, PD with gravity compensation, impedance and force control, adaptive and robust control of manipulators.",
-    "pre": ["control_systems", "robot_dynamics"],
-    "books": [
-      {"t": "Robot Modeling and Control", "a": "Mark W. Spong, Seth Hutchinson & M. Vidyasagar (2e)", "n": "Standard treatment — control built on the dynamics text.", "primary": true},
-      {"t": "Applied Nonlinear Control", "a": "Jean-Jacques E. Slotine & Weiping Li (1991)", "n": "The nonlinear-control bible used in robotics.", "primary": true},
-      {"t": "Adaptive Control", "a": "Karl J. Åström & Björn Wittenmark (2e)", "n": "Adaptive control reference."}
-    ]
-  },
-  "slam": {
-    "cat": "robo",
-    "label": "SLAM (Simultaneous Localisation & Mapping)",
-    "desc": "Filtering and graph-based SLAM, visual and LiDAR SLAM, loop closure, bundle adjustment, factor-graph back-ends.",
-    "pre": ["state_estimation", "computer_vision"],
-    "books": [
-      {"t": "Past, Present, and Future of Simultaneous Localization and Mapping: Towards the Robust-Perception Age", "a": "C. Cadena, L. Carlone, H. Carrillo, et al. (2016)", "n": "The reference survey. Primary.", "primary": true},
-      {"t": "Probabilistic Robotics", "a": "Sebastian Thrun, Wolfram Burgard & Dieter Fox (2005)", "n": "The SLAM chapters remain canonical.", "primary": true},
-      {"t": "Multiple View Geometry in Computer Vision", "a": "Richard Hartley & Andrew Zisserman (2e)", "n": "The geometric foundations of visual SLAM."}
-    ]
-  },
-  "manipulation": {
-    "cat": "robo",
-    "label": "Manipulation & Grasping",
-    "desc": "Contact mechanics, grasp analysis, form/force closure, planning under contact, dexterous in-hand manipulation.",
-    "pre": ["robot_dynamics", "kinematics"],
-    "books": [
-      {"t": "Mechanics of Robotic Manipulation", "a": "Matthew T. Mason (2001)", "n": "MIT Press. The rigorous standard.", "primary": true},
-      {"t": "Robot Hands and the Mechanics of Manipulation", "a": "Matthew T. Mason & J. Kenneth Salisbury Jr. (1985)", "n": "The grasp-analysis founding text. Primary.", "primary": true},
-      {"t": "Modern Robotics", "a": "Kevin M. Lynch & Frank C. Park", "n": "Manipulation chapters are excellent."}
-    ]
-  },
-  "robot_perception": {
-    "cat": "robo",
-    "label": "Robot Perception & Sensor Fusion",
-    "desc": "Cameras and LiDAR, depth and RGB-D, point-cloud processing, calibration, multimodal sensor fusion for embodied agents.",
-    "pre": ["computer_vision", "state_estimation"],
-    "books": [
-      {"t": "Multiple View Geometry in Computer Vision", "a": "Richard Hartley & Andrew Zisserman (2e)", "n": "The geometric foundations.", "primary": true},
-      {"t": "Computer Vision: Algorithms and Applications", "a": "Richard Szeliski (2e)", "n": "Free online. The modern reference."},
-      {"t": "Point Cloud Library (PCL)", "a": "R. B. Rusu & S. Cousins (2011)", "n": "The 3D-perception toolkit paper."}
-    ]
-  },
-  "mobile_robots": {
-    "cat": "robo",
-    "label": "Mobile Robots & Locomotion",
-    "desc": "Wheeled and tracked mobility, non-holonomic constraints, legged locomotion fundamentals, navigation stacks.",
-    "pre": ["robot_control", "motion_planning"],
-    "books": [
-      {"t": "Introduction to Autonomous Mobile Robots", "a": "Roland Siegwart, Illah R. Nourbakhsh & Davide Scaramuzza (2e)", "n": "Standard mobile-robot text.", "primary": true},
-      {"t": "Springer Handbook of Robotics", "a": "Bruno Siciliano & Oussama Khatib (eds., 2e)", "n": "The encyclopaedic reference."}
-    ]
-  },
-  "humanoid": {
-    "cat": "robo",
-    "label": "Humanoid & Legged Robotics",
-    "desc": "Bipedal/quadrupedal dynamics, ZMP and capture point, whole-body control, model-predictive control for legged systems.",
-    "pre": ["mobile_robots", "robot_dynamics"],
-    "books": [
-      {"t": "Introduction to Humanoid Robotics", "a": "Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada & Kazuhito Yokoi", "n": "The legged-robot reference.", "primary": true},
-      {"t": "Springer Handbook of Robotics", "a": "B. Siciliano & O. Khatib (eds., 2e)", "n": "Humanoid chapters are canonical."}
-    ]
-  },
-  "robot_learning": {
-    "cat": "robo",
-    "label": "Robot Learning",
-    "desc": "Imitation learning, sim-to-real, RL on physical robots, visuomotor policies, foundation-model robotics.",
-    "pre": ["reinforcement", "deep_learning", "manipulation"],
-    "books": [
-      {"t": "End-to-End Training of Deep Visuomotor Policies", "a": "S. Levine, C. Finn, T. Darrell & P. Abbeel (2016)", "n": "Modern visuomotor learning. Primary.", "primary": true},
-      {"t": "An Algorithmic Perspective on Imitation Learning", "a": "T. Osa, J. Pajarinen, G. Neumann, J. A. Bagnell, P. Abbeel & J. Peters (2018)", "n": "Survey. Primary.", "primary": true},
-      {"t": "Robot Learning from Demonstration", "a": "Brenna D. Argall, Sonia Chernova, Manuela Veloso & Brett Browning (2009)", "n": "The earlier survey — still useful."}
-    ]
-  },
-  "hri": {
-    "cat": "robo",
-    "label": "Human–Robot Interaction",
-    "desc": "Shared autonomy, teleoperation, social robots, trust and acceptance, intent and gaze, safety around humans.",
-    "pre": ["manipulation", "cognitive_sci"],
-    "books": [
-      {"t": "Human-Robot Interaction: A Survey", "a": "Michael A. Goodrich & Alan C. Schultz (2007)", "n": "The survey that named the field. Primary.", "primary": true},
-      {"t": "The Media Equation", "a": "Byron Reeves & Clifford Nass (1996)", "n": "Why humans treat machines socially. Primary.", "primary": true},
-      {"t": "Human-Robot Interaction: An Introduction", "a": "C. Bartneck, T. Belpaeme, F. Eyssel, T. Kanda, M. Keijsers & S. Šabanović (2024)", "n": "Modern teaching textbook."}
-    ]
-  },
-  "numerical_methods": {
-    "cat": "math",
-    "label": "Numerical Methods",
-    "desc": "Floating-point arithmetic, numerical linear algebra (LU/QR/SVD/iterative), quadrature, ODE/PDE methods (FDM/FEM/FVM), spectral methods (FFT), conditioning and stability. The computational substrate of all engineering and applied science.",
-    "pre": ["linear_algebra", "multivar_calc", "ode", "pde"],
-    "books": [
-      {"t": "Numerical Linear Algebra", "a": "Lloyd N. Trefethen & David Bau III (1997)", "n": "The cleanest modern introduction. Lecture-per-chapter format.", "primary": true},
-      {"t": "Accuracy and Stability of Numerical Algorithms (2e)", "a": "Nicholas J. Higham (2002)", "n": "The rigorous reference on floating point and error analysis.", "primary": true},
-      {"t": "Finite Difference Methods for Ordinary and Partial Differential Equations", "a": "Randall J. LeVeque (2007)", "n": "Standard rigorous text on PDE discretizations."},
-      {"t": "Scientific Computing: An Introductory Survey (2e)", "a": "Michael T. Heath", "n": "Broad survey — useful as a map of the field."}
-    ]
-  },
-  "fluid_dynamics": {
-    "cat": "phys",
-    "label": "Fluid Dynamics",
-    "desc": "Continuity, Euler, Navier–Stokes; potential flow, vorticity, boundary layers, compressibility, turbulence. Classical mechanics of continua — and the canonical EECS-misses-this subject.",
-    "pre": ["pde", "multivar_calc", "classical_mech"],
-    "books": [
-      {"t": "Fluid Mechanics (Course of Theoretical Physics, Vol. 6)", "a": "L. D. Landau & E. M. Lifshitz", "n": "Soviet. Tighter than any Western text.", "primary": true},
-      {"t": "An Introduction to Fluid Dynamics", "a": "G. K. Batchelor (1967)", "n": "The modern reference. Primary.", "primary": true},
-      {"t": "Turbulent Flows", "a": "Stephen B. Pope (2000)", "n": "The turbulence reference."},
-      {"t": "Fluid Mechanics (6e)", "a": "Pijush K. Kundu, Ira M. Cohen & David R. Dowling", "n": "Teaching standard if you want a softer entry."}
-    ]
-  },
-  "continuum_mech": {
-    "cat": "phys",
-    "label": "Continuum Mechanics",
-    "desc": "Tensor analysis, stress and strain, conservation laws, constitutive relations; linear elasticity, plasticity, viscoelasticity. The general framework for continuous matter — fluid dynamics is one branch, elasticity another.",
-    "pre": ["pde", "multivar_calc", "classical_mech"],
-    "books": [
-      {"t": "Theory of Elasticity (Course of Theoretical Physics, Vol. 7)", "a": "L. D. Landau & E. M. Lifshitz", "n": "Soviet primary source.", "primary": true},
-      {"t": "An Introduction to Continuum Mechanics", "a": "Morton E. Gurtin (1981)", "n": "Mathematically rigorous treatment.", "primary": true},
-      {"t": "Foundations of Solid Mechanics", "a": "Y. C. Fung (1965)", "n": "Classic reference covering elasticity and beyond."}
-    ]
-  },
-  "quantum_computing": {
-    "cat": "cs",
-    "label": "Quantum Computing",
-    "desc": "Qubits, gates, circuits; Deutsch–Jozsa, Grover, Shor, HHL, VQE; stabilizer codes and quantum error correction; quantum complexity (BQP). The algorithmic side of quantum information.",
-    "pre": ["quantum_mech", "linear_algebra", "complexity"],
-    "books": [
-      {"t": "Quantum Computation and Quantum Information (10th Anniversary ed.)", "a": "Michael A. Nielsen & Isaac L. Chuang", "n": "THE textbook. Cover to cover.", "primary": true},
-      {"t": "Classical and Quantum Computation", "a": "A. Yu. Kitaev, A. H. Shen & M. N. Vyalyi (2002)", "n": "Soviet rigour. Primary.", "primary": true},
-      {"t": "Quantum Computer Science: An Introduction", "a": "N. David Mermin (2007)", "n": "Cleanest short intro from a great teacher."},
-      {"t": "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer", "a": "Peter W. Shor (1994)", "n": "Shor's algorithm — read the paper.", "primary": true}
-    ]
-  },
-  "hpc": {
-    "cat": "cs",
-    "label": "Parallel & High-Performance Computing",
-    "desc": "Cache hierarchies, SIMD/SIMT, MPI, OpenMP, CUDA/GPU; parallel algorithms (scan, reduce, sort); BLAS/LAPACK/ScaLAPACK; performance modeling, roofline. How modern supercomputers actually deliver flops.",
-    "pre": ["comp_arch", "algorithms", "numerical_methods"],
-    "books": [
-      {"t": "Programming Massively Parallel Processors (4e)", "a": "David B. Kirk & Wen-mei W. Hwu", "n": "The teaching standard for GPU computing.", "primary": true},
-      {"t": "Introduction to High Performance Computing for Scientists and Engineers", "a": "Georg Hager & Gerhard Wellein (2010)", "n": "Cache, NUMA, MPI/OpenMP from first principles.", "primary": true},
-      {"t": "The Art of Multiprocessor Programming (2e)", "a": "Maurice Herlihy & Nir Shavit", "n": "Concurrent algorithms — the theory side."},
-      {"t": "Parallel Programming with MPI", "a": "Peter Pacheco (1996)", "n": "Standard MPI introduction."}
-    ]
-  },
-  "metaphysics": {
-    "cat": "phil",
-    "label": "Metaphysics",
-    "desc": "Ontology (what is there?), substance, properties, universals, causation, modality, possible worlds, time, personal identity. Sits opposite epistemology — the 'what is?' to its 'how do we know?'.",
-    "pre": ["aristotle_organon", "kant", "analytic_phil"],
-    "books": [
-      {"t": "Metaphysics", "a": "Aristotle (c. 350 BCE)", "n": "Founding text. Read Books Α, Γ, Δ, Ζ at minimum.", "primary": true},
-      {"t": "Naming and Necessity", "a": "Saul Kripke (1980)", "n": "Necessity, rigid designation, natural kinds. Lectures from 1970. Primary.", "primary": true},
-      {"t": "On the Plurality of Worlds", "a": "David Lewis (1986)", "n": "Modal realism — the most rigorous metaphysical system of the 20th century. Primary.", "primary": true},
-      {"t": "From a Logical Point of View", "a": "W. V. O. Quine (1953)", "n": "Contains 'On What There Is'. Primary.", "primary": true},
-      {"t": "Universals and Scientific Realism (Vols. I & II)", "a": "D. M. Armstrong (1978)", "n": "The systematic defense of universals."},
-      {"t": "Writing the Book of the World", "a": "Theodore Sider (2011)", "n": "Contemporary structural metaphysics."}
-    ]
-  },
-  "phil_math": {
-    "cat": "phil",
-    "label": "Philosophy of Mathematics",
-    "desc": "Logicism, formalism, intuitionism, structuralism. Frege–Russell logicism, Hilbert's program, Brouwer's constructivism, Gödel's incompleteness, the Quine–Putnam indispensability argument.",
-    "pre": ["pred_logic", "real_analysis", "analytic_phil"],
-    "books": [
-      {"t": "The Foundations of Arithmetic", "a": "Gottlob Frege (1884)", "n": "The logicist program. Short. Read first.", "primary": true},
-      {"t": "Principia Mathematica", "a": "A. N. Whitehead & B. Russell (1910–1913)", "n": "The logicist execution. Primary; consult the introduction and selected passages, not cover to cover.", "primary": true},
-      {"t": "On Formally Undecidable Propositions of Principia Mathematica and Related Systems", "a": "Kurt Gödel (1931)", "n": "Incompleteness. ~30 pages. Read the primary.", "primary": true},
-      {"t": "Proofs and Refutations", "a": "Imre Lakatos (1976)", "n": "How mathematical knowledge actually grows. Dialogue form, beautiful.", "primary": true},
-      {"t": "Remarks on the Foundations of Mathematics", "a": "Ludwig Wittgenstein (1956)", "n": "The dissenting voice. Primary.", "primary": true},
-      {"t": "Philosophy of Mathematics: Structure and Ontology", "a": "Stewart Shapiro (1997)", "n": "Modern ante rem structuralism."}
-    ]
-  },
-  "semiotics": {
-    "cat": "phil",
-    "label": "Semiotics",
-    "desc": "The general theory of signs. Peirce's triadic semiotic (sign–object–interpretant), Saussure's dyadic semiology (signifier–signified), Eco's structuralist synthesis. Sits between philosophy of language and structural linguistics.",
-    "pre": ["saussure", "phil_lang", "analytic_phil"],
-    "books": [
-      {"t": "Collected Papers (Vols. 1–8)", "a": "Charles Sanders Peirce (1931–1958)", "n": "The founder. Vol. 2 on logic-as-semiotic is essential. Primary.", "primary": true},
-      {"t": "Course in General Linguistics", "a": "Ferdinand de Saussure (1916)", "n": "European semiology. Also primary for the saussure node.", "primary": true},
-      {"t": "A Theory of Semiotics", "a": "Umberto Eco (1976)", "n": "The structuralist synthesis.", "primary": true},
-      {"t": "Foundations of the Theory of Signs", "a": "Charles W. Morris (1938)", "n": "Compact treatise — the syntax/semantics/pragmatics trichotomy comes from here.", "primary": true},
-      {"t": "Elements of Semiology", "a": "Roland Barthes (1964)", "n": "Short, accessible structural semiotics."}
     ]
   }
 }

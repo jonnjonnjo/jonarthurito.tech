@@ -1,0 +1,264 @@
+---
+import recs from '../data/learning-books.json';
+import gr from '../data/goodreads.json';
+
+const recSections = Object.entries(recs) as [
+  string,
+  { label: string; cat: string; books: { t: string; a: string; n: string }[] }
+][];
+const totalRecs = recSections.reduce((acc, [, v]) => acc + v.books.length, 0);
+
+type GrBook = {
+  id: string;
+  t: string;
+  a: string;
+  y: string;
+  rating: number;
+  avg: number;
+  read_at: string;
+  review: string;
+};
+
+const shelves = gr.shelves as Record<string, GrBook[]>;
+const totalGr =
+  (shelves.read?.length || 0) +
+  (shelves['currently-reading']?.length || 0) +
+  (shelves['to-read']?.length || 0);
+
+const fmtYM = (s: string) => {
+  if (!s) return '';
+  const d = new Date(s);
+  if (isNaN(+d)) return '';
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+};
+
+const fmtFetched = (s: string) => {
+  const d = new Date(s);
+  if (isNaN(+d)) return s;
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
+
+const stars = (n: number) => (n > 0 ? '★'.repeat(n) + '☆'.repeat(5 - n) : '·····');
+
+const sortedRead = [...(shelves.read || [])].sort((a, b) => {
+  const da = +new Date(a.read_at || 0);
+  const db = +new Date(b.read_at || 0);
+  return db - da;
+});
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pleasant Reading — Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style is:global>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fdfcf9;--surf:#f4f1ea;--surf2:#ffffff;
+  --b1:#d8d4c8;--b2:#e8e4d8;
+  --t1:#1f1d18;--t2:#5a584f;--t3:#9a968a;
+
+  --econ:#a16207;
+  --med:#b91c1c;
+  --ling:#c2410c;
+  --novel:#6d28d9;
+  --scifi:#0369a1;
+  --fant:#047857;
+  --read:#475569;
+  --curr:#047857;
+  --towant:#6d28d9;
+
+  --font:'EB Garamond',Georgia,serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+[data-theme="dark"]{
+  --bg:#1a1917;--surf:#252320;--surf2:#2a271f;
+  --b1:#3a3830;--b2:#302e28;
+  --t1:#f0ede6;--t2:#8a8679;--t3:#504c44;
+  --econ:#facc15;--med:#f87171;--ling:#fb923c;
+  --novel:#c084fc;--scifi:#38bdf8;--fant:#34d399;
+  --read:#94a3b8;--curr:#34d399;--towant:#c084fc;
+}
+html,body{background:var(--bg);color:var(--t1);font-family:var(--font);min-height:100vh}
+body{padding:0 0 80px}
+
+#topbar{display:flex;align-items:center;justify-content:space-between;padding:9px 22px;border-bottom:1px solid var(--b1);background:var(--surf);position:sticky;top:0;z-index:10}
+#topbar h1{font-family:var(--mono);font-size:9px;font-weight:400;color:var(--t3);letter-spacing:.18em;text-transform:uppercase}
+#topbar .right{display:flex;gap:14px;align-items:center}
+#topbar a{font-family:var(--mono);font-size:8.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+#topbar a:hover{color:var(--t1)}
+#dm-toggle{font-size:8px;font-family:var(--mono);padding:3px 9px;border-radius:2px;border:1px solid var(--b1);background:transparent;color:var(--t3);cursor:pointer;letter-spacing:.07em;text-transform:uppercase}
+#dm-toggle:hover{color:var(--t2)}
+
+main{max-width:1080px;margin:0 auto;padding:30px 22px 0}
+.intro{font-family:var(--font);font-size:14.5px;color:var(--t2);font-style:italic;line-height:1.55;margin-bottom:6px}
+.intro b{font-style:normal;color:var(--t1);font-weight:500}
+.meta{font-family:var(--mono);font-size:9px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+.meta a{color:var(--t2);text-decoration:none;border-bottom:1px solid var(--b1)}
+.meta a:hover{color:var(--t1);border-color:var(--t2)}
+.meta .dot{color:var(--b1);margin:0 8px}
+
+.bigh{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--t2);margin:36px 0 14px;padding-bottom:5px;border-bottom:1px solid var(--b1)}
+.bigh .count{color:var(--t3);letter-spacing:.12em;margin-left:6px}
+
+section{margin-bottom:22px}
+.sh{display:flex;align-items:baseline;gap:9px;padding:0 0 4px;border-bottom:1px dotted var(--b2);margin-bottom:6px}
+.sh .swatch{width:8px;height:8px;border-radius:2px;flex-shrink:0;position:relative;top:1px}
+.sh h2{font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--t1)}
+.sh .count{font-family:var(--mono);font-size:8.5px;color:var(--t3);letter-spacing:.1em;margin-left:auto}
+
+.book{
+  display:grid;
+  grid-template-columns: minmax(0,1.1fr) minmax(0,1.6fr) auto;
+  gap:14px;
+  align-items:baseline;
+  padding:2px 0;
+  border-bottom:1px dotted var(--b2);
+  font-size:13px;
+  line-height:1.45;
+}
+.book:last-child{border-bottom:none}
+.book .ta{font-family:var(--font);color:var(--t1);min-width:0}
+.book .ta .t{font-weight:500}
+.book .ta .a{font-family:var(--mono);font-size:9.5px;color:var(--t3);letter-spacing:.04em;font-style:italic;margin-left:5px}
+.book .n{font-family:var(--font);font-size:12.5px;color:var(--t2);min-width:0}
+.book .meta-c{font-family:var(--mono);font-size:9px;color:var(--t3);letter-spacing:.05em;white-space:nowrap;text-align:right}
+.book .stars{color:var(--t2);letter-spacing:.02em}
+.book .stars.r1{color:var(--med)}
+.book .stars.r5{color:var(--fant)}
+
+section.s-econ .swatch{background:var(--econ)}
+section.s-med .swatch{background:var(--med)}
+section.s-ling .swatch{background:var(--ling)}
+section.s-novel .swatch{background:var(--novel)}
+section.s-scifi .swatch{background:var(--scifi)}
+section.s-fant .swatch{background:var(--fant)}
+section.s-read .swatch{background:var(--read)}
+section.s-curr .swatch{background:var(--curr)}
+section.s-towant .swatch{background:var(--towant)}
+
+@media(max-width:720px){
+  main{padding:22px 16px 0}
+  .book{
+    grid-template-columns: 1fr;
+    gap:1px;
+    padding:7px 0;
+  }
+  .book .meta-c{text-align:left}
+}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <h1>Pleasant Reading</h1>
+  <div class="right">
+    <a href="/">home</a>
+    <a href="/learning-rigorous">rigorous</a>
+    <button id="dm-toggle" type="button">light</button>
+  </div>
+</div>
+
+<main>
+  <p class="intro">Not the rigorous shelf. <b>Books I read for pleasure</b> — pop-science, novels, sci-fi, fantasy. No primary sources, no prerequisites, no shame in skipping the boring chapters.</p>
+  <p class="meta">
+    {totalRecs} recs <span class="dot">·</span> {totalGr} on goodreads
+    <span class="dot">·</span> synced {fmtFetched(gr.fetched_at)}
+    <span class="dot">·</span> live shelf on <a href="https://www.goodreads.com/jonathanarthurito" target="_blank" rel="noopener">goodreads</a>
+  </p>
+
+  <div class="bigh">Curated Recommendations <span class="count">{totalRecs}</span></div>
+
+  {recSections.map(([key, sec]) => (
+    <section class={`s-${sec.cat}`}>
+      <div class="sh">
+        <span class="swatch"></span>
+        <h2>{sec.label}</h2>
+        <span class="count">{sec.books.length}</span>
+      </div>
+      {sec.books.map(b => (
+        <div class="book">
+          <div class="ta"><span class="t">{b.t}</span><span class="a">{b.a}</span></div>
+          <div class="n">{b.n}</div>
+          <div class="meta-c"></div>
+        </div>
+      ))}
+    </section>
+  ))}
+
+  <div class="bigh">From Goodreads <span class="count">{totalGr}</span></div>
+
+  {shelves['currently-reading'] && shelves['currently-reading'].length > 0 && (
+    <section class="s-curr">
+      <div class="sh">
+        <span class="swatch"></span>
+        <h2>Currently Reading</h2>
+        <span class="count">{shelves['currently-reading'].length}</span>
+      </div>
+      {shelves['currently-reading'].map(b => (
+        <div class="book">
+          <div class="ta"><span class="t">{b.t}</span><span class="a">{b.a}</span></div>
+          <div class="n"></div>
+          <div class="meta-c">{b.y}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {shelves['to-read'] && shelves['to-read'].length > 0 && (
+    <section class="s-towant">
+      <div class="sh">
+        <span class="swatch"></span>
+        <h2>Want to Read</h2>
+        <span class="count">{shelves['to-read'].length}</span>
+      </div>
+      {shelves['to-read'].map(b => (
+        <div class="book">
+          <div class="ta"><span class="t">{b.t}</span><span class="a">{b.a}</span></div>
+          <div class="n"></div>
+          <div class="meta-c">{b.y}</div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {sortedRead.length > 0 && (
+    <section class="s-read">
+      <div class="sh">
+        <span class="swatch"></span>
+        <h2>Read</h2>
+        <span class="count">{sortedRead.length}</span>
+      </div>
+      {sortedRead.map(b => (
+        <div class="book">
+          <div class="ta"><span class="t">{b.t}</span><span class="a">{b.a}</span></div>
+          <div class="n">{b.review}</div>
+          <div class="meta-c">
+            <span class={`stars r${b.rating}`}>{stars(b.rating)}</span>
+            {b.read_at && <> · {fmtYM(b.read_at)}</>}
+          </div>
+        </div>
+      ))}
+    </section>
+  )}
+</main>
+
+<script>
+const root = document.documentElement;
+const btn = document.getElementById('dm-toggle')!;
+const saved = localStorage.getItem('lb-theme');
+if (saved === 'light') root.setAttribute('data-theme', 'light');
+const sync = () => { btn.textContent = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; };
+sync();
+btn.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('lb-theme', next);
+  sync();
+});
+</script>
+</body>
+</html>

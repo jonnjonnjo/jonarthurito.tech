@@ -1,0 +1,81 @@
+{
+  "economics": {
+    "label": "Economics",
+    "cat": "econ",
+    "books": [
+      {"t": "Poor Economics", "a": "Abhijit Banerjee & Esther Duflo (2011)", "n": "Nobel laureates on what RCTs actually find in development. Replaces ideology with evidence."},
+      {"t": "The Undercover Economist", "a": "Tim Harford (2005)", "n": "Harford is the patient explainer. Coffee shops, traffic, healthcare — markets demystified."},
+      {"t": "Thinking, Fast and Slow", "a": "Daniel Kahneman (2011)", "n": "Behavioural-econ canon. Slow in the middle, but the heuristics chapters reshape how you read your own decisions."},
+      {"t": "The Worldly Philosophers", "a": "Robert Heilbroner (1953)", "n": "Smith, Marx, Keynes, Schumpeter as people, not equations. Best one-volume history of economic thought."},
+      {"t": "How to Lie with Statistics", "a": "Darrell Huff (1954)", "n": "120 pages. Older than your parents and still the sharpest BS-detector primer in print."},
+      {"t": "Capital in the Twenty-First Century", "a": "Thomas Piketty (2013)", "n": "Long. But the r > g argument is the single most-cited piece of econ in the last decade — worth meeting first-hand."}
+    ]
+  },
+  "medicine": {
+    "label": "Medicine",
+    "cat": "med",
+    "books": [
+      {"t": "The Emperor of All Maladies", "a": "Siddhartha Mukherjee (2010)", "n": "A biography of cancer. Reads like a novel; Pulitzer for a reason."},
+      {"t": "Bad Science", "a": "Ben Goldacre (2008)", "n": "Pharma trials, homeopathy, nutritionists. The book that calibrates your evidence radar for the rest of your life."},
+      {"t": "Stiff: The Curious Lives of Human Cadavers", "a": "Mary Roach (2003)", "n": "Roach is gleefully irreverent. Anything she writes is a pleasant read; this is her best."},
+      {"t": "Bad Blood", "a": "John Carreyrou (2018)", "n": "Theranos, from the WSJ reporter who broke it. Pure thriller pacing."},
+      {"t": "Being Mortal", "a": "Atul Gawande (2014)", "n": "On aging, end-of-life care, and what medicine quietly gets wrong about both."},
+      {"t": "When Breath Becomes Air", "a": "Paul Kalanithi (2016)", "n": "Neurosurgeon writes a memoir while dying of lung cancer. Short, devastating, beautiful."},
+      {"t": "The Gene", "a": "Siddhartha Mukherjee (2016)", "n": "If Emperor lands, this is the companion — heredity from Mendel to CRISPR."}
+    ]
+  },
+  "linguistics": {
+    "label": "Linguistics",
+    "cat": "ling",
+    "books": [
+      {"t": "The Power of Babel", "a": "John McWhorter (2001)", "n": "How languages mutate, split, and die. (You're already on this — keeping it as the anchor.)"},
+      {"t": "Through the Language Glass", "a": "Guy Deutscher (2010)", "n": "Sapir–Whorf done responsibly. Does the language you speak change what you see? Sometimes — here's the careful answer."},
+      {"t": "The Unfolding of Language", "a": "Guy Deutscher (2005)", "n": "Where grammar comes from. The 'erosion + creativity' model of linguistic change made vivid."},
+      {"t": "Because Internet", "a": "Gretchen McCulloch (2019)", "n": "Linguistics of texting, emoji, lol. Modern, funny, surprisingly rigorous."},
+      {"t": "Words on the Move", "a": "John McWhorter (2016)", "n": "More McWhorter — semantic drift, why 'literally' doesn't mean what it used to, and why that's fine."},
+      {"t": "The Language Instinct", "a": "Steven Pinker (1994)", "n": "The Chomskyan case for innate grammar. Contested, but the default starting point."}
+    ]
+  },
+  "novel": {
+    "label": "Literary Fiction",
+    "cat": "novel",
+    "books": [
+      {"t": "Klara and the Sun", "a": "Kazuo Ishiguro (2021)", "n": "An AI companion narrates. Ishiguro at the intersection of his Nobel-prose and a near-future setting."},
+      {"t": "Never Let Me Go", "a": "Kazuo Ishiguro (2005)", "n": "Quiet dystopia. The genre-mechanics are sci-fi but the book is pure literary grief."},
+      {"t": "Stoner", "a": "John Williams (1965)", "n": "A small life, told with unfashionable seriousness. Reissued in 2006 and quietly became a cult favourite."},
+      {"t": "A Gentleman in Moscow", "a": "Amor Towles (2016)", "n": "Russian aristocrat sentenced to lifelong house arrest in the Metropol hotel. Pleasant in the truest sense."},
+      {"t": "Norwegian Wood", "a": "Haruki Murakami (1987)", "n": "Murakami's most grounded novel — no talking cats, just Tokyo, loss, and a 19-year-old narrator."},
+      {"t": "Pachinko", "a": "Min Jin Lee (2017)", "n": "Four generations of a Korean family in Japan. Quietly the best historical novel of the last decade."},
+      {"t": "The Sympathizer", "a": "Viet Thanh Nguyen (2015)", "n": "A communist spy embedded with South Vietnamese refugees in LA. Pulitzer; very funny in unexpected places."}
+    ]
+  },
+  "scifi": {
+    "label": "Science Fiction",
+    "cat": "scifi",
+    "books": [
+      {"t": "Stories of Your Life and Others", "a": "Ted Chiang (2002)", "n": "Near-perfect short stories. The title piece became Arrival; every other story is at least as good."},
+      {"t": "Exhalation", "a": "Ted Chiang (2019)", "n": "Second Chiang collection. Read both — there is nothing else like him working today."},
+      {"t": "Blindsight", "a": "Peter Watts (2006)", "n": "Hard SF on consciousness and first contact. Will mess with you for a week after."},
+      {"t": "The Three-Body Problem", "a": "Liu Cixin (2008, tr. 2014)", "n": "And the two sequels. Scale escalates from Cultural Revolution to heat death of the universe."},
+      {"t": "Project Hail Mary", "a": "Andy Weir (2021)", "n": "Pure pleasant. The Martian guy doing first-contact-via-engineering. Weekend read."},
+      {"t": "Roadside Picnic", "a": "Arkady & Boris Strugatsky (1972)", "n": "Soviet sci-fi. Short, atmospheric, the source for Stalker — both film and game."},
+      {"t": "Permutation City", "a": "Greg Egan (1994)", "n": "Raises the ceiling on how weird simulation-hypothesis fiction can get. Egan is rigorous and unforgiving."},
+      {"t": "Hyperion", "a": "Dan Simmons (1989)", "n": "Canterbury Tales in space. Each pilgrim's story is its own genre."},
+      {"t": "Children of Time", "a": "Adrian Tchaikovsky (2015)", "n": "Uplifted spiders, deep time, surprisingly tender. Don't be put off by the premise."}
+    ]
+  },
+  "fantasy": {
+    "label": "Fantasy",
+    "cat": "fant",
+    "books": [
+      {"t": "Piranesi", "a": "Susanna Clarke (2020)", "n": "~250 pages, one sitting, gorgeous. Start here."},
+      {"t": "Jonathan Strange & Mr Norrell", "a": "Susanna Clarke (2004)", "n": "If Piranesi lands, go long. Regency England with magic, written in pitch-perfect Austen pastiche."},
+      {"t": "The Goblin Emperor", "a": "Katherine Addison (2014)", "n": "Cozy court politics, standalone, kind-hearted. A counterweight to grimdark fantasy."},
+      {"t": "The Fifth Season", "a": "N. K. Jemisin (2015)", "n": "First of the Broken Earth trilogy. Three consecutive Hugos — deserved."},
+      {"t": "The Lies of Locke Lamora", "a": "Scott Lynch (2006)", "n": "Heist fantasy in a Venice-flavoured city. Comfort read."},
+      {"t": "She Who Became the Sun", "a": "Shelley Parker-Chan (2021)", "n": "Mulan-adjacent retelling of the founder of the Ming dynasty. Sharper than it sounds."},
+      {"t": "A Wizard of Earthsea", "a": "Ursula K. Le Guin (1968)", "n": "Short, slim, the original 'magic school' before that became a genre. Le Guin is always worth the time."},
+      {"t": "Mistborn: The Final Empire", "a": "Brandon Sanderson (2006)", "n": "Sanderson's tightly-engineered magic systems are the gateway drug for many. Start here."}
+    ]
+  }
+}

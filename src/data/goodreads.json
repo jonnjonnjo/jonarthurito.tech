@@ -1,0 +1,572 @@
+{
+  "user_id": "184402283",
+  "fetched_at": "2026-05-26T10:55:49.504Z",
+  "shelves": {
+    "currently-reading": [
+      {
+        "id": "206200227",
+        "t": "The Obstacle is the Way: The Timeless Art of Turning Trials into Triumph",
+        "a": "Ryan Holiday",
+        "y": "2014",
+        "rating": 0,
+        "avg": 4.5,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "53420725",
+        "t": "Meditations: An essential, best-loved classic (Collins Classics)",
+        "a": "Marcus Aurelius",
+        "y": "180",
+        "rating": 0,
+        "avg": 3.95,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "12292055",
+        "t": "The Power Of Babel: A Natural History of Language",
+        "a": "John McWhorter",
+        "y": "2001",
+        "rating": 0,
+        "avg": 3.79,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "39982914",
+        "t": "Structure and Interpretation of Computer Programs (MIT Electrical Engineering and Computer Science)",
+        "a": "Harold Abelson",
+        "y": "1984",
+        "rating": 0,
+        "avg": 4.53,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "12475278",
+        "t": "Software Engineering",
+        "a": "Ian Sommerville",
+        "y": "1982",
+        "rating": 0,
+        "avg": 3.22,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "58602635",
+        "t": "Campbell's biology (12th edition)",
+        "a": "Lisa A. Urry",
+        "y": "1987",
+        "rating": 0,
+        "avg": 4.07,
+        "read_at": "",
+        "review": ""
+      }
+    ],
+    "read": [
+      {
+        "id": "60321447",
+        "t": "Chip War: The Fight for the World's Most Critical Technology",
+        "a": "Chris Miller",
+        "y": "2022",
+        "rating": 3,
+        "avg": 4.35,
+        "read_at": "Mon, 25 May 2026 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "31138556",
+        "t": "Homo Deus: A History of Tomorrow",
+        "a": "Yuval Noah Harari",
+        "y": "2015",
+        "rating": 1,
+        "avg": 4.17,
+        "read_at": "Mon, 18 May 2026 00:00:00 +0000",
+        "review": "This book is complete nonsense. The author uses many technical concepts arbitrarily which undermines the essence of such technical concepts (i.e. simplifying many concepts to a non-intelligible level)"
+      },
+      {
+        "id": "44232012",
+        "t": "The War of the Worlds",
+        "a": "H.G. Wells",
+        "y": "1898",
+        "rating": 2,
+        "avg": 3.25,
+        "read_at": "Sun, 10 May 2026 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "209612420",
+        "t": "The Three-Body Problem",
+        "a": "Liu Cixin",
+        "y": "2006",
+        "rating": 3,
+        "avg": 3.86,
+        "read_at": "Thu, 30 Apr 2026 00:00:00 +0000",
+        "review": "The first three quarter of the book is actually quite captivating. There's sense of there exists far greater being than us. The last quarter book is quite boring. I think revealing of the Sophon project capabilty of manipulating earth's observant of cosmic background wave & manipulating analog camera film shouldn't be in this book but in the next one as to keep the reader think that there exists g"
+      },
+      {
+        "id": "52908942",
+        "t": "How to Avoid a Climate Disaster: The Solutions We Have and the Breakthroughs We Need",
+        "a": "Bill Gates",
+        "y": "2021",
+        "rating": 2,
+        "avg": 4.06,
+        "read_at": "Thu, 23 Apr 2026 00:00:00 +0000",
+        "review": "The end of this book is too US-centric. I should've read book about climate change from the actual climate scientist. I also don't like the set of lexicon he chose for this book."
+      },
+      {
+        "id": "862403",
+        "t": "The World Is Flat: The Globalized World in the Twenty First Century",
+        "a": "Thomas L. Friedman",
+        "y": "2005",
+        "rating": 3,
+        "avg": 3.58,
+        "read_at": "Mon, 30 Mar 2026 00:00:00 +0000",
+        "review": "I want to rate this book 2.5/5 but I couldn't. There are still mamy things that are relevant from the perspective of 1st decade of 21st century. We also could see that the flattening of the world are progressively reversed such as by the work of trump trying to enforce tariff."
+      },
+      {
+        "id": "40611510",
+        "t": "The Last Lecture",
+        "a": "Randy Pausch",
+        "y": "2008",
+        "rating": 5,
+        "avg": 4.3,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "69571",
+        "t": "Rich Dad Poor Dad: What the Rich Teach Their Kids About Money—That the Poor and Middle Class Do Not!",
+        "a": "Robert T. Kiyosaki",
+        "y": "1997",
+        "rating": 1,
+        "avg": 4.09,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "18693655",
+        "t": "A Mind for Numbers: How to Excel at Math and Science (Even If You Flunked Algebra)",
+        "a": "Barbara Oakley",
+        "y": "2014",
+        "rating": 3,
+        "avg": 4.17,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "17986418",
+        "t": "Naked Statistics: Stripping the Dread from the Data",
+        "a": "Charles Wheelan",
+        "y": "2012",
+        "rating": 3,
+        "avg": 3.95,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "10959",
+        "t": "Sophie’s World",
+        "a": "Jostein Gaarder",
+        "y": "1991",
+        "rating": 2,
+        "avg": 3.95,
+        "read_at": "Wed, 11 Mar 2026 00:00:00 +0000",
+        "review": "Most of the philosophy alberto talked here were revolved around western society. There is barely any discussion about Middle Eastern/East Asia/South Asia philosophy. Personally, 90% of what philosophy consists of are really boring stuff."
+      },
+      {
+        "id": "54817547",
+        "t": "The Hero Code: Lessons Learned from Lives Well Lived",
+        "a": "William H. McRaven",
+        "y": "2021",
+        "rating": 2,
+        "avg": 4.31,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "40591677",
+        "t": "Keep Going: 10 Ways to Stay Creative in Good Times and Bad (Austin Kleon)",
+        "a": "Austin Kleon",
+        "y": "2019",
+        "rating": 2,
+        "avg": 4.25,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "13099738",
+        "t": "Steal Like an Artist: 10 Things Nobody Told You About Being Creative",
+        "a": "Austin Kleon",
+        "y": "2012",
+        "rating": 2,
+        "avg": 3.95,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "43306206",
+        "t": "The Courage to Be Disliked: How to Free Yourself, Change Your Life and Achieve Real Happiness",
+        "a": "Ichiro Kishimi",
+        "y": "2013",
+        "rating": 1,
+        "avg": 3.86,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "28257707",
+        "t": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life",
+        "a": "Mark Manson",
+        "y": "2016",
+        "rating": 2,
+        "avg": 3.86,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "25541028",
+        "t": "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
+        "a": "Ashlee Vance",
+        "y": "2015",
+        "rating": 2,
+        "avg": 4.1,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "9420697",
+        "t": "The Compound Effect: Jumpstart Your Income, Your Life, Your Success",
+        "a": "Darren Hardy",
+        "y": "2010",
+        "rating": 2,
+        "avg": 4.2,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "58145670",
+        "t": "Courage Is Calling: Fortune Favors the Brave",
+        "a": "Ryan Holiday",
+        "y": "2021",
+        "rating": 3,
+        "avg": 4,
+        "read_at": "Sat, 8 Feb 2025 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "43582733",
+        "t": "Stillness Is the Key",
+        "a": "Ryan Holiday",
+        "y": "2019",
+        "rating": 3,
+        "avg": 4.19,
+        "read_at": "Sat, 1 Mar 2025 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "40121378",
+        "t": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+        "a": "James Clear",
+        "y": "2018",
+        "rating": 4,
+        "avg": 4.32,
+        "read_at": "Tue, 30 Nov 2021 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "17255186",
+        "t": "The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win",
+        "a": "Gene Kim",
+        "y": "2013",
+        "rating": 3,
+        "avg": 4.22,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "27036528",
+        "t": "Ego Is the Enemy",
+        "a": "Ryan Holiday",
+        "y": "2016",
+        "rating": 3,
+        "avg": 4.11,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "18290401",
+        "t": "Show Your Work!: 10 Ways to Share Your Creativity and Get Discovered",
+        "a": "Austin Kleon",
+        "y": "2014",
+        "rating": 1,
+        "avg": 4.04,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "174540",
+        "t": "Busting Vegas: The MIT Whiz Kid Who Brought the Casinos to Their Knees",
+        "a": "Ben Mezrich",
+        "y": "2005",
+        "rating": 3,
+        "avg": 3.78,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "4069",
+        "t": "Man&apos;s Search for Meaning",
+        "a": "Viktor E. Frankl",
+        "y": "1946",
+        "rating": 3,
+        "avg": 4.38,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "60018575",
+        "t": "Discipline Is Destiny: The Power of Self-Control",
+        "a": "Ryan Holiday",
+        "y": "2022",
+        "rating": 3,
+        "avg": 4.22,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "12609433",
+        "t": "The Power of Habit: Why We Do What We Do in Life and Business",
+        "a": "Charles Duhigg",
+        "y": "2012",
+        "rating": 1,
+        "avg": 4.13,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "6900",
+        "t": "Tuesdays with Morrie: An Old Man, a Young Man, and Life's Greatest Lesson",
+        "a": "Mitch Albom",
+        "y": "1997",
+        "rating": 2,
+        "avg": 4.21,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "42527866",
+        "t": "They Called Us Enemy",
+        "a": "George Takei",
+        "y": "2019",
+        "rating": 2,
+        "avg": 4.4,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "775105",
+        "t": "My Start-Up Life: What a (Very) Young CEO Learned on His Journey Through Silicon Valley",
+        "a": "Ben Casnocha",
+        "y": "2007",
+        "rating": 2,
+        "avg": 3.65,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "124950497",
+        "t": "Ikigai: The Japanese Secret to a Long and Happy Life",
+        "a": "Héctor García",
+        "y": "2016",
+        "rating": 2,
+        "avg": 3.69,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "33514",
+        "t": "The Elements of Style",
+        "a": "William Strunk Jr.",
+        "y": "1918",
+        "rating": 2,
+        "avg": 4.15,
+        "read_at": "Fri, 26 Sep 2025 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "36072",
+        "t": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change",
+        "a": "Stephen R. Covey",
+        "y": "1989",
+        "rating": 1,
+        "avg": 4.16,
+        "read_at": "Wed, 29 Oct 2025 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "378701",
+        "t": "Soros: The Life and Times of a Messianic Billionaire",
+        "a": "Michael T. Kaufman",
+        "y": "2002",
+        "rating": 1,
+        "avg": 3.42,
+        "read_at": "Fri, 27 Feb 2026 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "61240297",
+        "t": "Snow Crash",
+        "a": "Neal Stephenson",
+        "y": "1992",
+        "rating": 2,
+        "avg": 3.93,
+        "read_at": "Tue, 27 Jan 2026 00:00:00 +0000",
+        "review": "To be honest, I were rather had a high expectation for this book. The only part that captivates me the most are when 1) Hiro discussing with Librarians about the past historical works of Lagod and 2) Ng Lee Enzo discussion about the virus. The term metaverse here just means nothing to be honest—I would rather be interested if it were to be written in a more bustling 90's/early 2000's era and focus"
+      },
+      {
+        "id": "281818",
+        "t": "Where Wizards Stay Up Late: The Origins of the Internet",
+        "a": "Katie Hafner",
+        "y": "1996",
+        "rating": 3,
+        "avg": 3.92,
+        "read_at": "Sat, 10 Jan 2026 00:00:00 +0000",
+        "review": "I was expecting some parts to describe the story of Soviet era Computer Networks. The book mostly covers the proliferation of computer networks in USA during Cold War era."
+      },
+      {
+        "id": "29093292",
+        "t": "The Daily Stoic: 366 Meditations on Wisdom, Perseverance, and the Art of Living",
+        "a": "Ryan Holiday",
+        "y": "2016",
+        "rating": 4,
+        "avg": 4.33,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "51291",
+        "t": "How to Lie with Statistics",
+        "a": "Darrell Huff",
+        "y": "1954",
+        "rating": 3,
+        "avg": 3.82,
+        "read_at": "Mon, 17 Nov 2025 00:00:00 +0000",
+        "review": ""
+      },
+      {
+        "id": "204927599",
+        "t": "Nexus: A Brief History of Information Networks from the Stone Age to AI",
+        "a": "Yuval Noah Harari",
+        "y": "2024",
+        "rating": 3,
+        "avg": 4.12,
+        "read_at": "Tue, 12 Aug 2025 00:00:00 +0000",
+        "review": "The author doesn't want to talk about how information networks in Israel could be ramified into unprecedented genocide in Palestine."
+      },
+      {
+        "id": "23692271",
+        "t": "Sapiens: A Brief History of Humankind",
+        "a": "Yuval Noah Harari",
+        "y": "2011",
+        "rating": 3,
+        "avg": 4.32,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "38820046",
+        "t": "21 Lessons for the 21st Century",
+        "a": "Yuval Noah Harari",
+        "y": "2018",
+        "rating": 3,
+        "avg": 4.15,
+        "read_at": "Tue, 18 Mar 2025 00:00:00 +0000",
+        "review": "Sounds so optimistic about the AI part. Yuval is probably those type who said \"AGI is finally is here\" eventhough it hasnt."
+      },
+      {
+        "id": "18144590",
+        "t": "The Alchemist",
+        "a": "Paulo Coelho",
+        "y": "1988",
+        "rating": 3,
+        "avg": 4.01,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "52962238",
+        "t": "Principles for Dealing with the Changing World Order: Why Nations Succeed and Fail",
+        "a": "Ray Dalio",
+        "y": "2021",
+        "rating": 3,
+        "avg": 4.25,
+        "read_at": "Sat, 5 Jul 2025 00:00:00 +0000",
+        "review": ""
+      }
+    ],
+    "to-read": [
+      {
+        "id": "66863",
+        "t": "Only the Paranoid Survive: How to Exploit the Crisis Points that Challenge Every Company and Career",
+        "a": "Andrew S. Grove",
+        "y": "1996",
+        "rating": 0,
+        "avg": 3.96,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "558194",
+        "t": "Naive Set Theory (Undergraduate Texts in Mathematics)",
+        "a": "Paul R. Halmos",
+        "y": "1960",
+        "rating": 0,
+        "avg": 4.24,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "28604693",
+        "t": "Computer Systems: A Programmer's Perspective",
+        "a": "Randal E. Bryant",
+        "y": "2002",
+        "rating": 0,
+        "avg": 4.19,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "1331840",
+        "t": "Basic Chinese: A Grammar and Workbook (Grammar Workbooks)",
+        "a": "Yip Po-Ching",
+        "y": "1998",
+        "rating": 0,
+        "avg": 3.96,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "6518085",
+        "t": "Pro Git (Expert's Voice in Software Development)",
+        "a": "Scott Chacon",
+        "y": "2009",
+        "rating": 0,
+        "avg": 4.17,
+        "read_at": "",
+        "review": ""
+      },
+      {
+        "id": "8908",
+        "t": "World War Z: An Oral History of the Zombie War",
+        "a": "Max Brooks",
+        "y": "2006",
+        "rating": 0,
+        "avg": 4.02,
+        "read_at": "",
+        "review": ""
+      }
+    ]
+  }
+}

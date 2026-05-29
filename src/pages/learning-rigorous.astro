@@ -23,16 +23,14 @@ import nodes from '../data/learning-nodes.json';
   --ling:#c2410c;   /* orange */
   --cs:#0369a1;     /* sky */
   --ai:#a16207;     /* amber */
-  --phys:#b91c1c;   /* red */
   --hw:#0e7490;     /* cyan */
   --quant:#9f1239;  /* rose */
-  --sec:#3730a3;    /* indigo */
-  --robo:#854d0e;   /* yellow */
-  --telecom:#1e40af;/* blue */
 
   --anc:#c2410c;     /* direct prerequisites */
   --desc:#0e7490;    /* direct unlocks */
   --self:#6d28d9;    /* clicked node */
+  --bedrock:#0d9488; /* descended to bedrock (latent) */
+  --lit:#d97706;     /* actively lit (active mastery) */
 
   --font:'EB Garamond',Georgia,serif;
   --mono:'IBM Plex Mono',monospace;
@@ -42,9 +40,8 @@ import nodes from '../data/learning-nodes.json';
   --b1:#3a3830;--b2:#302e28;
   --t1:#f0ede6;--t2:#8a8679;--t3:#504c44;
   --found:#94a3b8;--math:#34d399;--phil:#c084fc;--ling:#fb923c;
-  --cs:#38bdf8;--ai:#facc15;--phys:#f87171;--hw:#22d3ee;
-  --quant:#f43f5e;--sec:#818cf8;
-  --robo:#fbbf24;--telecom:#60a5fa;
+  --cs:#38bdf8;--ai:#facc15;--hw:#22d3ee;--quant:#f43f5e;
+  --bedrock:#2dd4bf;--lit:#fbbf24;
 }
 [data-theme="dark"] .bk{border-color:var(--b1)}
 [data-theme="dark"] #dag-svg .node rect[data-role="bg"]{filter:none}
@@ -67,6 +64,8 @@ import nodes from '../data/learning-nodes.json';
 .mr-btn{font-size:8.5px;font-family:var(--mono);padding:4px 10px;border-radius:2px;border:1px solid var(--b1);background:transparent;color:var(--t2);cursor:pointer;letter-spacing:.07em;text-transform:uppercase;transition:all .1s;margin:8px 0 4px}
 .mr-btn:hover{color:var(--t1);border-color:var(--t2)}
 .mr-btn.done{color:var(--self);border-color:var(--self)}
+.mr-btn.bedrock{color:var(--bedrock);border-color:var(--bedrock)}
+.mr-btn.lit{color:var(--lit);border-color:var(--lit)}
 html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--font);overflow:hidden}
 #app{display:flex;flex-direction:column;height:100vh;width:100vw;position:fixed;top:0;left:0}
 
@@ -87,12 +86,8 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
 .fb[data-cat="ling"].active{color:var(--ling);border-color:var(--ling)}
 .fb[data-cat="cs"].active{color:var(--cs);border-color:var(--cs)}
 .fb[data-cat="ai"].active{color:var(--ai);border-color:var(--ai)}
-.fb[data-cat="phys"].active{color:var(--phys);border-color:var(--phys)}
 .fb[data-cat="hw"].active{color:var(--hw);border-color:var(--hw)}
 .fb[data-cat="quant"].active{color:var(--quant);border-color:var(--quant)}
-.fb[data-cat="sec"].active{color:var(--sec);border-color:var(--sec)}
-.fb[data-cat="robo"].active{color:var(--robo);border-color:var(--robo)}
-.fb[data-cat="telecom"].active{color:var(--telecom);border-color:var(--telecom)}
 .fb:not(.active){text-decoration:line-through;opacity:.5}
 
 #main{display:flex;flex:1;overflow:hidden}
@@ -150,12 +145,8 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div class="li"><div class="ld" style="background:var(--ling)"></div>Linguistics</div>
     <div class="li"><div class="ld" style="background:var(--cs)"></div>Computer Science</div>
     <div class="li"><div class="ld" style="background:var(--ai)"></div>AI (general)</div>
-    <div class="li"><div class="ld" style="background:var(--phys)"></div>Physics</div>
     <div class="li"><div class="ld" style="background:var(--hw)"></div>Hardware</div>
     <div class="li"><div class="ld" style="background:var(--quant)"></div>Quant</div>
-    <div class="li"><div class="ld" style="background:var(--sec)"></div>Security</div>
-    <div class="li"><div class="ld" style="background:var(--robo)"></div>Robotics</div>
-    <div class="li"><div class="ld" style="background:var(--telecom)"></div>Telecom</div>
   </div>
   <div id="search-wrap">
     <input id="search" type="text" placeholder="search · /" autocomplete="off" spellcheck="false">
@@ -172,12 +163,8 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
   <button class="fb" data-cat="ling">Linguistics</button>
   <button class="fb" data-cat="cs">CS</button>
   <button class="fb" data-cat="ai">AI</button>
-  <button class="fb" data-cat="phys">Physics</button>
   <button class="fb" data-cat="hw">Hardware</button>
   <button class="fb" data-cat="quant">Quant</button>
-  <button class="fb" data-cat="sec">Security</button>
-  <button class="fb" data-cat="robo">Robotics</button>
-  <button class="fb" data-cat="telecom">Telecom</button>
 </div>
 <div id="main">
   <div id="canvas-area">
@@ -203,19 +190,23 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:var(--fon
     <div class="ptgs" id="ppre"></div>
     <div class="psec" id="punl-sec">Unlocks (read after) <span class="kcount" id="punl-count"></span></div>
     <div class="ptgs" id="punl"></div>
+    <div class="psec" id="pdesc-sec">Full descent to bedrock <span class="kcount" id="pdesc-count"></span></div>
+    <button id="trace-btn" class="mr-btn" onclick="toggleTrace()" title="Light up the whole stack beneath this, down to the floor">⤓ trace the stack on the graph</button>
+    <div class="ptgs" id="pdesc"></div>
   </div></div>
 </div>
 <div id="tip"></div>
 </div>
 <script define:vars={{ nodes }}>
-const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',phys:'#f87171',hw:'#22d3ee',quant:'#f43f5e',sec:'#818cf8',robo:'#fbbf24',telecom:'#60a5fa'};
+const C={found:'#94a3b8',math:'#34d399',phil:'#c084fc',ling:'#fb923c',cs:'#38bdf8',ai:'#facc15',hw:'#22d3ee',quant:'#f43f5e'};
 const isDark=()=>document.documentElement.dataset.theme==='dark';
 const FILL_DEFAULT=()=>isDark()?'#2a2823':'#ffffff';
 const FILL_SELF=()=>isDark()?'#2d2547':'#ede9fe';
 const FILL_ANC=()=>isDark()?'#382a1c':'#fff1e6';
 const FILL_DESC=()=>isDark()?'#152a2d':'#e0f7fa';
-const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',phys:'Physics',hw:'Hardware / Electronics',quant:'Quantitative Finance',sec:'Cybersecurity',robo:'Robotics',telecom:'Telecommunications'};
+const CAT_NAME={found:'Foundations',math:'Mathematics',phil:'Philosophy',ling:'Linguistics',cs:'Computer Science',ai:'Artificial Intelligence',hw:'Hardware / Electronics',quant:'Quantitative Finance'};
 const ANC='#f59e0b', DESC='#06b6d4', SELF='#a78bfa';
+const BEDROCK=()=>isDark()?'#2dd4bf':'#0d9488', LIT=()=>isDark()?'#fbbf24':'#d97706';
 
 // per-node device recommendation; first entry = primary (filled pill), rest = secondary (outlined).
 // laptop = REPL/code/exercises, tab = math/diagram PDFs + stylus, kindle = reflowable prose only (Paperwhite, no PDFs)
@@ -231,80 +222,51 @@ const DEV_PAIR_NOTE={
 const DEV_SOLO_NOTE={
   laptop:'Code-first — almost everything is a REPL session, a project, or a problem set.',
 };
-const DEVICES={
-  // foundations
+const DEVICES={  // foundations
   prop_logic:['tab'], set_theory:['tab','laptop'], proof:['tab','laptop'], pred_logic:['tab'],
+  godel:['tab'],
   // math — formula-heavy; tab to read, laptop to do
   number_systems:['tab','laptop'], discrete_math:['tab','laptop'], calculus:['tab','laptop'],
-  linear_algebra:['tab','laptop'], elementary_geometry:['tab','laptop'], elem_number_theory:['tab','laptop'],
-  abstract_algebra:['tab','laptop'], real_analysis:['tab','laptop'], multivar_calc:['tab','laptop'],
-  ode:['tab','laptop'], probability:['tab','laptop'], topology:['tab','laptop'],
-  complex_analysis:['tab','laptop'], measure_theory:['tab','laptop'], functional_analysis:['tab','laptop'],
-  diff_geometry:['tab','laptop'], pde:['tab','laptop'], numerical_methods:['laptop','tab'],
+  linear_algebra:['tab','laptop'],  elem_number_theory:['tab','laptop'],
+  abstract_algebra:['tab','laptop'], category_theory:['tab','laptop'], real_analysis:['tab','laptop'],
+  ode:['tab','laptop'], probability:['tab','laptop'],
+  complex_analysis:['tab','laptop'], multivar_calc:['tab','laptop'],
+  measure_theory:['tab','laptop'], pde:['tab','laptop'],
+
   // philosophy — mostly prose → kindle; formal/diagram exceptions → tab
-  aristotle_organon:['tab'], ancient_phil:['kindle'], eastern_phil:['kindle'], medieval_phil:['kindle'],
-  rationalism:['kindle'], empiricism:['kindle'], ethics:['kindle'], political_phil:['kindle'],
-  epistemology:['kindle'], kant:['kindle'], hegel:['kindle'], nietzsche:['kindle'],
-  phenomenology:['kindle'], continental:['kindle'], analytic_phil:['tab','kindle'],
+  aristotle_organon:['tab'], ancient_phil:['kindle'],  medieval_phil:['kindle'],
+  rationalism:['kindle'], empiricism:['kindle'],
+  epistemology:['kindle'], epistemic_logic:['tab'], kant:['kindle'],
+    analytic_phil:['tab','kindle'],
   phil_lang:['tab','kindle'], phil_science:['tab','kindle'], phil_mind:['kindle'],
   metaphysics:['kindle','tab'], phil_math:['tab','kindle'], semiotics:['kindle','tab'],
   // linguistics
-  panini:['tab'], saussure:['kindle'], morphology:['tab'],
-  syntax:['tab'], semantics:['tab','laptop'], pragmatics:['kindle'],
-  historical_ling:['kindle'], typology:['kindle'],
+   saussure:['kindle'], morphology:['tab'],
+  syntax:['tab'], semantics:['tab','laptop'],
+
   // CS
   sicp:['laptop'], data_struct:['laptop','tab'], algorithms:['laptop','tab'],
   formal_lang:['tab','laptop'], computability:['tab'], complexity:['tab'],
   type_theory:['tab','laptop'], compilers:['laptop','tab'], comp_arch:['tab'],
   os:['laptop','tab'], networks:['laptop','tab'], databases:['laptop'],
   distributed_sys:['laptop','tab'], cryptography:['tab','laptop'],
-  quantum_computing:['tab','laptop'], hpc:['laptop','tab'],
+
   // AI
-  ai_aima:['tab','laptop'], search_planning:['tab','laptop'], knowledge_repr:['kindle','tab'],
+  ai_aima:['tab','laptop'],  knowledge_repr:['kindle','tab'],
   logic_prog:['laptop'], prob_reasoning:['tab','laptop'], bayesian_nets:['tab','laptop'],
-  reinforcement:['tab','laptop'], planning_ai:['tab','laptop'], multi_agent:['tab','laptop'],
-  cognitive_sci:['kindle'], agi:['kindle'], info_theory:['tab'], nlp:['tab','laptop'],
+  reinforcement:['tab','laptop'],
+    info_theory:['tab'], nlp:['tab','laptop'],
   computer_vision:['tab','laptop'], automated_reasoning:['tab','laptop'],
-  game_playing:['tab','laptop'], connectionism:['tab','laptop'], statistical_learning:['tab','laptop'],
-  deep_learning:['tab','laptop'], decision_theory:['tab'], ai_safety:['kindle'],
-  // physics — incl. quantum chem (QM applied to molecules) + fluid dynamics & continuum mech (classical mech of continua)
-  feynman_lectures:['tab','kindle'], classical_mech:['tab'], electromagnetism:['tab'],
-  thermodynamics:['tab'], quantum_mech:['tab'], statistical_mech:['tab'],
-  relativity:['tab'], solid_state:['tab'], qft:['tab'], optics:['tab'],
-  quantum_chem:['tab','laptop'],
-  fluid_dynamics:['tab','laptop'], continuum_mech:['tab','laptop'],
+   connectionism:['tab','laptop'], statistical_learning:['tab','laptop'],
+  deep_learning:['tab','laptop'], decision_theory:['tab'],
   // hardware
   digital_logic:['tab','laptop'], circuit_theory:['tab'], art_electronics:['tab','laptop'],
-  microelectronics:['tab'], semiconductors:['tab'], signal_processing:['tab','laptop'],
-  control_systems:['tab','laptop'], embedded:['laptop','tab'],
+  signal_processing:['tab','laptop'], embedded:['laptop','tab'],
   computer_internals:['tab','laptop'],
-  // quant — math-heavy PDFs on the tab, code on the laptop
-  stoch_proc:['tab','laptop'], stoch_calc:['tab','laptop'], optim:['tab','laptop'],
+  // quant — math-heavy PDFs on the tab, code/backtests on the laptop
+  optim:['tab','laptop'], stoch_proc:['tab','laptop'], stoch_calc:['tab','laptop'],
   time_series:['laptop','tab'], math_finance:['tab','laptop'],
   portfolio:['laptop','tab'], market_micro:['tab','laptop'],
-  // security — most of it is hands-on tooling; theory papers on the tab
-  sec_principles:['tab','kindle'], access_control:['tab','laptop'],
-  crypto_eng:['tab','laptop'], crypto_protocols:['tab','laptop'],
-  network_sec:['tab','laptop'], web_sec:['laptop','tab'],
-  os_sec:['tab','laptop'], bin_exploit:['laptop','tab'],
-  reverse_eng:['laptop','tab'], malware:['laptop','tab'],
-  forensics:['laptop','tab'], offensive_sec:['laptop','tab'],
-  defensive_sec:['laptop','tab'], hw_sec:['tab','laptop'],
-  formal_sec:['tab','laptop'], privacy:['tab','laptop'],
-  ai_sec:['tab','laptop'], fuzzing:['laptop','tab'],
-  blockchain_sec:['tab','laptop'],
-  // robotics — math-heavy textbooks on the tab; ROS/code/algorithms on the laptop
-  robotics:['laptop','tab'], kinematics:['tab','laptop'],
-  robot_dynamics:['tab','laptop'], state_estimation:['tab','laptop'],
-  motion_planning:['laptop','tab'], robot_control:['tab','laptop'],
-  slam:['laptop','tab'], manipulation:['tab','laptop'],
-  robot_perception:['laptop','tab'], mobile_robots:['laptop','tab'],
-  humanoid:['tab','laptop'], robot_learning:['laptop','tab'],
-  hri:['kindle','tab'],
-  // telecom — signal-processing math on the tab, GNU-Radio / SDR work on the laptop
-  comm_theory:['tab','laptop'], coding_theory:['tab','laptop'],
-  antennas:['tab','laptop'], sdr:['laptop','tab'],
-  wireless_comms:['tab','laptop'], optical_comms:['tab'],
 };
 
 const N = nodes;
@@ -319,21 +281,62 @@ function saveHidden(){try{localStorage.setItem(HIDE_KEY,JSON.stringify([...HIDDE
 function isVisible(id){return N[id]&&!HIDDEN.has(N[id].cat);}
 
 // ═══════════════════════════════════════════════════════════════════
-// READ STATE — per-node "I've read this" flag, persisted in localStorage
+// DEPTH STATE — per-node descent depth, a lifelong logbook of opened boxes.
+//   (none) = not yet descended · 'bedrock' = been to the floor (latent) ·
+//   'lit'  = actively practising (active mastery). Persisted in localStorage.
 // ═══════════════════════════════════════════════════════════════════
-const READ_KEY='dag-read';
-let READ=new Set();
-try{READ=new Set(JSON.parse(localStorage.getItem(READ_KEY)||'[]'));}catch{}
-function saveRead(){try{localStorage.setItem(READ_KEY,JSON.stringify([...READ]));}catch{}}
+const DEPTH_KEY='dag-depth';
+let DEPTH={}; // id -> 'bedrock' | 'lit'
+try{DEPTH=JSON.parse(localStorage.getItem(DEPTH_KEY)||'null')||{};}catch{DEPTH={};}
+function saveDepth(){try{localStorage.setItem(DEPTH_KEY,JSON.stringify(DEPTH));}catch{}}
+// one-time migration: old binary "read" flags become 'bedrock'
+if(localStorage.getItem(DEPTH_KEY)===null){
+  try{for(const id of JSON.parse(localStorage.getItem('dag-read')||'[]'))DEPTH[id]='bedrock';}catch{}
+  saveDepth();
+}
+const DEPTH_LABEL={bedrock:'◆ been to bedrock',lit:'✦ actively lit'};
+function cycleDepth(id){
+  const cur=DEPTH[id];
+  if(!cur)DEPTH[id]='bedrock';
+  else if(cur==='bedrock')DEPTH[id]='lit';
+  else delete DEPTH[id];
+  saveDepth();
+}
+function depthColor(id){const s=DEPTH[id];return s==='lit'?LIT():s==='bedrock'?BEDROCK():'#9a968a';}
 function updateReadCounter(){
   const el=document.getElementById('read-counter');
-  if(el)el.innerHTML=`<b>${READ.size}</b> / ${Object.keys(N).length} read`;
+  if(!el)return;
+  let b=0,l=0;for(const k in DEPTH){if(DEPTH[k]==='lit')l++;else if(DEPTH[k]==='bedrock')b++;}
+  el.innerHTML=`<b>${b}</b> bedrock · <b>${l}</b> lit / ${Object.keys(N).length}`;
+}
+// the descent marker (glyph) drawn at a node's top-right corner
+function makeDepthMark(id,col){
+  const st=DEPTH[id];if(!st)return null;
+  const t=document.createElementNS(NS,'text');
+  t.setAttribute('x',NW-9);t.setAttribute('y',13);
+  t.setAttribute('text-anchor','end');
+  t.setAttribute('font-size','11');t.setAttribute('font-weight','600');
+  t.setAttribute('data-role','depth');t.style.pointerEvents='none';
+  if(st==='lit'){t.setAttribute('fill',LIT());t.textContent='✦';}
+  else{t.setAttribute('fill',col);t.textContent='◆';}
+  return t;
+}
+function refreshDepthMark(id){
+  const el=nodeEls[id];if(!el)return;
+  const old=el.g.querySelector('text[data-role="depth"]');if(old)old.remove();
+  const m=makeDepthMark(id,el.col);if(m)el.g.appendChild(m);
+}
+// transitive prerequisite closure — the full stack beneath a node, down to bedrock
+function ancClosure(id){
+  const seen=new Set();const stack=(N[id].pre||[]).filter(isVisible);
+  while(stack.length){const x=stack.pop();if(seen.has(x))continue;seen.add(x);for(const p of(N[x].pre||[]))if(isVisible(p))stack.push(p);}
+  return seen;
 }
 
 // ═══════════════════════════════════════════════════════════════════
 // LAYOUT — automatic tiering via longest path through *visible* nodes
 // ═══════════════════════════════════════════════════════════════════
-const CAT_ORDER=['found','math','phil','ling','cs','ai','phys','hw','quant','sec','robo','telecom'];
+const CAT_ORDER=['found','math','phil','ling','cs','ai','hw','quant'];
 const COL_W=300,ROW_H=200,PAD_L=220,PAD_T=180;
 let TIER={},REV={},byTier={},tiers=[],POS={},SVGW=0,SVGH=0;
 let zoom=1;
@@ -458,16 +461,7 @@ function renderGraph(){
       tx.style.pointerEvents='none';tx.textContent=ln;
       g.appendChild(tx);
     });
-    if(READ.has(id)){
-      const chk=document.createElementNS(NS,'text');
-      chk.setAttribute('x',NW-9);chk.setAttribute('y',13);
-      chk.setAttribute('text-anchor','end');
-      chk.setAttribute('font-size','11');chk.setAttribute('font-weight','500');
-      chk.setAttribute('fill',col);
-      chk.setAttribute('data-role','check');
-      chk.style.pointerEvents='none';chk.textContent='✓';
-      g.appendChild(chk);
-    }
+    {const m=makeDepthMark(id,col);if(m)g.appendChild(m);}
     svg.appendChild(g);
     nodeEls[id]={g,rect,col};
     g.addEventListener('mouseenter',e=>{doHover(id);showTip(e,node);});
@@ -476,7 +470,8 @@ function renderGraph(){
     g.addEventListener('click',()=>handleClick(id));
   }
 
-  if(lockedId&&!isVisible(lockedId)){lockedId=null;closePanel();}
+  if(lockedId&&!isVisible(lockedId)){lockedId=null;stopTrace();closePanel();}
+  else if(tracing&&traceId&&isVisible(traceId))applyTrace(traceId);
   else if(lockedId)applyHighlight(lockedId);
   else clearHighlight();
 }
@@ -550,6 +545,44 @@ function clearHighlight(){
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// DESCENT TRACE — light the entire recursive stack beneath a node
+// ═══════════════════════════════════════════════════════════════════
+let tracing=false, traceId=null;
+function applyTrace(id){
+  const clo=ancClosure(id);
+  for(const nid in nodeEls){
+    const{g,rect,col}=nodeEls[nid];
+    if(nid===id){
+      g.style.opacity='1';rect.setAttribute('stroke',SELF);
+      rect.setAttribute('stroke-width','2.6');rect.setAttribute('fill',FILL_SELF());
+    } else if(clo.has(nid)){
+      g.style.opacity='1';rect.setAttribute('stroke',ANC);
+      rect.setAttribute('stroke-width','1.6');rect.setAttribute('fill',FILL_ANC());
+    } else {
+      g.style.opacity='0.12';rect.setAttribute('stroke',col+'40');
+      rect.setAttribute('stroke-width','0.6');rect.setAttribute('fill',FILL_DEFAULT());
+    }
+  }
+  const inset=new Set([...clo,id]);
+  for(const el of edgeEls){
+    if(inset.has(el.dataset.from)&&inset.has(el.dataset.to)){
+      el.style.opacity='0.9';el.setAttribute('stroke',ANC);
+      el.setAttribute('stroke-width','1.4');el.setAttribute('marker-end','url(#ar-anc)');
+    } else {
+      el.style.opacity='0.05';el.setAttribute('stroke','#c8c4b8');
+      el.setAttribute('stroke-width','0.5');el.setAttribute('marker-end','url(#ar)');
+    }
+  }
+}
+function stopTrace(){tracing=false;traceId=null;const b=document.getElementById('trace-btn');if(b)b.classList.remove('done');}
+function toggleTrace(){
+  const id=document.getElementById('mark-read-btn').dataset.id;if(!id)return;
+  if(tracing&&traceId===id){stopTrace();applyHighlight(id);}
+  else{tracing=true;traceId=id;applyTrace(id);document.getElementById('trace-btn').classList.add('done');}
+}
+window.toggleTrace=toggleTrace;
+
+// ═══════════════════════════════════════════════════════════════════
 // DRAG-TO-PAN
 // ═══════════════════════════════════════════════════════════════════
 const cw=document.getElementById('cw');
@@ -573,10 +606,11 @@ window.addEventListener('mouseup',()=>{
   panning=false;cw.classList.remove('panning');
 });
 
-function doHover(id){if(lockedId===null)applyHighlight(id);}
-function clearHover(){if(lockedId!==null)applyHighlight(lockedId);else clearHighlight();}
+function doHover(id){if(tracing)return;if(lockedId===null)applyHighlight(id);}
+function clearHover(){if(tracing&&traceId){applyTrace(traceId);return;}if(lockedId!==null)applyHighlight(lockedId);else clearHighlight();}
 function handleClick(id){
   if(wasDrag)return;
+  stopTrace();
   if(lockedId===id){lockedId=null;clearHighlight();closePanel();}
   else{lockedId=id;applyHighlight(id);openPanel(id);}
 }
@@ -722,10 +756,13 @@ function openPanel(id){
   document.getElementById('ptit').textContent=node.label;
   document.getElementById('pdsc').textContent=node.desc;
   const mrb=document.getElementById('mark-read-btn');
-  const isRead=READ.has(id);
-  mrb.textContent=isRead?'✓ read':'mark as read';
-  mrb.classList.toggle('done',isRead);
+  const st=DEPTH[id];
+  mrb.textContent=DEPTH_LABEL[st]||'○ not descended';
+  mrb.classList.toggle('bedrock',st==='bedrock');
+  mrb.classList.toggle('lit',st==='lit');
+  mrb.title='Click to cycle: not descended → been to bedrock → actively lit';
   mrb.dataset.id=id;
+  stopTrace();
   const devs=DEVICES[id]||[];
   document.getElementById('pdev').innerHTML = devs.length
     ? devs.map((d,i)=>`<span class="dvc${i===0?' primary':''}">${DEV_LABEL[d]||d}</span>`).join('')
@@ -747,35 +784,35 @@ function openPanel(id){
   document.getElementById('punl-count').innerHTML=`<b>${unl.length}</b>`;
   document.getElementById('ppre').innerHTML=tagsHTML(pre,()=>ANC);
   document.getElementById('punl').innerHTML=tagsHTML(unl,()=>DESC);
+  // full recursive descent to bedrock, ordered floor-up, tinted by how far each layer is opened
+  const clo=[...ancClosure(id)].sort((a,b)=>(TIER[a]-TIER[b])||N[a].label.localeCompare(N[b].label));
+  const tb=document.getElementById('trace-btn');
+  document.getElementById('pdesc-count').innerHTML=`<b>${clo.length}</b>`;
+  if(clo.length){
+    document.getElementById('pdesc').innerHTML=tagsHTML(clo,depthColor);
+    tb.style.display='';
+  } else {
+    document.getElementById('pdesc').innerHTML='<span style="font-size:10px;color:var(--t3)">— this is bedrock; nothing beneath it —</span>';
+    tb.style.display='none';
+  }
   panel.classList.add('open');
 }
-function closePanel(){panel.classList.remove('open');lockedId=null;clearHighlight();}
+function closePanel(){panel.classList.remove('open');lockedId=null;stopTrace();clearHighlight();}
 function toggleReadCurrent(){
   const id=document.getElementById('mark-read-btn').dataset.id;
   if(!id)return;
-  if(READ.has(id))READ.delete(id);else READ.add(id);
-  saveRead();
-  updateReadCounter();
+  cycleDepth(id);
   const mrb=document.getElementById('mark-read-btn');
-  const isRead=READ.has(id);
-  mrb.textContent=isRead?'✓ read':'mark as read';
-  mrb.classList.toggle('done',isRead);
-  // refresh the checkmark on the node in the SVG
-  const el=nodeEls[id];
-  if(el){
-    const existing=el.g.querySelector('text[data-role="check"]');
-    if(existing)existing.remove();
-    if(isRead){
-      const chk=document.createElementNS(NS,'text');
-      chk.setAttribute('x',NW-9);chk.setAttribute('y',13);
-      chk.setAttribute('text-anchor','end');
-      chk.setAttribute('font-size','11');chk.setAttribute('font-weight','500');
-      chk.setAttribute('fill',el.col);
-      chk.setAttribute('data-role','check');
-      chk.style.pointerEvents='none';chk.textContent='✓';
-      el.g.appendChild(chk);
-    }
-  }
+  const st=DEPTH[id];
+  mrb.textContent=DEPTH_LABEL[st]||'○ not descended';
+  mrb.classList.toggle('bedrock',st==='bedrock');
+  mrb.classList.toggle('lit',st==='lit');
+  updateReadCounter();
+  refreshDepthMark(id);
+  // re-tint this node wherever it appears in an open descent list
+  const pd=document.getElementById('pdesc');
+  if(pd){const tg=[...pd.querySelectorAll('.ptg')].find(t=>t.getAttribute('onclick')===`handleClick('${id}')`);
+    if(tg){const c=depthColor(id);tg.style.borderColor=c+'55';tg.style.color=c;}}
 }
 window.handleClick=handleClick;
 window.closePanel=closePanel;
@@ -785,7 +822,7 @@ function toggleDark(){
   const dark=html.dataset.theme!=='dark';
   html.dataset.theme=dark?'dark':'';
   document.getElementById('dm-toggle').textContent=dark?'light':'dark';
-  if(lockedId)applyHighlight(lockedId);else clearHighlight();
+  if(tracing&&traceId)applyTrace(traceId);else if(lockedId)applyHighlight(lockedId);else clearHighlight();
 }
 window.toggleDark=toggleDark;
 
