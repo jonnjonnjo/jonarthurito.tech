@@ -1,0 +1,276 @@
+{
+  "portfolio": {
+    "cat": "core",
+    "label": "Portfolio + technical blog",
+    "desc": "A clean personal site with 3–5 deep technical write-ups (not tutorials — your own builds, decisions, failures). You already have jonarthurito.tech; the gap is *content that proves you think*. Proves: communication + ownership. This is the page recruiters land on.",
+    "pre": [],
+    "books": [
+      {"t": "You already have the site", "a": "jonarthurito.tech (Astro)", "n": "Add a writeup per flagship project below. The build IS the blog post.", "primary": true},
+      {"t": "Write like a human", "a": "Julia Evans (jvns.ca) as a model", "n": "Short, concrete, shows the messy middle. Recruiters love this style."}
+    ]
+  },
+  "cli_tool": {
+    "cat": "core",
+    "label": "A real CLI tool (published)",
+    "desc": "One genuinely useful command-line tool, packaged and published (npm / PyPI / crates.io / Homebrew), with a README, tests, and CI. You already forked Bagels-sync (TUI + S3 sync) — turn that instinct into something shipped under your name. Proves: you can finish and release.",
+    "pre": [],
+    "books": [
+      {"t": "Command Line Interface Guidelines", "a": "clig.dev", "n": "How a good CLI should behave. Free.", "primary": true}
+    ]
+  },
+  "oss_contrib": {
+    "cat": "core",
+    "label": "Merged OSS contribution",
+    "desc": "Get a non-trivial pull request merged into a project people actually use. Start with docs/bugfixes in a tool you already run (NixOS packages, an Astro plugin, a TUI). Proves: you can read a large unfamiliar codebase and ship inside someone else's standards — the #1 thing juniors lack.",
+    "pre": ["cli_tool"],
+    "books": [
+      {"t": "How to contribute", "a": "firstcontributions.github.io", "n": "Pick a repo you use daily; find a 'good first issue'.", "primary": true}
+    ]
+  },
+
+  "shell": {
+    "cat": "sys",
+    "label": "Build your own shell",
+    "desc": "A working Unix shell in C: parsing, fork/exec, pipes, redirection, job control, signals. ~2 weekends. Proves: you actually understand processes and the OS, not just `npm run`. The classic systems warm-up.",
+    "pre": [],
+    "books": [
+      {"t": "Write a Shell in C", "a": "Stephen Brennan", "n": "The canonical walkthrough. Then extend it past the tutorial.", "primary": true},
+      {"t": "Build Your Own X", "a": "github.com/codecrafters-io/build-your-own-x", "n": "The master list — your whole sys track lives here."}
+    ]
+  },
+  "http_server": {
+    "cat": "sys",
+    "label": "HTTP server from scratch",
+    "desc": "An HTTP/1.1 server on raw sockets — no framework — handling concurrent connections (thread pool or epoll/async). In C or Go. Proves: you understand the network stack and concurrency from the bottom. Foundation for the backend track.",
+    "pre": [],
+    "books": [
+      {"t": "Beej's Guide to Network Programming", "a": "beej.us", "n": "The sockets bible. Free.", "primary": true},
+      {"t": "CodeCrafters: Build your own HTTP server", "a": "codecrafters.io", "n": "Test-driven, language-agnostic stages."}
+    ]
+  },
+  "interpreter": {
+    "cat": "sys",
+    "label": "Interpreter (Crafting Interpreters)",
+    "desc": "A tree-walking interpreter for a small language (Lox): lexer, Pratt parser, environments, closures, classes. Proves: you grok how languages work — and it directly feeds your learning-rigorous compilers/type-theory nodes. One of the most respected solo projects.",
+    "pre": [],
+    "books": [
+      {"t": "Crafting Interpreters", "a": "Robert Nystrom", "n": "Free online, flawless. Do Part II (jlox) end to end.", "primary": true}
+    ]
+  },
+  "bytecode_vm": {
+    "cat": "sys",
+    "label": "Bytecode VM + compiler",
+    "desc": "Compile your language to bytecode and run it on a VM you write, with a garbage collector. Part III of Crafting Interpreters (clox, in C). Proves: real low-level chops — memory, dispatch, GC. Serious signal.",
+    "pre": ["interpreter"],
+    "books": [
+      {"t": "Crafting Interpreters, Part III (clox)", "a": "Robert Nystrom", "n": "The hard, impressive half.", "primary": true}
+    ]
+  },
+  "kv_store": {
+    "cat": "sys",
+    "label": "Key-value store (Redis-lite)",
+    "desc": "An in-memory KV server speaking a simple TCP protocol (RESP), with a few data types and TTLs. Proves: protocols + concurrency + state. The gateway to the database and distributed tracks.",
+    "pre": ["http_server"],
+    "books": [
+      {"t": "Build Your Own Redis", "a": "build-your-own.org", "n": "Step-by-step in C/C++.", "primary": true}
+    ]
+  },
+  "storage_engine": {
+    "cat": "sys",
+    "label": "Durable storage engine (WAL + LSM)",
+    "desc": "Give your KV store an on-disk storage engine: write-ahead log, crash recovery, then an LSM-tree or Bitcask layout with compaction. Proves: you understand durability and the guts of every database. Rare in a junior portfolio.",
+    "pre": ["kv_store"],
+    "books": [
+      {"t": "Database Internals", "a": "Alex Petrov", "n": "Storage-engine bible; pairs with your DDIA reading.", "primary": true},
+      {"t": "Bitcask paper", "a": "Riak (2010)", "n": "A tiny, beautiful design you can implement in a weekend."}
+    ]
+  },
+  "mini_sql": {
+    "cat": "sys",
+    "label": "SQL query engine",
+    "desc": "A small SQL engine over your storage engine: parser → logical plan → executor, with a couple of join algorithms and indexes. Proves: end-to-end database understanding. Ties to your learning-rigorous databases node.",
+    "pre": ["storage_engine"],
+    "books": [
+      {"t": "Let's Build a Simple Database (sqlite clone)", "a": "cstack.github.io/db_tutorial", "n": "Great on-ramp; then add SQL + joins.", "primary": true}
+    ]
+  },
+  "raft_kv": {
+    "cat": "sys",
+    "label": "Distributed KV with Raft",
+    "desc": "Make your KV store fault-tolerant via Raft consensus: leader election, log replication, snapshots — survive node failures. THE distributed-systems flagship. Proves the exact thing your 'Distributed Application Architecture' coursework only described. Hireable on its own.",
+    "pre": ["kv_store"],
+    "books": [
+      {"t": "MIT 6.824 / 6.5840 labs", "a": "pdos.csail.mit.edu/6.824", "n": "Do labs 2–4 (Raft → fault-tolerant KV). Public.", "primary": true},
+      {"t": "In Search of an Understandable Consensus Algorithm (Raft)", "a": "Ongaro & Ousterhout (2014)", "n": "The paper. Readable by design."}
+    ]
+  },
+  "container_runtime": {
+    "cat": "sys",
+    "label": "Mini container runtime",
+    "desc": "A tiny Docker-like runtime: namespaces + cgroups + an overlay rootfs, in Go or C. ~300 lines for the core. Proves: you know what a container actually *is* (not magic). Great interview story.",
+    "pre": ["shell"],
+    "books": [
+      {"t": "Containers from Scratch", "a": "Liz Rice (talk + code)", "n": "Live-codes it in Go in 40 min. Reproduce + extend.", "primary": true}
+    ]
+  },
+
+  "prod_api": {
+    "cat": "backend",
+    "label": "Production-grade API service",
+    "desc": "A real backend: REST or gRPC, JWT/OAuth auth, Postgres with migrations, input validation, error handling, and a genuine test suite. Level up your Menyala IoT / Spring Boot intern work into something production-shaped. Proves: you can build the thing companies pay for.",
+    "pre": ["http_server"],
+    "books": [
+      {"t": "Designing Data-Intensive Applications", "a": "Martin Kleppmann", "n": "The backend engineer's bible — also on your learning-rigorous list.", "primary": true}
+    ]
+  },
+  "caching_queue": {
+    "cat": "backend",
+    "label": "Caching + async job queue",
+    "desc": "Add Redis caching (with invalidation), plus a background job queue and workers for slow tasks. Proves: you think about latency and decoupling — senior-flavored concerns in a junior portfolio.",
+    "pre": ["prod_api"],
+    "books": [
+      {"t": "Redis docs + patterns", "a": "redis.io", "n": "Cache-aside, rate limiting, queues.", "primary": true}
+    ]
+  },
+  "observability": {
+    "cat": "backend",
+    "label": "Observability + load test (with numbers)",
+    "desc": "Instrument the API with metrics + tracing (Prometheus / Grafana / OpenTelemetry), then load-test it (k6/wrk) and WRITE UP the numbers — p99 latency, throughput, what you fixed. Proves: engineering maturity. The blog post writes itself.",
+    "pre": ["prod_api"],
+    "books": [
+      {"t": "k6 + Grafana docs", "a": "grafana.com", "n": "Measure, break, fix, document the before/after.", "primary": true}
+    ]
+  },
+  "ci_cd_deploy": {
+    "cat": "backend",
+    "label": "CI/CD + containerized deploy",
+    "desc": "Dockerize the service, build a GitHub Actions pipeline (test → build → push → deploy), and deploy it somewhere real (a VPS or your Pi). Proves: you can ship to production, not just to localhost.",
+    "pre": ["prod_api"],
+    "books": [
+      {"t": "GitHub Actions docs + Docker docs", "a": "docs.github.com / docs.docker.com", "n": "You already use Docker — formalize it into a pipeline.", "primary": true}
+    ]
+  },
+
+  "ml_from_scratch": {
+    "cat": "ml",
+    "label": "Core ML from scratch (numpy)",
+    "desc": "Implement linear/logistic regression, an MLP, and backprop by hand in numpy — no framework. Then a tiny autograd engine. Proves: you understand ML, not just `model.fit()`. Feeds your learning-rigorous deep-learning node.",
+    "pre": [],
+    "books": [
+      {"t": "Neural Networks: Zero to Hero", "a": "Andrej Karpathy (micrograd → makemore)", "n": "Build autograd + a transformer from zero. The single best ML-builder course. Free.", "primary": true}
+    ]
+  },
+  "reproduce_paper": {
+    "cat": "ml",
+    "label": "Reproduce a paper",
+    "desc": "Pick one focused paper and reproduce its core result on a small dataset (a GPT from scratch, a diffusion toy model, a classic CV/NLP result). Proves: you can turn research into working code — exactly what ML roles screen for.",
+    "pre": ["ml_from_scratch"],
+    "books": [
+      {"t": "nanoGPT", "a": "Andrej Karpathy", "n": "Reproduce a small GPT; document the loss curves.", "primary": true},
+      {"t": "Papers With Code", "a": "paperswithcode.com", "n": "Pick something with a public dataset you can run on a laptop/Colab."}
+    ]
+  },
+  "ml_service": {
+    "cat": "ml",
+    "label": "End-to-end ML service",
+    "desc": "Train a model, serve it behind an API, monitor it, and deploy it — the full MLOps loop. Combine your ML + backend tracks. Proves: you can ship ML to production, the rarest and most-hired ML skill.",
+    "pre": ["reproduce_paper", "prod_api"],
+    "books": [
+      {"t": "Made With ML", "a": "Goku Mohandas (madewithml.com)", "n": "End-to-end MLOps, free.", "primary": true}
+    ]
+  },
+
+  "market_data": {
+    "cat": "quant",
+    "label": "Market-data pipeline",
+    "desc": "Ingest live + historical market data (crypto exchange APIs are free and need no broker), normalize it, and store ticks/bars efficiently. Proves: data engineering + the substrate for everything quant. Cheap to start, today.",
+    "pre": [],
+    "books": [
+      {"t": "ccxt library + exchange WebSocket docs", "a": "github.com/ccxt/ccxt", "n": "Free unified access to 100+ exchanges. Start with Binance/Bybit public feeds.", "primary": true}
+    ]
+  },
+  "backtester": {
+    "cat": "quant",
+    "label": "Event-driven backtesting engine",
+    "desc": "A backtester that replays data event-by-event (no look-ahead bias) with realistic fills, fees, and slippage. Proves: you understand market mechanics and can build correct simulations. The core quant-dev tool.",
+    "pre": ["market_data"],
+    "books": [
+      {"t": "Successful Algorithmic Trading / event-driven backtester", "a": "Michael Halls-Moore (quantstart.com)", "n": "Build it event-driven from the start — vectorized backtests lie.", "primary": true}
+    ]
+  },
+  "strategy": {
+    "cat": "quant",
+    "label": "A strategy with honest metrics",
+    "desc": "Implement a couple of strategies and report them HONESTLY: Sharpe, max drawdown, turnover, after fees + slippage. Proves: intellectual honesty about edge — the trait quant firms actually test for. Most candidate strategies are overfit; show you know that.",
+    "pre": ["backtester"],
+    "books": [
+      {"t": "Advances in Financial Machine Learning", "a": "Marcos López de Prado", "n": "Especially the chapters on backtest overfitting and why most edges are fake.", "primary": true}
+    ]
+  },
+  "lob_sim": {
+    "cat": "quant",
+    "label": "Limit order book + matching engine",
+    "desc": "A full limit-order-book with a price-time-priority matching engine. Proves: you understand microstructure at the data-structure level. Directly maps to your learning-rigorous market-microstructure node.",
+    "pre": ["market_data"],
+    "books": [
+      {"t": "How to Build a Fast Limit Order Book", "a": "WK Selph (blog) + QuantCup", "n": "The canonical design; intrusive linked lists + price-level map.", "primary": true}
+    ]
+  },
+  "lowlat_cpp": {
+    "cat": "quant",
+    "label": "Low-latency C++ order book",
+    "desc": "Rebuild the order book in modern C++ obsessed with latency: cache-friendly layout, no allocations on the hot path, lock-free where it counts — and BENCHMARK it (ns/op, p99). THE HFT flagship, and it leans straight on your C++ + competitive-programming strengths. This single repo can get you HFT interviews.",
+    "pre": ["lob_sim"],
+    "books": [
+      {"t": "CppCon talks: 'When a Microsecond Is an Eternity'", "a": "Carl Cook (Optiver)", "n": "How HFT C++ actually thinks. Then measure everything.", "primary": true},
+      {"t": "What Every Programmer Should Know About Memory", "a": "Ulrich Drepper", "n": "Cache behavior is the whole game here."}
+    ]
+  },
+
+  "pi_selfhost": {
+    "cat": "infra",
+    "label": "Self-host on the Raspberry Pi 5",
+    "desc": "Your first tinker: set up the Pi 5, run Docker on it, and self-host one real service you actually use (a bookmark manager, an RSS reader, your reading-tracker-api). Expose it safely (Tailscale/Cloudflare Tunnel). Proves: you can run real infra. Turns the Pi from a drawer object into a lab.",
+    "pre": [],
+    "books": [
+      {"t": "Raspberry Pi OS + Docker + Tailscale", "a": "official docs", "n": "Start here — one service, end to end, this weekend.", "primary": true},
+      {"t": "Awesome-Selfhosted", "a": "github.com/awesome-selfhosted", "n": "Pick something you'll genuinely use."}
+    ]
+  },
+  "pi_monitoring": {
+    "cat": "infra",
+    "label": "Homelab monitoring stack",
+    "desc": "Run Prometheus + Grafana on the Pi and graph the Pi itself + your self-hosted services. Proves: ops instinct, and gives you the observability muscle the backend track needs.",
+    "pre": ["pi_selfhost"],
+    "books": [
+      {"t": "Prometheus + Grafana docs", "a": "prometheus.io", "n": "Node exporter → dashboards → an alert that fires.", "primary": true}
+    ]
+  },
+  "pi_k3s": {
+    "cat": "infra",
+    "label": "k3s cluster + GitOps",
+    "desc": "Run lightweight Kubernetes (k3s) on the Pi and deploy your own apps to it via GitOps (Argo CD / Flux). Proves: you can operate the orchestration layer every backend shop uses. Combine with your CI/CD project for a deploy-to-cluster story.",
+    "pre": ["pi_selfhost", "ci_cd_deploy"],
+    "books": [
+      {"t": "k3s + Argo CD docs", "a": "k3s.io / argo-cd", "n": "Even a single-node cluster teaches the whole model.", "primary": true}
+    ]
+  },
+  "pi_embedded": {
+    "cat": "infra",
+    "label": "Embedded / bare-metal on the Pi",
+    "desc": "Talk to hardware: GPIO, a sensor (temp/camera/distance), maybe an interrupt-driven loop or a Pico for true bare-metal. Builds directly on your II2260 Embedded Systems course (your ⭐4 repo). Proves: you cross the hardware/software line — rare and memorable.",
+    "pre": ["pi_selfhost"],
+    "books": [
+      {"t": "Raspberry Pi Pico C/C++ SDK / gpiozero", "a": "official docs", "n": "Start with a sensor; graph its readings in your monitoring stack.", "primary": true}
+    ]
+  },
+  "pi_edge_ml": {
+    "cat": "infra",
+    "label": "Edge ML on the Pi",
+    "desc": "Run one of your trained models on the Pi against a live camera/mic feed (quantized / ONNX runtime). Combines ML + infra + embedded into one striking demo. Proves: the full stack from model to metal.",
+    "pre": ["pi_selfhost", "ml_service"],
+    "books": [
+      {"t": "ONNX Runtime / TFLite on Raspberry Pi", "a": "official docs", "n": "A real-time inference demo videos beautifully for your portfolio.", "primary": true}
+    ]
+  }
+}
