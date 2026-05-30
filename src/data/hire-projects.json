@@ -18,58 +18,48 @@
       {"t": "Command Line Interface Guidelines", "a": "clig.dev", "n": "How a good CLI should behave. Free.", "primary": true}
     ]
   },
-  "oss_contrib": {
+  "aws_cp": {
     "cat": "core",
-    "label": "Merged OSS contribution",
-    "desc": "Get a non-trivial pull request merged into a project people actually use. Start with docs/bugfixes in a tool you already run (NixOS packages, an Astro plugin, a TUI). Proves: you can read a large unfamiliar codebase and ship inside someone else's standards — the #1 thing juniors lack.",
-    "pre": ["cli_tool"],
+    "label": "AWS Cloud Practitioner",
+    "desc": "Foundational cloud certification. ~1 week of study: cloud concepts, AWS global infra, billing, core services. Worth doing early to build cloud vocabulary — then everything you build+deploy will reinforce it.",
+    "pre": [],
     "books": [
-      {"t": "How to contribute", "a": "firstcontributions.github.io", "n": "Pick a repo you use daily; find a 'good first issue'.", "primary": true}
+      {"t": "AWS Cloud Practitioner Essentials", "a": "AWS (free digital training)", "n": "Official course + practice exams. 6–8 hours total.", "primary": true}
     ]
   },
 
-  "shell": {
-    "cat": "sys",
-    "label": "Build your own shell",
-    "desc": "A working Unix shell in C: parsing, fork/exec, pipes, redirection, job control, signals. ~2 weekends. Proves: you actually understand processes and the OS, not just `npm run`. The classic systems warm-up.",
-    "pre": [],
-    "books": [
-      {"t": "Write a Shell in C", "a": "Stephen Brennan", "n": "The canonical walkthrough. Then extend it past the tutorial.", "primary": true},
-      {"t": "Build Your Own X", "a": "github.com/codecrafters-io/build-your-own-x", "n": "The master list — your whole sys track lives here."}
-    ]
-  },
   "http_server": {
     "cat": "sys",
     "label": "HTTP server from scratch",
-    "desc": "An HTTP/1.1 server on raw sockets — no framework — handling concurrent connections (thread pool or epoll/async). In C or Go. Proves: you understand the network stack and concurrency from the bottom. Foundation for the backend track.",
+    "desc": "An HTTP/1.1 server on raw sockets — no framework — handling concurrent connections (thread pool or epoll/async). In C or Go. This is the foundation of your entire backend depth: sockets, TCP lifecycle, request parsing, concurrency models. Most backend devs have never built one. Proves: you understand the network stack from the bottom up — every framework you touch later will be a thin layer on this.",
     "pre": [],
     "books": [
       {"t": "Beej's Guide to Network Programming", "a": "beej.us", "n": "The sockets bible. Free.", "primary": true},
       {"t": "CodeCrafters: Build your own HTTP server", "a": "codecrafters.io", "n": "Test-driven, language-agnostic stages."}
     ]
   },
-  "interpreter": {
-    "cat": "sys",
-    "label": "Interpreter (Crafting Interpreters)",
-    "desc": "A tree-walking interpreter for a small language (Lox): lexer, Pratt parser, environments, closures, classes. Proves: you grok how languages work — and it directly feeds your learning-rigorous compilers/type-theory nodes. One of the most respected solo projects.",
-    "pre": [],
+  "prod_api": {
+    "cat": "backend",
+    "label": "Production-grade API service",
+    "desc": "A real backend: REST or gRPC, JWT/OAuth auth, Postgres with migrations, input validation, error handling, and a genuine test suite. Level up your Menyala IoT / Spring Boot intern work into something production-shaped. Proves: you can build the thing companies pay for.",
+    "pre": ["http_server"],
     "books": [
-      {"t": "Crafting Interpreters", "a": "Robert Nystrom", "n": "Free online, flawless. Do Part II (jlox) end to end.", "primary": true}
+      {"t": "Designing Data-Intensive Applications", "a": "Martin Kleppmann", "n": "The backend engineer's bible — also on your learning-rigorous list.", "primary": true}
     ]
   },
-  "bytecode_vm": {
-    "cat": "sys",
-    "label": "Bytecode VM + compiler",
-    "desc": "Compile your language to bytecode and run it on a VM you write, with a garbage collector. Part III of Crafting Interpreters (clox, in C). Proves: real low-level chops — memory, dispatch, GC. Serious signal.",
-    "pre": ["interpreter"],
+  "caching_queue": {
+    "cat": "backend",
+    "label": "Caching + async job queue",
+    "desc": "Add Redis caching (with invalidation), plus a background job queue and workers for slow tasks. Proves: you think about latency and decoupling — senior-flavored concerns in a junior portfolio.",
+    "pre": ["prod_api"],
     "books": [
-      {"t": "Crafting Interpreters, Part III (clox)", "a": "Robert Nystrom", "n": "The hard, impressive half.", "primary": true}
+      {"t": "Redis docs + patterns", "a": "redis.io", "n": "Cache-aside, rate limiting, queues.", "primary": true}
     ]
   },
   "kv_store": {
     "cat": "sys",
     "label": "Key-value store (Redis-lite)",
-    "desc": "An in-memory KV server speaking a simple TCP protocol (RESP), with a few data types and TTLs. Proves: protocols + concurrency + state. The gateway to the database and distributed tracks.",
+    "desc": "An in-memory KV server speaking a simple TCP protocol (RESP), with a few data types and TTLs. Proves: protocols + concurrency + state — the backbone of every database you'll use as a backend engineer. The gateway to the storage engine and distributed tracks.",
     "pre": ["http_server"],
     "books": [
       {"t": "Build Your Own Redis", "a": "build-your-own.org", "n": "Step-by-step in C/C++.", "primary": true}
@@ -78,13 +68,42 @@
   "storage_engine": {
     "cat": "sys",
     "label": "Durable storage engine (WAL + LSM)",
-    "desc": "Give your KV store an on-disk storage engine: write-ahead log, crash recovery, then an LSM-tree or Bitcask layout with compaction. Proves: you understand durability and the guts of every database. Rare in a junior portfolio.",
+    "desc": "Give your KV store an on-disk storage engine: write-ahead log, crash recovery, then an LSM-tree or Bitcask layout with compaction. This is the line between 'I use Postgres' and 'I understand how databases work.' Proves: durability, crash recovery, B-tree vs LSM tradeoffs — rare depth for a junior.",
     "pre": ["kv_store"],
     "books": [
       {"t": "Database Internals", "a": "Alex Petrov", "n": "Storage-engine bible; pairs with your DDIA reading.", "primary": true},
       {"t": "Bitcask paper", "a": "Riak (2010)", "n": "A tiny, beautiful design you can implement in a weekend."}
     ]
   },
+
+  "ci_cd_deploy": {
+    "cat": "backend",
+    "label": "CI/CD + containerized deploy",
+    "desc": "Dockerize the service, build a GitHub Actions pipeline (test → build → push → deploy), and deploy it somewhere real (a VPS or your Pi). Proves: you can ship to production, not just to localhost.",
+    "pre": ["prod_api"],
+    "books": [
+      {"t": "GitHub Actions docs + Docker docs", "a": "docs.github.com / docs.docker.com", "n": "You already use Docker — formalize it into a pipeline.", "primary": true}
+    ]
+  },
+  "observability": {
+    "cat": "backend",
+    "label": "Observability + load test (with numbers)",
+    "desc": "Instrument the API with metrics + tracing (Prometheus / Grafana / OpenTelemetry), then load-test it (k6/wrk) and WRITE UP the numbers — p99 latency, throughput, before/after of what you fixed. Proves: engineering maturity — and the writeup is your strongest portfolio post, showing you can measure and improve your own systems.",
+    "pre": ["prod_api"],
+    "books": [
+      {"t": "k6 + Grafana docs", "a": "grafana.com", "n": "Measure, break, fix, document the before/after.", "primary": true}
+    ]
+  },
+  "aws_saa": {
+    "cat": "backend",
+    "label": "AWS Solutions Architect Associate",
+    "desc": "The most recognized cloud cert for backend engineers. Architecture design, high-availability, cost optimization, security. Take after building + deploying a real app so the concepts are concrete.",
+    "pre": ["prod_api", "ci_cd_deploy"],
+    "books": [
+      {"t": "AWS Certified Solutions Architect Study Guide", "a": "Ben Piper / David Clinton (Sybex)", "n": "Comprehensive. Pair with TutorialsDojo practice exams.", "primary": true}
+    ]
+  },
+
   "mini_sql": {
     "cat": "sys",
     "label": "SQL query engine",
@@ -104,6 +123,26 @@
       {"t": "In Search of an Understandable Consensus Algorithm (Raft)", "a": "Ongaro & Ousterhout (2014)", "n": "The paper. Readable by design."}
     ]
   },
+
+  "shell": {
+    "cat": "sys",
+    "label": "Build your own shell",
+    "desc": "A working Unix shell in C: parsing, fork/exec, pipes, redirection, job control, signals. ~2 weekends. Proves: you actually understand processes and the OS, not just `npm run`. The classic systems warm-up.",
+    "pre": [],
+    "books": [
+      {"t": "Write a Shell in C", "a": "Stephen Brennan", "n": "The canonical walkthrough. Then extend it past the tutorial.", "primary": true},
+      {"t": "Build Your Own X", "a": "github.com/codecrafters-io/build-your-own-x", "n": "The master list — your whole sys track lives here."}
+    ]
+  },
+  "oss_contrib": {
+    "cat": "core",
+    "label": "Merged OSS contribution",
+    "desc": "Get a non-trivial pull request merged into a project people actually use. Start with docs/bugfixes in a tool you already run (NixOS packages, an Astro plugin, a TUI). Proves: you can read a large unfamiliar codebase and ship inside someone else's standards — the #1 thing juniors lack.",
+    "pre": ["cli_tool"],
+    "books": [
+      {"t": "How to contribute", "a": "firstcontributions.github.io", "n": "Pick a repo you use daily; find a 'good first issue'.", "primary": true}
+    ]
+  },
   "container_runtime": {
     "cat": "sys",
     "label": "Mini container runtime",
@@ -113,41 +152,22 @@
       {"t": "Containers from Scratch", "a": "Liz Rice (talk + code)", "n": "Live-codes it in Go in 40 min. Reproduce + extend.", "primary": true}
     ]
   },
-
-  "prod_api": {
-    "cat": "backend",
-    "label": "Production-grade API service",
-    "desc": "A real backend: REST or gRPC, JWT/OAuth auth, Postgres with migrations, input validation, error handling, and a genuine test suite. Level up your Menyala IoT / Spring Boot intern work into something production-shaped. Proves: you can build the thing companies pay for.",
-    "pre": ["http_server"],
+  "interpreter": {
+    "cat": "sys",
+    "label": "Interpreter (Crafting Interpreters)",
+    "desc": "A tree-walking interpreter for a small language (Lox): lexer, Pratt parser, environments, closures, classes. Proves: you grok how languages work — and it directly feeds your learning-rigorous compilers/type-theory nodes. One of the most respected solo projects.",
+    "pre": [],
     "books": [
-      {"t": "Designing Data-Intensive Applications", "a": "Martin Kleppmann", "n": "The backend engineer's bible — also on your learning-rigorous list.", "primary": true}
+      {"t": "Crafting Interpreters", "a": "Robert Nystrom", "n": "Free online, flawless. Do Part II (jlox) end to end.", "primary": true}
     ]
   },
-  "caching_queue": {
-    "cat": "backend",
-    "label": "Caching + async job queue",
-    "desc": "Add Redis caching (with invalidation), plus a background job queue and workers for slow tasks. Proves: you think about latency and decoupling — senior-flavored concerns in a junior portfolio.",
-    "pre": ["prod_api"],
+  "bytecode_vm": {
+    "cat": "sys",
+    "label": "Bytecode VM + compiler",
+    "desc": "Compile your language to bytecode and run it on a VM you write, with a garbage collector. Part III of Crafting Interpreters (clox, in C). Proves: real low-level chops — memory, dispatch, GC. Serious signal.",
+    "pre": ["interpreter"],
     "books": [
-      {"t": "Redis docs + patterns", "a": "redis.io", "n": "Cache-aside, rate limiting, queues.", "primary": true}
-    ]
-  },
-  "observability": {
-    "cat": "backend",
-    "label": "Observability + load test (with numbers)",
-    "desc": "Instrument the API with metrics + tracing (Prometheus / Grafana / OpenTelemetry), then load-test it (k6/wrk) and WRITE UP the numbers — p99 latency, throughput, what you fixed. Proves: engineering maturity. The blog post writes itself.",
-    "pre": ["prod_api"],
-    "books": [
-      {"t": "k6 + Grafana docs", "a": "grafana.com", "n": "Measure, break, fix, document the before/after.", "primary": true}
-    ]
-  },
-  "ci_cd_deploy": {
-    "cat": "backend",
-    "label": "CI/CD + containerized deploy",
-    "desc": "Dockerize the service, build a GitHub Actions pipeline (test → build → push → deploy), and deploy it somewhere real (a VPS or your Pi). Proves: you can ship to production, not just to localhost.",
-    "pre": ["prod_api"],
-    "books": [
-      {"t": "GitHub Actions docs + Docker docs", "a": "docs.github.com / docs.docker.com", "n": "You already use Docker — formalize it into a pipeline.", "primary": true}
+      {"t": "Crafting Interpreters, Part III (clox)", "a": "Robert Nystrom", "n": "The hard, impressive half.", "primary": true}
     ]
   },
 
